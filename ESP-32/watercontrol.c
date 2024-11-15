@@ -8,9 +8,9 @@ void setup() {
 void loop() {
   // Turn on the water pump
   digitalWrite(WATER_PUMP_PIN, HIGH);  // Set GPIO pin high to turn on the water pump
-  delay(10000);                        // Keep the pump on for 10 seconds (example duration)
+  delay(10000);                        // Keep the pump on for 10 seconds
 
   // Turn off the water pump
   digitalWrite(WATER_PUMP_PIN, LOW);   // Set GPIO pin low to turn off the water pump
-  delay(10000);                        // Keep the pump off for 10 seconds (example duration)
+  delay(10000);                        // Keep the pump off for 10 seconds
 }
