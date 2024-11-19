@@ -2,18 +2,18 @@ import cv2
 import ollama
 
 # Open the webcam
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
 
-# Capture a frame
-ret, frame = cap.read()
-print("finished Image capture")
+# # Capture a frame
+# ret, frame = cap.read()
+# print("finished Image capture")
 
-# Save the image
-cv2.imwrite('image.jpg', frame)
-print("Wrote image to a file")
+# # Save the image
+# cv2.imwrite('image.jpg', frame)
+# print("Wrote image to a file")
 
-cap.release()
-print("asking llama")
+# cap.release()
+# print("asking llama")
 
 response = ollama.chat(
     model='llama3.2-vision',
