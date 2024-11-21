@@ -46,13 +46,15 @@ while True:
     if getModel.status_code==200:
         run_Model = getModel.json()
         print(run_Model)
+        retrieve_image_from_firebase()
         if run_Model['query_flag']=='True':   
+            print("Asking model what it thinks")
             response = ollama.chat(
                 model='llama3.2-vision',
                 messages=[{
                     'role': 'user',
-                    'content': 'What is in this image?',
-                    'images': ['image.jpg']
+                    'content': 'Answer in a yes or no only, Are the fruits ripe?',
+                    'images': ['retrieved_image.jpg']
                 }]
             )
             print(response['message']['content'])
