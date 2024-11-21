@@ -6,10 +6,6 @@ import json
 import requests
 import time
 
-
-FIREBASE_URL_image = "https://simple-sprouts-database-default-rtdb.firebaseio.com/model/base64_image.json"
-FIREBASE_URL_Response = "https://simple-sprouts-database-default-rtdb.firebaseio.com/response.json"
-
 def image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         base64_string = base64.b64encode(image_file.read()).decode("utf-8")
@@ -29,29 +25,18 @@ def upload_to_firebase(data: dict,image) -> None:
         print(f"Firebase response: {response.text}")
         response.close()
 
-
-while True:
-    # Open the webcam
-    cap = cv2.VideoCapture(0)
-
-    # Capture a frame
-    ret, frame = cap.read()
-    print("finished Image capture")
-
-    # Save the image
-    cv2.imwrite('image.jpg', frame)
-    print("Wrote image to a file")
-
-    cap.release()
-    print("asking llama")
-
-    data ={
-        "Image_in_base64":image_to_base64("image.jpg")
-    }
-
-    print(image_to_base64("image.jpg"))
-
-    upload_to_firebase(data,True)
-    time.sleep(20)
-
-
+def retrieve_image_from_firebase():
+    # Fetch the base64 image data from Firebase
+    response = requests.get(FIREBASE_URL)
+    if response.status_code == 200:
+        image_data = response.json()  # Retrieve the base64 string
+        if image_data:
+            # Decode the base64 string and save it as an image file
+            with open(OUTPUT_IMAGE_PATH, "wb") as image_file:
+                print(image_data)
+                image_file.write(base64.b64decode(image_data['Image_in_base64']))
+            print(f"Image successfully retrieved and saved as {OUTPUT_IMAGE_PATH}")
+        else:
+            print("No image data found in the response.")
+    else:
+        print(f"Failed to retrieve image. HTTP Status Code: {response.status_code}")
