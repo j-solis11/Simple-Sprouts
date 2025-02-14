@@ -8,7 +8,7 @@ import adafruit_pct2075
 import adafruit_ahtx0
 
 # Firebase setup
-DATABASE_URL = 'https://simple-sprouts-database-default-rtdb.firebaseio.com/'  # Update with your database URL
+DATABASE_URL = 'https://simplesproutstest-default-rtdb.firebaseio.com/'  # Update with your database URL
 
 firebase_admin.initialize_app(options={'databaseURL': DATABASE_URL})
 ref = firebase_admin.db.reference('sensor_readings')
