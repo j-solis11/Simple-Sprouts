@@ -5596,7 +5596,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/997/C1120-001_datasheet.pdf"
 			(at 91.44 90.17 0)
 			(effects
 				(font
@@ -9295,7 +9295,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/997/C1120-001_datasheet.pdf"
 			(at 66.04 90.17 0)
 			(effects
 				(font
