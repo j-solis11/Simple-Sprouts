@@ -3,7 +3,7 @@ import busio
 import adafruit_sgp30
 import adafruit_ahtx0
 import adafruit_pct2075
-import adafruit_seesaw
+import adafruit_seesaw.seesaw  # Import the seesaw submodule
 import time
 
 # Initialize I2C bus
@@ -13,7 +13,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c)
 aht20 = adafruit_ahtx0.AHTx0(i2c)
 pct2075 = adafruit_pct2075.PCT2075(i2c)
-soil_sensor = adafruit_seesaw.Seesaw(i2c, 0x36)  # Update this address if needed
+soil_sensor = adafruit_seesaw.seesaw.Seesaw(i2c, 0x36)  # Corrected way to access Seesaw
 
 # Initialize SGP30 baseline
 sgp30.iaq_init()
