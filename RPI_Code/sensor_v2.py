@@ -10,7 +10,7 @@ import adafruit_seesaw.seesaw
 i2c1 = busio.I2C(board.SCL, board.SDA)  
 
 # Initialize I2C0 (New: GPIO0 = SDA0, GPIO1 = SCL0) for SGP30
-i2c0 = busio.I2C(board.I2C().scl, board.I2C().sda, bus=0)  
+i2c0 = busio.I2C( board.G0, board.G1 )  # Correct way to access GPIO0 & GPIO1 for I2C0
 
 # Initialize sensors on their respective buses
 sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c0)  # SGP30 on I2C0
