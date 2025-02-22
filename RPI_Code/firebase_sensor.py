@@ -29,10 +29,10 @@ firebase_admin.initialize_app(cred, {
     "databaseURL": "https://simplesproutstest-default-rtdb.firebaseio.com/"
 })
 
-# Firebase Database Reference
-ref = firebase_admin.db.reference("/sensor_readings")  # Explicitly access db
+# Firebase Database Reference (Fixed Path)
+ref = firebase_admin.db.reference("/sensor_readings/latest")  # This will always update the same entry
 
-print("Starting sensor readings and Firebase upload...")
+print("Starting sensor readings and Firebase updates...")
 
 while True:
     # Read AHT20 sensor (Temperature & Humidity)
@@ -63,10 +63,10 @@ while True:
     print("\nSensor Readings:")
     print(json.dumps(sensor_data, indent=4))
 
-    # Upload data to Firebase
-    ref.push(sensor_data)
+    # Upload data to Firebase (overwrite the same entry)
+    ref.set(sensor_data)
 
-    print("Data uploaded to Firebase successfully.")
+    print("Data updated in Firebase successfully.")
 
     # Wait before next reading
     time.sleep(2)
