@@ -30,7 +30,7 @@ firebase_admin.initialize_app(cred, {
 })
 
 # Firebase Database Reference (Fixed Path)
-ref = firebase_admin.db.reference("/sensor_readings/latest")  # This will always update the same entry
+ref = firebase_admin.db.reference("/sensor_readings")  # Reference the main node
 
 print("Starting sensor readings and Firebase updates...")
 
@@ -64,7 +64,7 @@ while True:
     print(json.dumps(sensor_data, indent=4))
 
     # Upload data to Firebase (overwrite the same entry)
-    ref.set(sensor_data)
+    ref.child("latest").set(sensor_data)  # Overwrites "/sensor_readings/latest"
 
     print("Data updated in Firebase successfully.")
 
