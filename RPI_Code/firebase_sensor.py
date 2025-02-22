@@ -3,6 +3,7 @@ import board
 import busio
 import json
 import firebase_admin
+import firebase_admin.db  # Explicitly import the db module
 import adafruit_sgp30
 import adafruit_ahtx0
 import adafruit_pct2075
@@ -22,14 +23,14 @@ sgp30.iaq_init()
 sgp30.set_iaq_baseline(0x8973, 0x8aae)
 
 # Initialize Firebase
-firebase_key_path = "/home/pi/project_code/firebase_key.json"  # Update with correct path
+firebase_key_path = "/home/pi/project_code/firebase_key.json"  # Update if needed
 cred = firebase_admin.credentials.Certificate(firebase_key_path)
 firebase_admin.initialize_app(cred, {
     "databaseURL": "https://simplesproutstest-default-rtdb.firebaseio.com/"
 })
 
 # Firebase Database Reference
-db = firebase_admin.db.reference("/sensor_readings")
+ref = firebase_admin.db.reference("/sensor_readings")  # Explicitly access db
 
 print("Starting sensor readings and Firebase upload...")
 
@@ -63,7 +64,7 @@ while True:
     print(json.dumps(sensor_data, indent=4))
 
     # Upload data to Firebase
-    db.push(sensor_data)
+    ref.push(sensor_data)
 
     print("Data uploaded to Firebase successfully.")
 
