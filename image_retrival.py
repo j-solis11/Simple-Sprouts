@@ -2,7 +2,11 @@ import requests
 import base64
 import ollama
 import time
+import moondream as md
+from PIL import Image
 
+
+model = md.vl(api_key="your-api-key")
 
 # Firebase URL pointing to the "Image_in_base64" field (include .json)
 FIREBASE_URL_image = "https://simple-sprouts-database-default-rtdb.firebaseio.com/model/base64_image.json"
@@ -49,17 +53,12 @@ while True:
         retrieve_image_from_firebase()
         if run_Model['query_flag']=='True':   
             print("Asking model what it thinks")
-            response = ollama.chat(
-                model='llama3.2-vision',
-                messages=[{
-                    'role': 'user',
-                    'content': 'Answer in a yes or no only, Are the fruits ripe?',
-                    'images': ['retrieved_image.jpg']
-                }]
-            )
-            print(response['message']['content'])
+            encoded_image = model.encode_image(OUTPUT_IMAGE_PATH)
+            answer = model.query(encoded_image, "What's in this image?")["answer"]
+            print("Answer:", answer)
 
-            data={"model_response": response['message']['content']}
+
+            data={"model_response": answer}
             upload_to_firebase(data,2)
             data={"query_flag": "False"}
             upload_to_firebase(data,3)
