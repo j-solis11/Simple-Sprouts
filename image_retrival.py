@@ -4,9 +4,13 @@ import ollama
 import time
 import moondream as md
 from PIL import Image
+from dotenv import load_dotenv
+import os
 
+load_dotenv()  # Load environment variables from .env
+api_key = os.getenv("API_KEY")
 
-model = md.vl(api_key="your-api-key")
+model = md.vl(api_key= api_key)
 
 # Firebase URL pointing to the "Image_in_base64" field (include .json)
 FIREBASE_URL_image = "https://simple-sprouts-database-default-rtdb.firebaseio.com/model/base64_image.json"
