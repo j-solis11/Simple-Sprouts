@@ -51,12 +51,13 @@ while True:
         run_Model = getModel.json()
         print(run_Model)
         retrieve_image_from_firebase()
-        if run_Model['query_flag']=='True':   
+        image = Image.open(OUTPUT_IMAGE_PATH)
+        encoded_image = model.encode_image(image)
+        
+        if run_Model=='True':   
             print("Asking model what it thinks")
-            encoded_image = model.encode_image(OUTPUT_IMAGE_PATH)
             answer = model.query(encoded_image, "What's in this image?")["answer"]
             print("Answer:", answer)
-
 
             data={"model_response": answer}
             upload_to_firebase(data,2)
