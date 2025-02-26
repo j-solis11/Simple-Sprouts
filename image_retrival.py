@@ -1,6 +1,5 @@
 import requests
 import base64
-import ollama
 import time
 import moondream as md
 from PIL import Image

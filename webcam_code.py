@@ -1,5 +1,4 @@
 import cv2
-import ollama
 import pyrebase
 import base64
 import json
