@@ -41,42 +41,46 @@ led_line.request(consumer="LED", type=gpiod.LINE_REQ_DIR_OUT)
 
 print("Starting sensor readings, Firebase updates, and LED control...")
 
-while True:
-    # Read sensor data
-    temperature_aht20 = aht20.temperature
-    humidity = aht20.relative_humidity
-    temperature_pct2075 = pct2075.temperature
-    co2 = sgp30.eCO2
-    tvoc = sgp30.TVOC
-    soil_moisture = soil_sensor.moisture_read()
-    soil_temp = soil_sensor.get_temp()
+try:
+    while True:
+        # Read sensor data
+        temperature_aht20 = aht20.temperature
+        humidity = aht20.relative_humidity
+        temperature_pct2075 = pct2075.temperature
+        co2 = sgp30.eCO2
+        tvoc = sgp30.TVOC
+        soil_moisture = soil_sensor.moisture_read()
+        soil_temp = soil_sensor.get_temp()
 
-    # Create data dictionary
-    sensor_data = {
-        "aht20": {"temperature": round(temperature_aht20, 2), "humidity": round(humidity, 2)},
-        "pct2075": {"temperature": round(temperature_pct2075, 2)},
-        "sgp30": {"co2": co2, "tvoc": tvoc},
-        "soil_sensor": {"temperature": round(soil_temp, 2), "moisture": soil_moisture},
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-    }
+        # Create data dictionary
+        sensor_data = {
+            "aht20": {"temperature": round(temperature_aht20, 2), "humidity": round(humidity, 2)},
+            "pct2075": {"temperature": round(temperature_pct2075, 2)},
+            "sgp30": {"co2": co2, "tvoc": tvoc},
+            "soil_sensor": {"temperature": round(soil_temp, 2), "moisture": soil_moisture},
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+        }
 
-    # Print sensor data locally
-    print("\nSensor Readings:")
-    print(json.dumps(sensor_data, indent=4))
+        # Print sensor data locally
+        print("\nSensor Readings:")
+        print(json.dumps(sensor_data, indent=4))
 
-    # Upload data to Firebase
-    ref.child("latest").set(sensor_data)  # Overwrites "/sensor_readings/latest"
-    print("Data updated in Firebase successfully.")
+        # Upload data to Firebase
+        ref.child("latest").set(sensor_data)  # Overwrites "/sensor_readings/latest"
+        print("Data updated in Firebase successfully.")
 
-    # Turn on LED for 2 seconds to indicate success
-    led_line.set_value(1)
-    print("LED ON for 2 seconds...")
-    time.sleep(2)
-    led_line.set_value(0)
-    print("LED OFF, continuing...")
+        # Turn on LED for 2 seconds to indicate success
+        led_line.set_value(1)
+        print("LED ON for 2 seconds...")
+        time.sleep(2)
+        led_line.set_value(0)
+        print("LED OFF, continuing...")
 
-# Cleanup (if script is interrupted)
+except KeyboardInterrupt:
+    print("\nScript interrupted by user. Cleaning up...")
+
 finally:
+    # Release GPIO before exiting
     led_line.release()
     chip.close()
     print("GPIO released. Exiting...")
