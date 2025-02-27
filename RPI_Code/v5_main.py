@@ -11,7 +11,7 @@ global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_
 global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
 
 # Initialize Firebase (Ensure you have a Firebase Admin SDK JSON file or use anonymous authentication)
-cred = credentials.Certificate("path/to/your-firebase-adminsdk.json")  # Replace with your actual credentials file
+cred = credentials.Certificate("/home/pi/project_code/firebase_key.json")  # Replace with your actual credentials file
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://simple-sprouts-database-default-rtdb.firebaseio.com/'
 })
