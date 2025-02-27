@@ -163,19 +163,21 @@ def run_timer_bottom_light():
                     ref.update({"bottom_mode_light_edit": False})
 
                 while counter > 0:
-                    print("Bottom Light: ON")
+                    #print("Bottom Light: ON")
                     led_line_17.set_value(1)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
+                    ref.update({"bottom_light_tts_hrs": counter // 3600})
+                    ref.update({"bottom_light_tts_mins": counter % 3600})
+                    #print(f"Timer One Counter: {counter} seconds")
                 counter = total_off
 
                 while counter > 0:
-                    print("Bottom light: OFF")
+                    #print("Bottom light: OFF")
                     led_line_17.set_value(0)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
+                    #print(f"Timer One Counter: {counter} seconds")
                 counter = total_on
 
 def run_timer_bottom_water():
@@ -201,19 +203,19 @@ def run_timer_bottom_water():
                     ref.update({"bottom_mode_water_edit": False})
 
                 while counter > 0:
-                    print("Bottom Light: ON")
+                    #print("Bottom Light: ON")
                     led_line_27.set_value(0)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
+                    #print(f"Timer One Counter: {counter} seconds")
                 counter = total_on
 
                 while counter > 0:
-                    print("Bottom light: OFF")
+                    #print("Bottom light: OFF")
                     led_line_27.set_value(1)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
+                    #print(f"Timer One Counter: {counter} seconds")
                 counter = total_off
 
 def run_timer_top_light():
@@ -239,7 +241,7 @@ def run_timer_top_light():
                     ref.update({"top_mode_light_edit": False})
 
                 while counter > 0:
-                    print("Top Light: ON")
+                    #print("Top Light: ON")
                     led_line_22.set_value(1)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
@@ -247,7 +249,7 @@ def run_timer_top_light():
                 counter = total_off
 
                 while counter > 0:
-                    print("Top light: OFF")
+                    #print("Top light: OFF")
                     led_line_22.set_value(0)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
@@ -277,7 +279,7 @@ def run_timer_top_water():
                     ref.update({"top_mode_water_edit": False})
 
                 while counter > 0:
-                    print("Top Light: ON")
+                    #print("Top Light: ON")
                     led_line_10.set_value(0)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
@@ -285,11 +287,11 @@ def run_timer_top_water():
                 counter = total_on
 
                 while counter > 0:
-                    print("top light: OFF")
+                    #print("top light: OFF")
                     led_line_10.set_value(1)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
+                    #print(f"Timer One Counter: {counter} seconds")
                 counter = total_off
 
            
