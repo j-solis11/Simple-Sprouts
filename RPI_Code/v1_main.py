@@ -1,27 +1,30 @@
-import requests
+import firebase_admin
+from firebase_admin import credentials, db
 
-# Firebase Realtime Database URL
-FIREBASE_URL = "https://simple-sprouts-database-default-rtdb.firebaseio.com/"
+# Path to your Firebase service account key JSON file
+firebase_key_path = "/home/pi/project_code/firebase_key.json"  # Update if needed
 
-def get_firebase_data(section):
-    """Fetches data from a specific section of the Firebase Realtime Database."""
-    url = f"{FIREBASE_URL}{section}.json"  # Append section name to the base URL
-    response = requests.get(url)
+# Initialize Firebase Admin SDK (Only if it's not already initialized)
+if not firebase_admin._apps:
+    cred = credentials.Certificate(firebase_key_path)
+    firebase_admin.initialize_app(cred, {
+        "databaseURL": "https://simple-sprouts-database-default-rtdb.firebaseio.com/"
+    })
 
-    if response.status_code == 200:
-        data = response.json()  # Parse JSON response
-        return data
-    else:
-        print(f"Error fetching {section}: {response.status_code}")
-        return None
+# Firebase Database References
+levels_ref = db.reference("/levels")          # Reference to "levels" section
+general_info_ref = db.reference("/general_info")  # Reference to "general_info" section
 
-# Fetch "levels" and "general_info" sections
-levels_data = get_firebase_data("levels")
-general_info_data = get_firebase_data("general_info")
+# Fetch data from Firebase
+levels_data = levels_ref.get()
+general_info_data = general_info_ref.get()
 
-# Print results
+# Print Levels Data
 print("\n--- Levels Section ---")
-print(levels_data)
+print(levels_data if levels_data else "No data found in 'levels'.")
 
+# Print General Info Data
 print("\n--- General Info Section ---")
-print(general_info_data)
+print(general_info_data if general_info_data else "No data found in 'general_info'.")
+
+print("\nProgram completed. Exiting...")
