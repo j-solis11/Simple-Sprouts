@@ -29,61 +29,61 @@ led_line_9.request(consumer="LED_9", type=gpiod.LINE_REQ_DIR_OUT)
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_one():
-    counter = 0  # Start counter
+    counter = 30  # Start counter
 
     while True:
         # ON cycle (1000 seconds)
         print("Timer One: Starting ON cycle...")
-        while counter < 30:
+        while counter > 0:
             print("Timer One: ON")
             led_line_17.set_value(1)
             time.sleep(5)  # Wait for 5 seconds
-            counter += 5    # Increment counter by 5
+            counter -= 5    # Increment counter by 5
             print(f"Timer One Counter: {counter} seconds")
 
         # Reset counter for OFF cycle
-        counter = 0
+        counter = 15
 
         # OFF cycle (500 seconds)
         print("Timer One: Starting OFF cycle...")
-        while counter < 15:
+        while counter > 0:
             print("Timer One: OFF")
             led_line_17.set_value(0)
             time.sleep(5)  # Wait for 5 seconds
-            counter += 5    # Increment counter by 5
+            counter -= 5    # Increment counter by 5
             print(f"Timer One Counter: {counter} seconds")
 
         # Reset counter to restart cycle
-        counter = 0
+        counter = 30
 
 # Function to track time with ON/OFF cycles for Timer Two
 def run_timer_two():
-    counter = 0  # Start counter
+    counter = 10  # Start counter
 
     while True:
 
         print("Timer Two: Starting ON cycle...")
-        while counter < 10:
+        while counter > 0:
             print("Timer Two: ON")
             led_line_27.set_value(1)
             time.sleep(2)  # Wait for 5 seconds
-            counter += 2    # Increment counter by 5
+            counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
 
         # Reset counter for OFF cycle
-        counter = 0
+        counter = 6
 
         # OFF cycle (500 seconds)
         print("Timer Two: Starting OFF cycle...")
-        while counter < 6:
+        while counter > 0:
             print("Timer Two: OFF")
             led_line_27.set_value(0)
             time.sleep(2)  # Wait for 5 seconds
-            counter += 2    # Increment counter by 5
+            counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
 
         # Reset counter to restart cycle
-        counter = 0
+        counter = 10
 
 # Create threads for each timer
 timer_one_thread = threading.Thread(target=run_timer_one, daemon=True)
