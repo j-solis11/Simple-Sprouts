@@ -37,6 +37,14 @@ def setup_gpio():
 
 def update_firebase_data():
     global firebase_data
+    while True:
+        firebase_data["levels"] = db.reference("/levels").get() or {}
+        firebase_data["general_info"] = db.reference("/general_info").get() or {}
+        print("
+Retrieved Firebase Data:")
+        print("Levels:", firebase_data["levels"])
+        print("General Info:", firebase_data["general_info"])
+        time.sleep(2)
         while True:
         # Retrieve timer values from Firebase
         time_till_switch = get_value(f"levels/{section}/scheduling/{interval_key}/time_till_switch", {})
@@ -70,7 +78,7 @@ def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
         time_till_switch = get_value(f"levels/{section}/scheduling/{interval_key}/time_till_switch")
         reference_time = get_value(f"levels/{section}/scheduling/{interval_key}/reference")
 
-                if time_till_switch["hrs"] == 0 and time_till_switch["min"] == 0:
+        if time_till_switch["hrs"] == 0 and time_till_switch["min"] == 0:
             if is_lighting:
                 # Toggle lights
                 gpio_lines[gpio_pin].set_value(1)
@@ -83,9 +91,9 @@ def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
                 time_till_switch = reference_time  # Reset time
             
             # Update Firebase with new timer values
-                    try:
+        try:
             db.reference(f"levels/{section}/scheduling/{interval_key}/time_till_switch").set(time_till_switch)
-        except Exception as e:
+    except Exception as e:
             print(f"Error updating Firebase for {section}/{interval_key}: {e}")
         else:
             # Countdown logic
