@@ -71,34 +71,34 @@ def control_gpio():
                 if get_value("levels/bottom/mode") == "manual":
                     light_enabled = get_value("levels/bottom/manual/light_enabled", False)
                     if light_enabled:
-                        #gpio_lines["light_bottom"].set_value(1)
-                        print("light bottom high")
+                        gpio_lines["light_bottom"].set_value(1)
+                        #print("light bottom high")
                     else:
-                        #gpio_lines["light_bottom"].set_value(0)
-                        print("light bottom low")
+                        gpio_lines["light_bottom"].set_value(0)
+                        #print("light bottom low")
                     water_enabled = get_value("levels/bottom/manual/water_enabled", False)
                     if water_enabled:
-                        #gpio_lines["water_bottom"].set_value(1)
-                        print("water bottom high")
+                        gpio_lines["water_bottom"].set_value(1)
+                        #print("water bottom high")
                     else:
-                        #gpio_lines["water_bottom"].set_value(0)
-                        print("water bottom low")
+                        gpio_lines["water_bottom"].set_value(0)
+                        #print("water bottom low")
             elif level_under_test == 2 and get_value("levels/top/initialized", False):
                 if get_value("levels/top/mode") == "manual":
                     light_enabled = get_value("levels/top/manual/light_enabled", False)
                     if light_enabled:
-                        #gpio_lines["light_top"].set_value(1)
-                        print("light top high")
+                        gpio_lines["light_top"].set_value(1)
+                        #print("light top high")
                     else:
-                        #gpio_lines["light_top"].set_value(0)
-                        print("light top low")
+                        gpio_lines["light_top"].set_value(0)
+                        #print("light top low")
                     water_enabled = get_value("levels/top/manual/water_enabled", False)
                     if water_enabled:
-                        #gpio_lines["water_top"].set_value(1)
-                        print("water top high")
+                        gpio_lines["water_top"].set_value(1)
+                        #print("water top high")
                     else:
-                        #gpio_lines["water_top"].set_value(0)
-                        print("water low high")
+                        gpio_lines["water_top"].set_value(0)
+                        #print("water low high")
         else:
             for level in ["bottom", "top"]:
                 if get_value(f"levels/{level}/initialized", False):
