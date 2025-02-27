@@ -10,6 +10,12 @@ WATER_BOTTOM_PIN = 27
 LIGHT_TOP_PIN = 22
 WATER_TOP_PIN = 10
 
+# Store Firebase data in a structured dictionary
+firebase_data = {
+    "levels": {},
+    "general_info": {}
+}
+
 def setup_gpio():
     chip = gpiod.Chip('gpiochip0')
     light_bottom = chip.get_line(LIGHT_BOTTOM_PIN)
@@ -30,43 +36,51 @@ def setup_gpio():
     }
 
 def update_firebase_data():
-    global levels_data, general_info_data
+    global firebase_data
     while True:
-        levels_data = db.reference("/levels").get()
-        general_info_data = db.reference("/general_info").get()
+        firebase_data["levels"] = db.reference("/levels").get() or {}
+        firebase_data["general_info"] = db.reference("/general_info").get() or {}
+        print("\nRetrieved Firebase Data:")
+        print("Levels:", firebase_data["levels"])
+        print("General Info:", firebase_data["general_info"])
         time.sleep(2)
+
+def get_value(path, default=None):
+    """Helper function to safely retrieve values from firebase_data dictionary."""
+    keys = path.split("/")
+    data = firebase_data
+    for key in keys:
+        data = data.get(key, {})
+        if not isinstance(data, dict):  # Stop if reached a non-dict value
+            return data
+    return default
 
 def control_gpio():
     while True:
-        if general_info_data and levels_data:
-            print("Firebase data successfully retrieved.")
-        else:
+        if not firebase_data["levels"] or not firebase_data["general_info"]:
             print("Error: Missing data from Firebase. Retrying...")
             time.sleep(2)
             continue
-            app_open = general_info_data.get("app_open", False)
-            
-            if app_open:
-                level_under_test = general_info_data.get("level_under_test")
-                if level_under_test == 1 and levels_data.get("bottom", {}).get("initialized"):
-                    if levels_data["bottom"].get("mode") == "manual":
-                        light_state = levels_data["bottom"]["manual"].get("light_enabled", False)
-                        water_state = levels_data["bottom"]["manual"].get("water_enabled", False)
-                        gpio_lines["light_bottom"].set_value(1 if light_state else 0)
-                        gpio_lines["water_bottom"].set_value(1 if water_state else 0)
-                elif level_under_test == 2 and levels_data.get("top", {}).get("initialized"):
-                    if levels_data["top"].get("mode") == "manual":
-                        light_state = levels_data["top"]["manual"].get("light_enabled", False)
-                        water_state = levels_data["top"]["manual"].get("water_enabled", False)
-                        gpio_lines["light_top"].set_value(1 if light_state else 0)
-                        gpio_lines["water_top"].set_value(1 if water_state else 0)
-            else:
-                for level in ["bottom", "top"]:
-                    if levels_data.get(level, {}).get("initialized"):
-                        if levels_data[level].get("mode") == "scheduling":
-                            print(f"{level.capitalize()} Level - Scheduling mode")
-                        else:
-                            print(f"{level.capitalize()} Level - Continue mode")
+        
+        print("Firebase data successfully retrieved.")
+        app_open = get_value("general_info/app_open", False)
+        
+        if app_open:
+            level_under_test = get_value("general_info/level_under_test")
+            if level_under_test == 1 and get_value("levels/bottom/initialized", False):
+                if get_value("levels/bottom/mode") == "manual":
+                    gpio_lines["light_bottom"].set_value(1 if get_value("levels/bottom/manual/light_enabled", False) else 0)
+                    gpio_lines["water_bottom"].set_value(1 if get_value("levels/bottom/manual/water_enabled", False) else 0)
+            elif level_under_test == 2 and get_value("levels/top/initialized", False):
+                if get_value("levels/top/mode") == "manual":
+                    gpio_lines["light_top"].set_value(1 if get_value("levels/top/manual/light_enabled", False) else 0)
+                    gpio_lines["water_top"].set_value(1 if get_value("levels/top/manual/water_enabled", False) else 0)
+        else:
+            for level in ["bottom", "top"]:
+                if get_value(f"levels/{level}/initialized", False):
+                    mode = get_value(f"levels/{level}/mode")
+                    print(f"{level.capitalize()} Level - {'Scheduling mode' if mode == 'scheduling' else 'Continue mode'}")
+        
         time.sleep(2)
 
 # Initialize Firebase
