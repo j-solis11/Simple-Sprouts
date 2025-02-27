@@ -37,7 +37,16 @@ def setup_gpio():
 
 def update_firebase_data():
     global firebase_data
-    while True:
+        while True:
+        # Retrieve timer values from Firebase
+        time_till_switch = get_value(f"levels/{section}/scheduling/{interval_key}/time_till_switch", {})
+        reference_time = get_value(f"levels/{section}/scheduling/{interval_key}/reference", {})
+        
+        # Ensure time_till_switch is valid before accessing keys
+        if not isinstance(time_till_switch, dict) or "hrs" not in time_till_switch or "min" not in time_till_switch:
+            print(f"Error: time_till_switch for {section}/{interval_key} is missing or invalid. Skipping iteration.")
+            time.sleep(5)
+            continue
         firebase_data["levels"] = db.reference("/levels").get() or {}
         firebase_data["general_info"] = db.reference("/general_info").get() or {}
         print("\nRetrieved Firebase Data:")
@@ -56,11 +65,12 @@ def get_value(path, default=None):
     return default
 
 def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
+    """ Controls the lighting and watering timers and updates Firebase. """
     while True:
         time_till_switch = get_value(f"levels/{section}/scheduling/{interval_key}/time_till_switch")
         reference_time = get_value(f"levels/{section}/scheduling/{interval_key}/reference")
 
-        if time_till_switch and time_till_switch["hrs"] == 0 and time_till_switch["min"] == 0:
+                if time_till_switch["hrs"] == 0 and time_till_switch["min"] == 0:
             if is_lighting:
                 # Toggle lights
                 gpio_lines[gpio_pin].set_value(1)
@@ -73,7 +83,10 @@ def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
                 time_till_switch = reference_time  # Reset time
             
             # Update Firebase with new timer values
+                    try:
             db.reference(f"levels/{section}/scheduling/{interval_key}/time_till_switch").set(time_till_switch)
+        except Exception as e:
+            print(f"Error updating Firebase for {section}/{interval_key}: {e}")
         else:
             # Countdown logic
             if time_till_switch["min"] > 0:
