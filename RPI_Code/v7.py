@@ -135,9 +135,9 @@ def fetch_flags():
                 print(f"{key}: {value}")
         else:
             print("No data found in flags_test")
-        led_line_22.set_value(1)
+        led_line_9.set_value(1)
         time.sleep(3)  # Wait 3 seconds before fetching 
-        led_line_22.set_value(0)
+        led_line_9.set_value(0)
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_bottom_light():
@@ -216,36 +216,85 @@ def run_timer_bottom_water():
                     print(f"Timer One Counter: {counter} seconds")
                 counter = total_off
 
+def run_timer_top_light():
+    global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
+    global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
+    global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
+    global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+
+    total_on = 0
+    total_off = 0
+    while True:
+        #counter = total_on  # Start counter
+        if top_initialized == True:
+            if top_mode == "scheduling":
+                if top_mode_light_edit == True:
+                    total_on = (top_light_ref_on_hrs*1) + (top_light_ref_on_mins*1)
+                    total_off = (top_light_ref_off_hrs*1) + (top_light_ref_off_mins*1)
+                    counter = total_on  # Start counter
+                    #bottom_mode_light_edit = False
+                    ref.update({"top_mode_light_edit": False})
+
+                while counter > 0:
+                    print("Top Light: ON")
+                    led_line_22.set_value(1)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    #print(f"Timer One Counter: {counter} seconds")
+                counter = total_off
+
+                while counter > 0:
+                    print("Top light: OFF")
+                    led_line_22.set_value(0)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    #print(f"Timer One Counter: {counter} seconds")
+                counter = total_on
+
+def run_timer_top_water():
+    global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
+    global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
+    global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
+    global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+
+    total_on = 0
+    total_off = 0
+    while True:
+        #counter = total_on  # Start counter
+        if top_initialized == True:
+            if top_mode == "scheduling":
+                if top_mode_water_edit == True:
+                    total_on = 10
+                    total_off = (top_water_ref_days*1) + (top_water_ref_hrs*1) + (top_water_ref_min*1)
+                    counter = total_off  # Start counter
+                    #bottom_mode_light_edit = False
+                    ref.update({"top_mode_water_edit": False})
+
+                while counter > 0:
+                    print("Top Light: ON")
+                    led_line_10.set_value(0)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    #print(f"Timer One Counter: {counter} seconds")
+                counter = total_on
+
+                while counter > 0:
+                    print("top light: OFF")
+                    led_line_10.set_value(1)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_off
+
            
 
-# Function to track time with ON/OFF cycles for Timer Two
-def run_timer_two():
-    counter = 10  # Start counter
 
-    while True:
-
-        print("Timer Two: Starting ON cycle...")
-        while counter > 0:
-            print("Timer Two: ON")
-            led_line_10.set_value(1)
-            time.sleep(2)  # Wait for 5 seconds
-            counter -= 2    # Increment counter by 5
-            print(f"Timer Two Counter: {counter} seconds")
-
-        # Reset counter for OFF cycle
-        counter = 6
-
-        # OFF cycle (500 seconds)
-        print("Timer Two: Starting OFF cycle...")
-        while counter > 0:
-            print("Timer Two: OFF")
-            led_line_10.set_value(0)
-            time.sleep(2)  # Wait for 5 seconds
-            counter -= 2    # Increment counter by 5
-            print(f"Timer Two Counter: {counter} seconds")
-
-        # Reset counter to restart cycle
-        counter = 10
 
 # Start fetch_flags() in a separate thread
 firebase_thread = threading.Thread(target=fetch_flags, daemon=True)
