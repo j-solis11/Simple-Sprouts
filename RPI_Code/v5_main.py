@@ -2,6 +2,14 @@ import firebase_admin
 from firebase_admin import credentials, db
 import time
 
+global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
+global botton_mode_edited, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
+global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
+global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
+global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
+global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+
 # Initialize Firebase (Ensure you have a Firebase Admin SDK JSON file or use anonymous authentication)
 cred = credentials.Certificate("path/to/your-firebase-adminsdk.json")  # Replace with your actual credentials file
 firebase_admin.initialize_app(cred, {
@@ -12,13 +20,6 @@ firebase_admin.initialize_app(cred, {
 ref = db.reference("flags_test")
 
 def fetch_flags():
-    global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
-    global botton_mode_edited, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
-    global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
-    global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
-    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
-    global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     
     data = ref.get()
     if data:
