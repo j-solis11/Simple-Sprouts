@@ -1,6 +1,4 @@
 import cv2
-import sys
-sys.path.insert(0, "/usr/lib/python3/dist-packages")
 import pyrebase
 import base64
 import json
