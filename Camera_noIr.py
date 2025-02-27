@@ -64,24 +64,26 @@ def contrast_stretch(im):
 
 while True:
     # Open the webcam
-    cap = cv2.VideoCapture(0)
+    cam = Camera()
+    cam.rotation = 180
+    cam.still_size = (1920, 1080) # Uncomment if using a Pi Noir camera
+    #cam.still_size = (2592, 1952) # Comment this line if using a Pi Noir camera
 
-    # Capture a frame
-    ret, frame = cap.read()
-    print("finished Image capture")
+    stream = cam.capture_array()
+    original = stream
 
-    # Save the image
-    cv2.imwrite('image.jpg', frame)
-    print("Wrote image to a file")
-
-    cap.release()
-    print("asking llama")
+    contrasted = contrast_stretch(original)
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+    cv2.imwrite('color_mapped_image.png', color_mapped_image)
+    cv2.imwrite('original.png', original)
 
     data ={
-        "Image_in_base64":image_to_base64("image.jpg")
+        "Image_in_base64_original":image_to_base64("original.png"),
+        "Image_in_base64_color_mapped":image_to_base64("color_mapped_image.png")
     }
-
-    print(image_to_base64("image.jpg"))
 
     upload_to_firebase(data,True)
     time.sleep(2*60)
