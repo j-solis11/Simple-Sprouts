@@ -137,6 +137,13 @@ def fetch_flags():
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_one():
+    global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
+    global botton_mode_edited, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
+    global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
+    global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     total_on = 0
     total_off = 0
     while True:
