@@ -90,7 +90,7 @@ def fetch_flags():
     global bottom_water_ref_hrs, bottom_water_ref_mins, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled
     
     while True:
@@ -132,7 +132,7 @@ def fetch_flags():
             top_light_tts_mins = data.get("top_light_tts_mins", 0)
             top_water_ref_days = data.get("top_water_ref_days", 0)
             top_water_ref_hrs = data.get("top_water_ref_hrs", 0)
-            top_water_ref_min = data.get("top_water_ref_min", 0)
+            top_water_ref_mins = data.get("top_water_ref_mins", 0)
             top_water_ttw_days = data.get("top_water_ttw_days", 0)
             top_water_ttw_hrs = data.get("top_water_ttw_hrs", 0)
             top_water_ttw_min = data.get("top_water_ttw_min", 0)
@@ -144,9 +144,9 @@ def fetch_flags():
                 print(f"{key}: {value}")
         else:
             print("No data found in flags_test")
-        led_line_9.set_value(1)
+        #led_line_9.set_value(1)
         time.sleep(3)  # Wait 3 seconds before fetching 
-        led_line_9.set_value(0)
+        #led_line_9.set_value(0)
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_bottom_light():
@@ -156,7 +156,7 @@ def run_timer_bottom_light():
     global bottom_water_ref_hrs, bottom_water_ref_mins, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled
 
     total_on = 0
@@ -177,7 +177,7 @@ def run_timer_bottom_light():
                     led_line_17.set_value(1)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
-                    ref.update({"bottom_light_tts_hrs": counter // 3600})
+                    ref.update({"bottom_light_tts_hrs": counter//3600})
                     ref.update({"bottom_light_tts_mins": counter % 3600})
                     ref.update({"bottom_light_enabled": True})
                     #print(f"Timer One Counter: {counter} seconds")
@@ -199,7 +199,7 @@ def run_timer_bottom_water():
     global bottom_water_ref_hrs, bottom_water_ref_mins, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled
 
     total_on = 0
@@ -238,7 +238,7 @@ def run_timer_top_light():
     global bottom_water_ref_hrs, bottom_water_ref_mins, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled
 
     total_on = 0
@@ -279,7 +279,7 @@ def run_timer_top_water():
     global bottom_water_ref_hrs, bottom_water_ref_mins, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
-    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled
 
     total_on = 0
@@ -290,7 +290,7 @@ def run_timer_top_water():
             if top_mode == "scheduling":
                 if top_mode_water_edit == True:
                     total_on = 10
-                    total_off = (top_water_ref_days*1) + (top_water_ref_hrs*1) + (top_water_ref_min*1)
+                    total_off = (top_water_ref_days*1) + (top_water_ref_hrs*1) + (top_water_ref_mins*1)
                     counter = total_off  # Start counter
                     #bottom_mode_light_edit = False
                     ref.update({"top_mode_water_edit": False})
