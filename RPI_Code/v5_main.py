@@ -135,9 +135,9 @@ def fetch_flags():
                 print(f"{key}: {value}")
         else:
             print("No data found in flags_test")
-        led_line_22.set_value(1)
+        led_line_10.set_value(1)
         time.sleep(3)  # Wait 3 seconds before fetching 
-        led_line_22.set_value(0)
+        led_line_10.set_value(0)
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_bottom_light():
