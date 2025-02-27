@@ -137,32 +137,34 @@ def fetch_flags():
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_one():
-    counter = 30  # Start counter
-
+    total_on = 0
+    total_off = 0
     while True:
-        # ON cycle (1000 seconds)
-        print("Timer One: Starting ON cycle...")
-        while counter > 0:
-            print("Timer One: ON")
-            led_line_17.set_value(1)
-            time.sleep(5)  # Wait for 5 seconds
-            counter -= 5    # Increment counter by 5
-            print(f"Timer One Counter: {counter} seconds")
+        #counter = total_on  # Start counter
+        if bottom_initialized == True:
+            if bottom_mode == "scheduling":
+                if botton_mode_edited == True:
+                    total_on = (bottom_light_ref_on_hrs*1) + (bottom_light_ref_on_mins*1)
+                    total_off = (bottom_light_ref_off_hrs*1) + (bottom_light_ref_off_mins*1)
+                    counter = total_on  # Start counter
+                    botton_mode_edited = False
+                while counter > 0:
+                    print("Bottom Light: ON")
+                    led_line_17.set_value(1)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_off
 
-        # Reset counter for OFF cycle
-        counter = 15
+                while counter > 0:
+                    print("Bottom light: OFF")
+                    led_line_17.set_value(0)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_on
 
-        # OFF cycle (500 seconds)
-        print("Timer One: Starting OFF cycle...")
-        while counter > 0:
-            print("Timer One: OFF")
-            led_line_17.set_value(0)
-            time.sleep(5)  # Wait for 5 seconds
-            counter -= 5    # Increment counter by 5
-            print(f"Timer One Counter: {counter} seconds")
-
-        # Reset counter to restart cycle
-        counter = 30
+                
 
 # Function to track time with ON/OFF cycles for Timer Two
 def run_timer_two():
