@@ -135,9 +135,9 @@ def fetch_flags():
                 print(f"{key}: {value}")
         else:
             print("No data found in flags_test")
-        led_line_10.set_value(1)
+        led_line_22.set_value(1)
         time.sleep(3)  # Wait 3 seconds before fetching 
-        led_line_10.set_value(0)
+        led_line_22.set_value(0)
 
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_bottom_light():
@@ -178,7 +178,7 @@ def run_timer_bottom_light():
                     print(f"Timer One Counter: {counter} seconds")
                 counter = total_on
 
-'''def run_timer_top_light():
+def run_timer_bottom_water():
     global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
     global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
     global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
@@ -193,30 +193,30 @@ def run_timer_bottom_light():
         #counter = total_on  # Start counter
         if bottom_initialized == True:
             if bottom_mode == "scheduling":
-                if bottom_mode_light_edit == True:
-                    total_on = (bottom_light_ref_on_hrs*1) + (bottom_light_ref_on_mins*1)
-                    total_off = (bottom_light_ref_off_hrs*1) + (bottom_light_ref_off_mins*1)
-                    counter = total_on  # Start counter
+                if bottom_mode_water_edit == True:
+                    total_on = 5
+                    total_off = (bottom_water_ref_days*1) + (bottom_water_ref_hrs*1) + (bottom_water_ref_min*1)
+                    counter = total_off  # Start counter
                     #bottom_mode_light_edit = False
-                    ref.update({"bottom_mode_light_edit": False})
+                    ref.update({"bottom_mode_water_edit": False})
 
                 while counter > 0:
                     print("Bottom Light: ON")
-                    led_line_17.set_value(1)
-                    time.sleep(5)  # Wait for 5 seconds
-                    counter -= 5    # Increment counter by 5
-                    print(f"Timer One Counter: {counter} seconds")
-                counter = total_off
-
-                while counter > 0:
-                    print("Bottom light: OFF")
-                    led_line_17.set_value(0)
+                    led_line_27.set_value(0)
                     time.sleep(5)  # Wait for 5 seconds
                     counter -= 5    # Increment counter by 5
                     print(f"Timer One Counter: {counter} seconds")
                 counter = total_on
 
-'''              
+                while counter > 0:
+                    print("Bottom light: OFF")
+                    led_line_27.set_value(1)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_off
+
+           
 
 # Function to track time with ON/OFF cycles for Timer Two
 def run_timer_two():
@@ -227,7 +227,7 @@ def run_timer_two():
         print("Timer Two: Starting ON cycle...")
         while counter > 0:
             print("Timer Two: ON")
-            led_line_22.set_value(1)
+            led_line_10.set_value(1)
             time.sleep(2)  # Wait for 5 seconds
             counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
@@ -239,7 +239,7 @@ def run_timer_two():
         print("Timer Two: Starting OFF cycle...")
         while counter > 0:
             print("Timer Two: OFF")
-            led_line_22.set_value(0)
+            led_line_10.set_value(0)
             time.sleep(2)  # Wait for 5 seconds
             counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
@@ -253,7 +253,7 @@ firebase_thread.start()
 
 # Create threads for each timer
 timer_one_thread = threading.Thread(target=run_timer_bottom_light, daemon=True)
-timer_two_thread = threading.Thread(target=run_timer_two, daemon=True)
+timer_two_thread = threading.Thread(target=run_timer_bottom_water, daemon=True)
 
 # Start both threads
 timer_one_thread.start()
