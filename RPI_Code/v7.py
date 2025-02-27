@@ -259,6 +259,7 @@ timer_three_thread = threading.Thread(target=run_timer_two, daemon=True)
 # Start both threads
 timer_one_thread.start()
 timer_two_thread.start()
+timer_three_thread.start()
 
 # Keep the main program running
 while True:
