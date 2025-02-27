@@ -139,11 +139,11 @@ def fetch_flags():
             top_light_enabled = data.get("top_light_enabled", False)
             top_water_enabled = data.get("top_water_enabled", False)
             
-            print("\nUpdated Firebase Flags:")
-            for key, value in data.items():
-                print(f"{key}: {value}")
-        else:
-            print("No data found in flags_test")
+            #print("\nUpdated Firebase Flags:")
+            #for key, value in data.items():
+                #print(f"{key}: {value}")
+        #else:
+            #print("No data found in flags_test")
         #led_line_9.set_value(1)
         time.sleep(3)  # Wait 3 seconds before fetching 
         #led_line_9.set_value(0)
@@ -313,9 +313,13 @@ def run_timer_top_water():
 
 def manual_mode():
     if level_under_test == 1:
+        print("1")
         if bottom_initialized == True:
+            print("2")
             if bottom_mode == "manual":
+                print("3")
                 if bottom_man_light == True:
+                    print("4")
                     led_line_17.set_value(1)
                 else: 
                     led_line_17.set_value(0)
