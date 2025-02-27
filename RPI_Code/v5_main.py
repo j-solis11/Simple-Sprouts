@@ -45,7 +45,8 @@ bottom_initialized = False
 bottom_mode = "manual"
 bottom_man_light = False
 bottom_man_water = False
-botton_mode_edited = False
+bottom_mode_light_edit = False
+bottom_mode_water_edit = False
 bottom_light_ref_off_hrs = 0
 bottom_light_ref_on_hrs = 0
 bottom_light_ref_off_mins = 0
@@ -62,7 +63,8 @@ top_initialized = False
 top_mode = "manual"
 top_man_light = False
 top_man_water = False
-top_mode_edited = False
+top_mode_light_edit = False
+top_mode_water_edit = False
 top_light_ref_off_hrs = 0
 top_light_ref_on_hrs = 0
 top_light_ref_off_mins = 0
@@ -79,10 +81,10 @@ top_water_ttw_min = 0
 def fetch_flags():
     """ Fetch data from Firebase every 3 seconds in a background thread. """
     global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
-    global botton_mode_edited, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
     global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
     global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
-    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
     global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     
@@ -95,7 +97,8 @@ def fetch_flags():
             bottom_mode = data.get("bottom_mode", "manual")
             bottom_man_light = data.get("bottom_man_light", False)
             bottom_man_water = data.get("bottom_man_water", False)
-            botton_mode_edited = data.get("botton_mode_edited", False)
+            bottom_mode_light_edit = data.get("bottom_mode_light_edit", False)
+            bottom_mode_water_edit = data.get("bottom_mode_water_edit", False)
             bottom_light_ref_off_hrs = data.get("bottom_light_ref_off_hrs", 0)
             bottom_light_ref_on_hrs = data.get("bottom_light_ref_on_hrs", 0)
             bottom_light_ref_off_mins = data.get("bottom_light_ref_off_mins", 0)
@@ -112,7 +115,8 @@ def fetch_flags():
             top_mode = data.get("top_mode", "manual")
             top_man_light = data.get("top_man_light", False)
             top_man_water = data.get("top_man_water", False)
-            top_mode_edited = data.get("top_mode_edited", False)
+            top_mode_light_edit = data.get("top_mode_light_edit", False)
+            top_mode_water_edit = data.get("top_mode_water_edit", False)
             top_light_ref_off_hrs = data.get("top_light_ref_off_hrs", 0)
             top_light_ref_on_hrs = data.get("top_light_ref_on_hrs", 0)
             top_light_ref_off_mins = data.get("top_light_ref_off_mins", 0)
@@ -136,12 +140,12 @@ def fetch_flags():
         led_line_22.set_value(0)
 
 # Function to track time with ON/OFF cycles for Timer One
-def run_timer_one():
+def run_timer_bottom_light():
     global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
-    global botton_mode_edited, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
     global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
     global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
-    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
     global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
 
@@ -151,12 +155,12 @@ def run_timer_one():
         #counter = total_on  # Start counter
         if bottom_initialized == True:
             if bottom_mode == "scheduling":
-                if botton_mode_edited == True:
+                if bottom_mode_light_edit == True:
                     total_on = (bottom_light_ref_on_hrs*1) + (bottom_light_ref_on_mins*1)
                     total_off = (bottom_light_ref_off_hrs*1) + (bottom_light_ref_off_mins*1)
                     counter = total_on  # Start counter
-                    #botton_mode_edited = False
-                    ref.update({"botton_mode_edited": False})
+                    #bottom_mode_light_edit = False
+                    ref.update({"bottom_mode_light_edit": False})
 
                 while counter > 0:
                     print("Bottom Light: ON")
@@ -174,7 +178,45 @@ def run_timer_one():
                     print(f"Timer One Counter: {counter} seconds")
                 counter = total_on
 
-                
+'''def run_timer_top_light():
+    global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
+    global bottom_mode_light_edit, bottom_mode_water_edit, bottom_light_ref_off_hrs, bottom_light_ref_on_hrs, bottom_light_ref_off_mins
+    global bottom_light_ref_on_mins, bottom_light_tts_hrs, bottom_light_tts_mins, bottom_water_ref_days
+    global bottom_water_ref_hrs, bottom_water_ref_min, bottom_water_ttw_days, bottom_water_ttw_hrs, bottom_water_ttw_min
+    global top_initialized, top_mode, top_man_light, top_man_water, top_mode_light_edit, top_mode_water_edit, top_light_ref_off_hrs
+    global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
+    global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+
+    total_on = 0
+    total_off = 0
+    while True:
+        #counter = total_on  # Start counter
+        if bottom_initialized == True:
+            if bottom_mode == "scheduling":
+                if bottom_mode_light_edit == True:
+                    total_on = (bottom_light_ref_on_hrs*1) + (bottom_light_ref_on_mins*1)
+                    total_off = (bottom_light_ref_off_hrs*1) + (bottom_light_ref_off_mins*1)
+                    counter = total_on  # Start counter
+                    #bottom_mode_light_edit = False
+                    ref.update({"bottom_mode_light_edit": False})
+
+                while counter > 0:
+                    print("Bottom Light: ON")
+                    led_line_17.set_value(1)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_off
+
+                while counter > 0:
+                    print("Bottom light: OFF")
+                    led_line_17.set_value(0)
+                    time.sleep(5)  # Wait for 5 seconds
+                    counter -= 5    # Increment counter by 5
+                    print(f"Timer One Counter: {counter} seconds")
+                counter = total_on
+
+'''              
 
 # Function to track time with ON/OFF cycles for Timer Two
 def run_timer_two():
@@ -185,7 +227,7 @@ def run_timer_two():
         print("Timer Two: Starting ON cycle...")
         while counter > 0:
             print("Timer Two: ON")
-            led_line_27.set_value(1)
+            led_line_22.set_value(1)
             time.sleep(2)  # Wait for 5 seconds
             counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
@@ -197,7 +239,7 @@ def run_timer_two():
         print("Timer Two: Starting OFF cycle...")
         while counter > 0:
             print("Timer Two: OFF")
-            led_line_27.set_value(0)
+            led_line_22.set_value(0)
             time.sleep(2)  # Wait for 5 seconds
             counter -= 2    # Increment counter by 5
             print(f"Timer Two Counter: {counter} seconds")
@@ -210,7 +252,7 @@ firebase_thread = threading.Thread(target=fetch_flags, daemon=True)
 firebase_thread.start()
 
 # Create threads for each timer
-timer_one_thread = threading.Thread(target=run_timer_one, daemon=True)
+timer_one_thread = threading.Thread(target=run_timer_bottom_light, daemon=True)
 timer_two_thread = threading.Thread(target=run_timer_two, daemon=True)
 
 # Start both threads
