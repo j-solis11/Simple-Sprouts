@@ -27,7 +27,7 @@ sgp30.set_iaq_baseline(0x8973, 0x8aae)
 firebase_key_path = "/home/pi/project_code/firebase_key.json"  # Update if needed
 cred = firebase_admin.credentials.Certificate(firebase_key_path)
 firebase_admin.initialize_app(cred, {
-    "databaseURL": "https://simplesproutstest-default-rtdb.firebaseio.com/"
+    "databaseURL": "https://simple-sprouts-database-default-rtdb.firebaseio.com/"
 })
 
 # Firebase Database Reference (Fixed Path)
