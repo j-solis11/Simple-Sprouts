@@ -305,10 +305,12 @@ timer_one_thread = threading.Thread(target=run_timer_bottom_light, daemon=True)
 timer_two_thread = threading.Thread(target=run_timer_bottom_water, daemon=True)
 timer_three_thread = threading.Thread(target=run_timer_top_light, daemon=True)
 timer_four_thread = threading.Thread(target=run_timer_top_water, daemon=True)
+
 # Start both threads
 timer_one_thread.start()
 timer_two_thread.start()
 timer_three_thread.start()
+timer_four_thread.start()
 
 # Keep the main program running
 while True:
