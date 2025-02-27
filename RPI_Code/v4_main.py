@@ -17,17 +17,19 @@ firebase_data = {
 }
 
 def setup_gpio():
+    """ Initialize and configure GPIO pins. """
     chip = gpiod.Chip('gpiochip0')
+    
     light_bottom = chip.get_line(LIGHT_BOTTOM_PIN)
     water_bottom = chip.get_line(WATER_BOTTOM_PIN)
     light_top = chip.get_line(LIGHT_TOP_PIN)
     water_top = chip.get_line(WATER_TOP_PIN)
-    
+
     light_bottom.request(consumer="Light_Bottom", type=gpiod.LINE_REQ_DIR_OUT)
     water_bottom.request(consumer="Water_Bottom", type=gpiod.LINE_REQ_DIR_OUT)
     light_top.request(consumer="Light_Top", type=gpiod.LINE_REQ_DIR_OUT)
     water_top.request(consumer="Water_Top", type=gpiod.LINE_REQ_DIR_OUT)
-    
+
     return {
         "light_bottom": light_bottom,
         "water_bottom": water_bottom,
@@ -36,23 +38,28 @@ def setup_gpio():
     }
 
 def update_firebase_data():
+    """ Periodically fetch and update Firebase data. """
     global firebase_data
     while True:
         firebase_data["levels"] = db.reference("/levels").get() or {}
         firebase_data["general_info"] = db.reference("/general_info").get() or {}
-        print("Retrieved Firebase Data:")
+
+        print("\nRetrieved Firebase Data:")
         print("Levels:", firebase_data["levels"])
         print("General Info:", firebase_data["general_info"])
+        
         time.sleep(2)
 
 def get_value(path, default=None):
-    """Helper function to safely retrieve values from firebase_data dictionary."""
+    """ Safely retrieve values from firebase_data dictionary. """
     keys = path.split("/")
     data = firebase_data
+
     for key in keys:
         data = data.get(key, {})
-        if not isinstance(data, dict):  # Stop if reached a non-dict value
-            return data
+        if not isinstance(data, dict):
+            return data  # Stop if reached a non-dict value
+    
     return default
 
 def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
@@ -96,9 +103,11 @@ def countdown_timer(section, interval_key, gpio_pin, firebase_key, is_lighting):
                 db.reference(f"levels/{section}/scheduling/{interval_key}/time_till_switch").set(time_till_switch)
             except Exception as e:
                 print(f"Error updating Firebase countdown for {section}/{interval_key}: {e}")
+            
             time.sleep(5)
 
 def control_gpio():
+    """ Controls GPIO based on Firebase data. """
     while True:
         if not firebase_data["levels"] or not firebase_data["general_info"]:
             print("Error: Missing data from Firebase. Retrying...")
@@ -107,37 +116,74 @@ def control_gpio():
         
         print("Firebase data successfully retrieved.")
         app_open = get_value("general_info/app_open", False)
-        
+
         if app_open:
             level_under_test = get_value("general_info/level_under_test")
-            if level_under_test == 1 and get_value("levels/bottom/initialized", False):
-                if get_value("levels/bottom/mode") == "manual":
-                    light_enabled = get_value("levels/bottom/manual/light_enabled", False)
-                    water_enabled = get_value("levels/bottom/manual/water_enabled", False)
-                    gpio_lines["light_bottom"].set_value(1 if light_enabled else 0)
-                    gpio_lines["water_bottom"].set_value(1 if water_enabled else 0)
-            elif level_under_test == 2 and get_value("levels/top/initialized", False):
-                if get_value("levels/top/mode") == "manual":
-                    light_enabled = get_value("levels/top/manual/light_enabled", False)
-                    water_enabled = get_value("levels/top/manual/water_enabled", False)
-                    gpio_lines["light_top"].set_value(1 if light_enabled else 0)
-                    gpio_lines["water_top"].set_value(1 if water_enabled else 0)
+
+            if level_under_test == 1:
+                bottom_initialized = get_value("levels/bottom/initialized", False)
+                if bottom_initialized:
+                    mode = get_value("levels/bottom/mode")
+                    if mode == "manual":
+                        light_enabled = get_value("levels/bottom/manual/light_enabled", False)
+                        water_enabled = get_value("levels/bottom/manual/water_enabled", False)
+
+                        if light_enabled:
+                            gpio_lines["light_bottom"].set_value(1)
+                        else:
+                            gpio_lines["light_bottom"].set_value(0)
+
+                        if water_enabled:
+                            gpio_lines["water_bottom"].set_value(1)
+                        else:
+                            gpio_lines["water_bottom"].set_value(0)
+
+            elif level_under_test == 2:
+                top_initialized = get_value("levels/top/initialized", False)
+                if top_initialized:
+                    mode = get_value("levels/top/mode")
+                    if mode == "manual":
+                        light_enabled = get_value("levels/top/manual/light_enabled", False)
+                        water_enabled = get_value("levels/top/manual/water_enabled", False)
+
+                        if light_enabled:
+                            gpio_lines["light_top"].set_value(1)
+                        else:
+                            gpio_lines["light_top"].set_value(0)
+
+                        if water_enabled:
+                            gpio_lines["water_top"].set_value(1)
+                        else:
+                            gpio_lines["water_top"].set_value(0)
+
         else:
             for section in ["bottom", "top"]:
                 if get_value(f"levels/{section}/initialized", False):
                     mode = get_value(f"levels/{section}/mode")
+
                     if mode == "scheduling":
                         print(f"{section.capitalize()} Level - Scheduling mode")
+
                         if get_value(f"levels/{section}/mode_edited", False):
                             db.reference(f"levels/{section}/mode_edited").set(False)
                             db.reference(f"levels/{section}/scheduling/lighting_interval/time_till_switch").set(get_value(f"levels/{section}/scheduling/lighting_interval/reference"))
                             db.reference(f"levels/{section}/scheduling/watering_interval/time_till_water").set(get_value(f"levels/{section}/scheduling/watering_interval/reference"))
-                        
-                        threading.Thread(target=countdown_timer, args=(section, "lighting_interval", f"light_{section}", "time_till_switch", True), daemon=True).start()
-                        threading.Thread(target=countdown_timer, args=(section, "watering_interval", f"water_{section}", "time_till_water", False), daemon=True).start()
+
+                        threading.Thread(
+                            target=countdown_timer, 
+                            args=(section, "lighting_interval", f"light_{section}", "time_till_switch", True),
+                            daemon=True
+                        ).start()
+
+                        threading.Thread(
+                            target=countdown_timer, 
+                            args=(section, "watering_interval", f"water_{section}", "time_till_water", False),
+                            daemon=True
+                        ).start()
+
                     else:
                         print(f"{section.capitalize()} Level - Continue mode")
-        
+
         time.sleep(2)
 
 # Initialize Firebase
