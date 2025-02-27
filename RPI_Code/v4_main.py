@@ -40,7 +40,7 @@ def update_firebase_data():
     while True:
         firebase_data["levels"] = db.reference("/levels").get() or {}
         firebase_data["general_info"] = db.reference("/general_info").get() or {}
-        print("\nRetrieved Firebase Data:")
+        print("Retrieved Firebase Data:")
         print("Levels:", firebase_data["levels"])
         print("General Info:", firebase_data["general_info"])
         time.sleep(2)
