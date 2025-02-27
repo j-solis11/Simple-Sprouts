@@ -144,6 +144,7 @@ def run_timer_one():
     global top_initialized, top_mode, top_man_light, top_man_water, top_mode_edited, top_light_ref_off_hrs
     global top_light_ref_on_hrs, top_light_ref_off_mins, top_light_ref_on_mins, top_light_tts_hrs, top_light_tts_mins
     global top_water_ref_days, top_water_ref_hrs, top_water_ref_min, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
+
     total_on = 0
     total_off = 0
     while True:
@@ -154,7 +155,9 @@ def run_timer_one():
                     total_on = (bottom_light_ref_on_hrs*1) + (bottom_light_ref_on_mins*1)
                     total_off = (bottom_light_ref_off_hrs*1) + (bottom_light_ref_off_mins*1)
                     counter = total_on  # Start counter
-                    botton_mode_edited = False
+                    #botton_mode_edited = False
+                    ref.update({"botton_mode_edited": False})
+
                 while counter > 0:
                     print("Bottom Light: ON")
                     led_line_17.set_value(1)
