@@ -130,6 +130,7 @@ def control_gpio():
                     if mode == "scheduling":
                         print(f"{section.capitalize()} Level - Scheduling mode")
                         if get_value(f"levels/{section}/mode_edited", False):
+                            db.reference(f"levels/{section}/mode_edited").set(False)
                             db.reference(f"levels/{section}/scheduling/lighting_interval/time_till_switch").set(get_value(f"levels/{section}/scheduling/lighting_interval/reference"))
                             db.reference(f"levels/{section}/scheduling/watering_interval/time_till_water").set(get_value(f"levels/{section}/scheduling/watering_interval/reference"))
                         
