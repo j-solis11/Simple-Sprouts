@@ -3609,7 +3609,7 @@
 		(at 137.16 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "66e390e8-36b4-4c42-803e-69dbb99b15ab")
+		(uuid "66c19ea2-7397-42eb-9d08-3ba37fe7b554")
 	)
 	(junction
 		(at 224.79 91.44)
@@ -3693,7 +3693,7 @@
 		(at 209.55 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fe884f8c-da1a-46c4-ac9a-d757d292afd2")
+		(uuid "f933583f-d741-4b95-b122-86cec22f758c")
 	)
 	(wire
 		(pts
@@ -3764,6 +3764,16 @@
 			(type default)
 		)
 		(uuid "12890bc2-3dd1-4904-8874-7f30aa3485b8")
+	)
+	(wire
+		(pts
+			(xy 209.55 137.16) (xy 220.98 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "129f9f04-8ddf-4b55-8c33-1e163fa453de")
 	)
 	(wire
 		(pts
@@ -3917,16 +3927,6 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 137.16) (xy 220.98 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4ba72deb-dc44-4d07-926c-e1c557ae560a")
-	)
-	(wire
-		(pts
 			(xy 271.78 88.9) (xy 274.32 88.9)
 		)
 		(stroke
@@ -3934,16 +3934,6 @@
 			(type default)
 		)
 		(uuid "50ceeaae-81eb-444c-a65c-4751689099d4")
-	)
-	(wire
-		(pts
-			(xy 137.16 137.16) (xy 143.51 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "52999c18-1eef-4512-8f7f-c6fa810c2c34")
 	)
 	(wire
 		(pts
@@ -4344,6 +4334,16 @@
 			(type default)
 		)
 		(uuid "d3ff9a0c-a52e-4423-8821-98024d807c43")
+	)
+	(wire
+		(pts
+			(xy 137.16 137.16) (xy 143.51 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4dd7ef9-f8fd-431d-b49e-f52753297776")
 	)
 	(wire
 		(pts
@@ -5011,7 +5011,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 121.92 146.05 0)
 			(effects
 				(font
@@ -5353,7 +5353,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.adafruit.com/product/1150#technical-details"
+		(property "Datasheet" "https://www.amazon.com/dp/B0744FWNFR?ref=cm_sw_r_cp_ud_dp_ZAC42683ZZF2080K1WTK&ref_=cm_sw_r_cp_ud_dp_ZAC42683ZZF2080K1WTK&social_share=cm_sw_r_cp_ud_dp_ZAC42683ZZF2080K1WTK"
 			(at 201.93 131.826 0)
 			(effects
 				(font
@@ -5362,7 +5362,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Peristaltic Liquid Pump, 12VDC"
+		(property "Description" "Gikfun Mini DC 6V to 12V R385 Water cooled Water Pump Air Diaphragm Pump EK1856"
 			(at 201.93 129.54 0)
 			(effects
 				(font
@@ -5725,76 +5725,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 97.79 90.17 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2086e26c-6cd4-47d9-b91e-c6d144e4d42d")
-		(property "Reference" "D6"
-			(at 100.33 89.2174 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SR5100"
-			(at 100.33 91.7574 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 97.79 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.farnell.com/datasheets/2863996.pdf"
-			(at 97.79 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 97.79 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e0da5308-4648-47fe-8d12-1bd9b0380d12")
-		)
-		(pin "2"
-			(uuid "e3473da6-91c1-472b-8d80-b836ecb9c214")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "D6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 146.05 58.42 0)
 		(unit 1)
@@ -5924,6 +5854,76 @@
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "Solenoid_Valve2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 209.55 133.35 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "227d5354-739f-4787-a1b3-e278e1d7727e")
+		(property "Reference" "D8"
+			(at 212.09 132.3974 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SS510"
+			(at 212.09 134.9374 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 209.55 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101107_MDD-Microdiode-Semiconductor-SS510_C65010.pdf"
+			(at 209.55 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SS510"
+			(at 209.55 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "beb2c91c-2513-4e46-9998-83610233c963")
+		)
+		(pin "2"
+			(uuid "ea82ea23-aa4b-4468-bf7b-30546133c77b")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "D8")
 					(unit 1)
 				)
 			)
@@ -6110,7 +6110,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 77.47 143.51 0)
 			(effects
 				(font
@@ -6138,76 +6138,6 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 209.55 133.35 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "277a0a98-1f5b-4faf-aa64-beb323473a51")
-		(property "Reference" "D7"
-			(at 212.09 132.3974 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SR5100"
-			(at 212.09 134.9374 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 209.55 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.farnell.com/datasheets/2863996.pdf"
-			(at 209.55 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 209.55 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2e8b1e40-de0e-49f7-8103-a55814992f2d")
-		)
-		(pin "2"
-			(uuid "7c7c74f8-88df-4466-9c2a-e5e8a395bfe3")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "D7")
 					(unit 1)
 				)
 			)
@@ -6393,7 +6323,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 30.48 102.87 0)
 			(effects
 				(font
@@ -6421,6 +6351,76 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 97.79 90.17 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2e484d14-892e-46b6-b2f8-900eedbabbe8")
+		(property "Reference" "D6"
+			(at 100.33 89.2174 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SS510"
+			(at 100.33 91.7574 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101107_MDD-Microdiode-Semiconductor-SS510_C65010.pdf"
+			(at 97.79 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SS510"
+			(at 97.79 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5f1b983e-0253-455a-af57-8a4e8d308c50")
+		)
+		(pin "2"
+			(uuid "92dd4ef6-0a0d-4c79-b1cd-cce32d70aa5e")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -6463,7 +6463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 38.1 144.78 0)
 			(effects
 				(font
@@ -7688,7 +7688,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 190.5 146.05 0)
 			(effects
 				(font
@@ -8272,7 +8272,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SR5100"
+		(property "Value" "SS510"
 			(at 58.42 91.7574 90)
 			(effects
 				(font
@@ -8290,7 +8290,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.farnell.com/datasheets/2863996.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101107_MDD-Microdiode-Semiconductor-SS510_C65010.pdf"
 			(at 55.88 90.17 0)
 			(effects
 				(font
@@ -8299,7 +8299,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "SS510"
 			(at 55.88 90.17 0)
 			(effects
 				(font
@@ -9481,6 +9481,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 137.16 133.35 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b92aa6ed-a56c-4552-a55f-af4ef3d0e2f2")
+		(property "Reference" "D7"
+			(at 139.7 132.3974 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SS510"
+			(at 139.7 134.9374 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101107_MDD-Microdiode-Semiconductor-SS510_C65010.pdf"
+			(at 137.16 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SS510"
+			(at 137.16 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "891b1ac8-7b0f-4adb-b175-b8692983b8b2")
+		)
+		(pin "2"
+			(uuid "ecfc849f-a4d7-449e-9834-aa6e6f818c5b")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 246.38 101.6 0)
 		(unit 1)
@@ -9648,7 +9718,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
 			(at 78.74 102.87 0)
 			(effects
 				(font
@@ -9676,75 +9746,6 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "R7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 137.16 133.35 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c230435f-7291-48cf-a2d0-57eeba5b827e")
-		(property "Reference" "D8"
-			(at 138.684 132.334 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SR5100"
-			(at 138.684 134.874 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 137.16 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.farnell.com/datasheets/2863996.pdf"
-			(at 137.16 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 137.16 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "35d749e4-da7e-4dc2-a2fa-f1ddd19fa9a3")
-		)
-		(pin "2"
-			(uuid "6deae9b8-4e54-41cd-998b-2c7b8ea5d04d")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "D8")
 					(unit 1)
 				)
 			)
