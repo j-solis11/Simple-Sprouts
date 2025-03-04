@@ -3540,28 +3540,28 @@
 		(uuid "0e14ac49-bdd4-4589-9a27-ed7408a59446")
 	)
 	(junction
-		(at 190.5 142.24)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1b24ef65-021d-491d-820a-eab761a5a10f")
-	)
-	(junction
 		(at 49.53 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1deaa94f-793e-41b9-9bd5-aeec5d2dfbe8")
 	)
 	(junction
+		(at 38.1 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1fe9497c-1608-4dc3-a3fd-85463bb1f09c")
+	)
+	(junction
+		(at 121.92 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2d244b55-d927-4b67-bc7b-01585a029ac7")
+	)
+	(junction
 		(at 133.35 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2ff0b69b-4bc9-49ae-afda-9af216ade723")
-	)
-	(junction
-		(at 78.74 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4da56f76-4635-4082-b63b-40b9cbc280d7")
 	)
 	(junction
 		(at 91.44 93.98)
@@ -3574,12 +3574,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4fb91746-0645-4fe5-a4c5-8cbf3bd32cd5")
-	)
-	(junction
-		(at 77.47 139.7)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4feaf2d4-3ce3-4e24-8544-e71230de7657")
 	)
 	(junction
 		(at 222.25 88.9)
@@ -3618,10 +3612,10 @@
 		(uuid "69cd6844-775a-4e1d-8a86-c7d3d9079381")
 	)
 	(junction
-		(at 38.1 140.97)
+		(at 77.47 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7b8581ad-73fc-4c25-8702-1409a30428c9")
+		(uuid "71d4c90d-6010-4024-b071-d53b1545fd39")
 	)
 	(junction
 		(at 133.35 137.16)
@@ -3648,10 +3642,10 @@
 		(uuid "be5383fb-3c51-466f-bf2b-81e35a2a0004")
 	)
 	(junction
-		(at 121.92 142.24)
+		(at 190.5 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cd5c8589-9352-4918-8c4e-60be52fc1bbf")
+		(uuid "d388e8f9-85ae-4cfd-997a-4446b6918226")
 	)
 	(junction
 		(at 234.95 88.9)
@@ -3670,6 +3664,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dd523950-ee98-43ed-aa5e-1b52f380d895")
+	)
+	(junction
+		(at 78.74 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dff8ec7e-11d7-4cff-986f-9fc2e62521ab")
 	)
 	(junction
 		(at 209.55 88.9)
@@ -4784,7 +4784,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "04c68309-4199-415a-a3bb-a7485470f0bf")
 		(property "Reference" "LEDStrip2"
@@ -4905,7 +4905,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "0615d1fc-dcc8-4e57-9c18-a369cdda32ba")
 		(property "Reference" "J8"
@@ -4969,76 +4969,6 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "J8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 121.92 146.05 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "07888dfd-791b-473d-a134-a1deb9e59a6b")
-		(property "Reference" "R4"
-			(at 124.46 144.7799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220Ω"
-			(at 124.46 147.3199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 120.142 146.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
-			(at 121.92 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 121.92 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "25db48dd-020f-4598-9dd0-ab805529e49f")
-		)
-		(pin "2"
-			(uuid "394d5eaa-e84d-4808-b7aa-81fbc112c32d")
-		)
-		(instances
-			(project ""
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -5247,7 +5177,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "116dc2e4-5b4c-480b-b30b-5b94e8b2dcf1")
 		(property "Reference" "J4"
@@ -5268,7 +5198,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "No_Footprint:No_Footprint"
 			(at 219.71 55.88 0)
 			(effects
 				(font
@@ -5322,7 +5252,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "11b79ba8-8922-4d79-9b87-0b43fb7b2424")
 		(property "Reference" "WaterPump1"
@@ -5392,7 +5322,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "176e3e97-54ae-4ecf-bfe8-783a5c6335c4")
@@ -5796,7 +5726,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "2237b4a0-e57d-4c3d-bdc6-80a74d5edabd")
 		(property "Reference" "Solenoid_Valve2"
@@ -5887,7 +5817,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 209.55 133.35 0)
 			(effects
 				(font
@@ -5924,75 +5854,6 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "D8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 82.55 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "23fba229-ac52-4f47-96de-4638ccbc9fc8")
-		(property "Reference" "R11"
-			(at 83.82 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "5kΩ"
-			(at 83.82 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 80.772 92.71 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 82.55 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 82.55 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "45e32997-fc64-4f69-b5b1-4f549079b32e")
-		)
-		(pin "2"
-			(uuid "b49d2db0-ca0f-4e8c-8b75-e92337d1ccff")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -6068,76 +5929,6 @@
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 77.47 143.51 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2627bf74-fe01-499a-a40e-ea64a6c47a9e")
-		(property "Reference" "R5"
-			(at 80.01 142.2399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220Ω"
-			(at 80.01 144.7799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 75.692 143.51 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
-			(at 77.47 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 77.47 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8caadb32-6680-4bd7-9c32-3fa785a8583a")
-		)
-		(pin "2"
-			(uuid "75a6f0e8-c589-46ae-a16e-98944e774b2a")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -6221,73 +6012,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 267.97 88.9 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2821b8a4-8350-423c-ac70-034f5ff0ba51")
-		(property "Reference" "R2"
-			(at 267.97 83.82 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4.7kΩ"
-			(at 267.97 86.36 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 267.97 90.678 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 267.97 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 267.97 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fa2dc999-6616-4f60-804e-0cc2dd3e5e12")
-		)
-		(pin "2"
-			(uuid "a5f6204d-c5a6-46af-94ad-2f0a4e630810")
-		)
-		(instances
-			(project ""
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 30.48 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6314,7 +6038,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 28.702 102.87 90)
 			(effects
 				(font
@@ -6323,7 +6047,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
 			(at 30.48 102.87 0)
 			(effects
 				(font
@@ -6332,7 +6056,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 30.48 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
 			(at 30.48 102.87 0)
 			(effects
 				(font
@@ -6384,7 +6117,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 97.79 90.17 0)
 			(effects
 				(font
@@ -6428,76 +6161,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 38.1 144.78 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "324c61b5-d86e-4b8c-bd42-1aceef36fad8")
-		(property "Reference" "R6"
-			(at 40.64 143.5099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220Ω"
-			(at 40.64 146.0499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 36.322 144.78 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
-			(at 38.1 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 38.1 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1a7a4b1c-89f1-4a23-9b01-b39e1b8b889d")
-		)
-		(pin "2"
-			(uuid "b1d59035-d383-40ce-87b9-97ab28f205f7")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 267.97 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6521,7 +6184,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 267.97 93.218 90)
 			(effects
 				(font
@@ -6530,7 +6193,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706611944128512"
 			(at 267.97 91.44 0)
 			(effects
 				(font
@@ -6539,7 +6202,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
 			(at 267.97 91.44 0)
 			(effects
 				(font
@@ -6569,7 +6232,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "32ef14c8-760b-4774-b574-b978c3c3fa93")
@@ -6643,7 +6306,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "3750f061-dff5-4b66-8adc-368d364a324e")
 		(property "Reference" "J3"
@@ -6664,7 +6327,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "No_Footprint:No_Footprint"
 			(at 207.01 55.88 0)
 			(effects
 				(font
@@ -6713,6 +6376,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 147.32 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "38369140-252f-46a3-a4a9-42b4dd299dfe")
+		(property "Reference" "R12"
+			(at 149.098 140.208 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5kΩ"
+			(at 149.098 142.4941 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 145.542 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
+			(at 147.32 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 147.32 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 147.32 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "70a4bad7-5aa9-43f1-91b5-a9fed9a296e5")
+		)
+		(pin "2"
+			(uuid "cd521932-1a5a-4e4c-aa4a-17f877576310")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 220.98 125.73 90)
 		(unit 1)
@@ -6740,7 +6481,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 220.98 125.73 0)
 			(effects
 				(font
@@ -6849,6 +6590,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 220.98 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4afce003-be55-4548-b6ed-1349697fc827")
+		(property "Reference" "R13"
+			(at 222.504 132.842 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5kΩ"
+			(at 222.504 135.1281 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 219.202 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
+			(at 220.98 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 220.98 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 220.98 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "24955800-5ba3-46fe-98d2-79d612a76ca6")
+		)
+		(pin "2"
+			(uuid "8c9c5b18-dc2f-4f15-9f44-4f5d87d00cd5")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 245.11 60.96 0)
 		(unit 1)
@@ -6920,7 +6739,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "507aac3b-5ce2-413b-8069-5e5359c736b3")
 		(property "Reference" "LEDStrip1"
@@ -7276,7 +7095,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 234.442 110.49 90)
 			(effects
 				(font
@@ -7285,7 +7104,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Ever-Ohms-Tech-CR1210F1K00P05Z_C146858.pdf"
 			(at 236.22 110.49 0)
 			(effects
 				(font
@@ -7294,7 +7113,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "500mW Thick Film Resistors 200V ±100ppm/℃ ±1% 1kΩ 1210 Chip Resistor - Surface Mount ROHS"
+			(at 236.22 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
 			(at 236.22 110.49 0)
 			(effects
 				(font
@@ -7411,7 +7239,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 40.64 83.82 0)
 			(effects
 				(font
@@ -7586,6 +7414,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 77.47 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e044451-dca0-4f9b-9c33-d18762680f2d")
+		(property "Reference" "R6"
+			(at 80.01 142.2399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220Ω"
+			(at 80.01 144.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 75.692 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
+			(at 77.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 77.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 77.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "57e3f2bf-2664-49f4-b02d-6c66c1933b29")
+		)
+		(pin "2"
+			(uuid "2fe968bb-4dee-464c-bcb9-3cb6d0afb159")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+12V")
 		(at 49.53 86.36 0)
 		(unit 1)
@@ -7646,76 +7553,6 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 190.5 146.05 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6048fbcf-1cc0-4b2f-a443-8dedb44b4aa6")
-		(property "Reference" "R9"
-			(at 193.04 144.7799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220Ω"
-			(at 193.04 147.3199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 188.722 146.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
-			(at 190.5 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 190.5 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "722a662d-f661-4aeb-b601-7e74d4dc0f13")
-		)
-		(pin "2"
-			(uuid "cd0f5662-55ec-46e0-ad3f-4e06e71f5eb3")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -8022,7 +7859,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "RASPBERRY_PI_4B_4GB:MODULE_RASPBERRY_PI_4B_4GB"
 			(at 225.044 144.018 0)
 			(effects
 				(font
@@ -8032,7 +7869,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf"
+		(property "Datasheet" "https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-product-brief.pdf"
 			(at 170.688 128.778 0)
 			(effects
 				(font
@@ -8254,6 +8091,151 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 267.97 88.9 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79b44c0f-c7ba-44bf-b939-ae11d5324838")
+		(property "Reference" "R2"
+			(at 267.97 86.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7kΩ"
+			(at 267.97 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 267.97 87.122 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706611944128512"
+			(at 267.97 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 4.7kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 267.97 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d2b180b8-6c0e-4720-80c9-6fa50b00f316")
+		)
+		(pin "2"
+			(uuid "4c1a1a7e-f111-4c34-9de4-0f9a92ee9c37")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 82.55 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b4ae9ec-afad-4f97-a25e-686e145d99d5")
+		(property "Reference" "R11"
+			(at 84.074 91.186 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5kΩ"
+			(at 84.074 93.4721 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 80.772 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
+			(at 82.55 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 82.55 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 82.55 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7995b610-c4f5-4824-b755-61d66d2add8f")
+		)
+		(pin "2"
+			(uuid "f4e3537e-8cc3-44f9-acdf-5fb66734a78d")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D_Schottky")
 		(at 55.88 90.17 90)
 		(unit 1)
@@ -8281,7 +8263,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 55.88 90.17 0)
 			(effects
 				(font
@@ -8466,12 +8448,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 38.1 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "80615ce7-79b4-40ed-bb8f-fcb77349254c")
+		(property "Reference" "R5"
+			(at 40.64 143.5099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220Ω"
+			(at 40.64 146.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 36.322 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
+			(at 38.1 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 38.1 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 38.1 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "53805d7d-7d49-4610-880b-1aa6ea2b5890")
+		)
+		(pin "2"
+			(uuid "bb915f46-8ef2-4d59-bb79-93f69b193ca7")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
 		(at 245.11 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "81a099a4-953b-447b-addb-e810b0969e1c")
 		(property "Reference" "J7"
@@ -8535,6 +8596,85 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 190.5 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8431137d-a7bf-4c60-8642-5394726985bc")
+		(property "Reference" "R9"
+			(at 193.04 144.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220Ω"
+			(at 193.04 147.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 188.722 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
+			(at 190.5 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 190.5 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 190.5 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bf15b6f2-7975-4ecd-b068-82619fcae194")
+		)
+		(pin "2"
+			(uuid "1a379c4a-7609-4730-a556-218ec5869f86")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -8612,7 +8752,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "9d40605a-6b69-4cad-a68b-c3199bb1a290")
 		(property "Reference" "R1"
@@ -8671,76 +8811,6 @@
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "R1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 220.98 133.35 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a1ff4f7f-dec9-43fa-9bae-1eb879429f1b")
-		(property "Reference" "R13"
-			(at 223.52 132.0799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "5kΩ"
-			(at 223.52 134.6199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 219.202 133.35 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 220.98 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 220.98 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8f01c18b-25d0-4384-9657-04a7cec4c223")
-		)
-		(pin "2"
-			(uuid "1442d498-29fa-48c7-846c-82103a598b85")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -9222,7 +9292,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "b1b0c2bc-6380-4c6a-8dd9-a3b32c5cacd8")
 		(property "Reference" "J11"
@@ -9438,7 +9508,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
 			(at 242.57 108.458 90)
 			(effects
 				(font
@@ -9447,7 +9517,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Ever-Ohms-Tech-CR1210F1K00P05Z_C146858.pdf"
 			(at 242.57 106.68 0)
 			(effects
 				(font
@@ -9456,8 +9526,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "500mW Thick Film Resistors 200V ±100ppm/℃ ±1% 1kΩ 1210 Chip Resistor - Surface Mount ROHS"
 			(at 242.57 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 242.57 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9508,7 +9587,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 137.16 133.35 0)
 			(effects
 				(font
@@ -9621,7 +9700,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "bb9561f1-ec32-4bd9-bb8d-eedf5157b5d1")
 		(property "Reference" "J10"
@@ -9682,82 +9761,12 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 78.74 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bf38ec2c-7e2f-4d9e-b5f2-ba10f0e128cd")
-		(property "Reference" "R7"
-			(at 81.28 101.5999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220Ω"
-			(at 81.28 104.1399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 76.962 102.87 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn.sparkfun.com/assets/a/5/3/2/8/DS-17994-Resistor_220_Ohm_1_4th_Watt_PTH.pdf"
-			(at 78.74 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 78.74 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "07c86a56-81c9-4478-bd9a-bfe4b35f523c")
-		)
-		(pin "2"
-			(uuid "d252e427-5688-49ac-b88b-fb923b5b1777")
-		)
-		(instances
-			(project "Simple_Sprouts_PCB"
-				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:L")
 		(at 49.53 90.17 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "c31edd04-9754-4169-9ba6-ba03829cf730")
 		(property "Reference" "Solenoid_Valve1"
@@ -9822,16 +9831,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 147.32 140.97 0)
+		(at 121.92 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c99190c5-1b7d-4c11-9d28-46bd1ee0acc0")
-		(property "Reference" "R12"
-			(at 149.86 139.6999 0)
+		(uuid "c4ad9195-006e-4650-9fae-3f55ab69aef3")
+		(property "Reference" "R7"
+			(at 124.46 144.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9839,8 +9848,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5kΩ"
-			(at 149.86 142.2399 0)
+		(property "Value" "220Ω"
+			(at 124.46 147.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9848,8 +9857,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 145.542 140.97 90)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 120.142 146.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9857,8 +9866,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 147.32 140.97 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
+			(at 121.92 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9866,8 +9875,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 147.32 140.97 0)
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 121.92 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 121.92 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9876,15 +9894,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "e01494c5-8616-4fe0-ae59-9b843bfcb9bd")
+			(uuid "13b2b41b-277d-404c-a5fd-803624bda220")
 		)
 		(pin "2"
-			(uuid "578dc589-2ec1-4280-964e-e6b576acde41")
+			(uuid "64c62acc-c86a-4382-b9e3-30613fb65366")
 		)
 		(instances
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "R12")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -10357,7 +10375,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "e08cd156-bf5d-4050-be7f-136fd3d94d41")
 		(property "Reference" "J6"
@@ -10586,7 +10604,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 147.32 133.35 0)
 			(effects
 				(font
@@ -10832,7 +10850,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3153d41-369a-4592-b25d-35efbdfd8a70")
@@ -10969,6 +10987,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 78.74 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f79c781b-dc1f-4029-bdc9-0137b09d8f55")
+		(property "Reference" "R4"
+			(at 81.28 101.5999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220Ω"
+			(at 81.28 104.1399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 76.962 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010145_UNI-ROYAL-Uniroyal-Elec-1206W4F2200T5E_C17957.pdf"
+			(at 78.74 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "250mW Thick Film Resistors 200V ±100ppm/℃ ±1% 220Ω 1206 Chip Resistor - Surface Mount ROHS"
+			(at 78.74 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 78.74 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "31b6fa94-2cc5-466c-9c03-a13833276392")
+		)
+		(pin "2"
+			(uuid "6d405661-742c-4bf6-95e5-d08929a23672")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 82.55 85.09 90)
 		(unit 1)
@@ -10995,7 +11092,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 82.55 85.09 0)
 			(effects
 				(font
@@ -11064,7 +11161,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 38.862 91.44 90)
 			(effects
 				(font
@@ -11073,7 +11170,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
 			(at 40.64 91.44 0)
 			(effects
 				(font
@@ -11082,7 +11179,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
+			(at 40.64 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
 			(at 40.64 91.44 0)
 			(effects
 				(font
