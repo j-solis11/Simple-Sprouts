@@ -145,7 +145,7 @@ def fetch_flags():
 
             print("Updated Flags:")
             for key, value in data.items():
-                print(f"{key}: {value}")
+                print(f"{key} ({type(value).__name__}): {value}")
         else:
             print("No data found in flags_test")
 
