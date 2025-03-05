@@ -142,13 +142,13 @@ def fetch_flags():
             top_water_enabled = data.get("top_water_enabled", False)
             bottom_water_amount = data.get("bottom_water_amount", 0)
             top_water_amount = data.get("top_water_amount", 0)
-
+'''
             print("Updated Flags:")
             for key, value in data.items():
-                print(f"{key} ({type(value).__name__}): {value}")
+                print(f"{key}: {value}")
         else:
             print("No data found in flags_test")
-
+'''
 # Function to track time with ON/OFF cycles for Timer One
 def run_timer_bottom_light():
     global app_open, level_under_test, bottom_initialized, bottom_mode, bottom_man_light, bottom_man_water
@@ -322,14 +322,12 @@ def manual_mode():
     global top_water_ref_days, top_water_ref_hrs, top_water_ref_mins, top_water_ttw_days, top_water_ttw_hrs, top_water_ttw_min
     global bottom_light_enabled, top_light_enabled, bottom_water_enabled, top_water_enabled, bottom_water_amount, top_water_amount
 
-    print("0")
-    print(level_under_test)
+    print(f" 0 - level_under_test: {level_under_test}")
     if level_under_test == 1:
-        print("1")
-        print(bottom_initialized)
+        print(f" 1 - level_under_test: {level_under_test}")
+        print(f" 1 - bottom_initialized: {bottom_initialized}")
         if bottom_initialized == True:
-            print("2")
-            print(bottom_mode)
+            print(f" 2 - bottom_mode: {bottom_mode}")
             if bottom_mode == "manual":
                 print("3")
                 if bottom_man_light == True:
