@@ -4954,7 +4954,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "04c68309-4199-415a-a3bb-a7485470f0bf")
 		(property "Reference" "LEDStrip2"
@@ -4973,7 +4973,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display:HDSP-4840"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 38.1 129.54 0)
 			(effects
 				(font
@@ -5075,7 +5075,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "0615d1fc-dcc8-4e57-9c18-a369cdda32ba")
 		(property "Reference" "J8"
@@ -5096,7 +5096,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 257.81 55.88 0)
 			(effects
 				(font
@@ -5347,7 +5347,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "116dc2e4-5b4c-480b-b30b-5b94e8b2dcf1")
 		(property "Reference" "J4"
@@ -5368,7 +5368,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "No_Footprint:No_Footprint"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 219.71 55.88 0)
 			(effects
 				(font
@@ -5422,7 +5422,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "11b79ba8-8922-4d79-9b87-0b43fb7b2424")
 		(property "Reference" "WaterPump1"
@@ -5444,7 +5444,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 217.17 108.966 0)
 			(effects
 				(font
@@ -5895,7 +5895,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "2237b4a0-e57d-4c3d-bdc6-80a74d5edabd")
 		(property "Reference" "Solenoid_Valve2"
@@ -5916,7 +5916,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 91.44 90.17 0)
 			(effects
 				(font
@@ -6475,7 +6475,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "3750f061-dff5-4b66-8adc-368d364a324e")
 		(property "Reference" "J3"
@@ -6496,7 +6496,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "No_Footprint:No_Footprint"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 207.01 55.88 0)
 			(effects
 				(font
@@ -6908,7 +6908,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "507aac3b-5ce2-413b-8069-5e5359c736b3")
 		(property "Reference" "LEDStrip1"
@@ -6927,7 +6927,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display:HDSP-4840"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 85.09 127 0)
 			(effects
 				(font
@@ -8010,22 +8010,23 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "7640db96-cfca-4cf6-8059-37d29a7c865c")
 		(property "Reference" "J1"
-			(at 154.94 66.04 0)
+			(at 146.558 69.342 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "Raspberry_Pi_5"
-			(at 154.94 68.58 0)
+			(at 152.146 69.342 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "RASPBERRY_PI_4B_4GB:Pin_Replacement"
@@ -8701,7 +8702,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "81a099a4-953b-447b-addb-e810b0969e1c")
 		(property "Reference" "J7"
@@ -8722,7 +8723,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 245.11 55.88 0)
 			(effects
 				(font
@@ -8921,7 +8922,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "9d40605a-6b69-4cad-a68b-c3199bb1a290")
 		(property "Reference" "R1"
@@ -8943,7 +8944,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 168.402 139.7 90)
 			(effects
 				(font
@@ -9935,7 +9936,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "c31edd04-9754-4169-9ba6-ba03829cf730")
 		(property "Reference" "Solenoid_Valve1"
@@ -9956,7 +9957,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 49.53 90.17 0)
 			(effects
 				(font
@@ -10544,7 +10545,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(uuid "e08cd156-bf5d-4050-be7f-136fd3d94d41")
 		(property "Reference" "J6"
@@ -10565,7 +10566,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 232.41 55.88 0)
 			(effects
 				(font
@@ -11018,7 +11019,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3153d41-369a-4592-b25d-35efbdfd8a70")
@@ -11040,7 +11041,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 128.27 139.7 0)
 			(effects
 				(font
