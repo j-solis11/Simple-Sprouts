@@ -4957,7 +4957,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "04c68309-4199-415a-a3bb-a7485470f0bf")
-		(property "Reference" "LEDStrip2"
+		(property "Reference" "GROW2"
 			(at 42.672 129.286 0)
 			(effects
 				(font
@@ -5063,7 +5063,7 @@
 		(instances
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "LEDStrip2")
+					(reference "GROW2")
 					(unit 1)
 				)
 			)
@@ -5425,7 +5425,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11b79ba8-8922-4d79-9b87-0b43fb7b2424")
-		(property "Reference" "WaterPump1"
+		(property "Reference" "Water_Pump1"
 			(at 212.344 112.776 90)
 			(effects
 				(font
@@ -5480,7 +5480,7 @@
 		(instances
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "WaterPump1")
+					(reference "Water_Pump1")
 					(unit 1)
 				)
 			)
@@ -5898,8 +5898,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2237b4a0-e57d-4c3d-bdc6-80a74d5edabd")
-		(property "Reference" "Solenoid_Valve2"
-			(at 88.9 94.742 90)
+		(property "Reference" "Valve2"
+			(at 90.17 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5952,7 +5952,7 @@
 		(instances
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "Solenoid_Valve2")
+					(reference "Valve2")
 					(unit 1)
 				)
 			)
@@ -6911,7 +6911,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "507aac3b-5ce2-413b-8069-5e5359c736b3")
-		(property "Reference" "LEDStrip1"
+		(property "Reference" "GROW1"
 			(at 89.662 127 0)
 			(effects
 				(font
@@ -7026,7 +7026,7 @@
 		(instances
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "LEDStrip1")
+					(reference "GROW1")
 					(unit 1)
 				)
 			)
@@ -7382,6 +7382,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 130.81 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "575cccc3-742b-4025-ad79-f512db821c62")
+		(property "Reference" "#PWR050"
+			(at 130.81 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 128.27 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 130.81 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a5c3029d-8472-469b-8d59-c3279ad116fe")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 40.64 83.82 90)
 		(unit 1)
@@ -7728,6 +7794,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 144.78 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "63467da9-547b-4c16-807e-80a7d16e477f")
+		(property "Reference" "J5"
+			(at 150.114 52.832 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "5V IN"
+			(at 147.32 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x01_P2.00mm_Vertical"
+			(at 144.78 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5f934efb-4f1c-46d5-b10c-f87414aad1d0")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 170.18 153.67 0)
 		(unit 1)
@@ -8029,7 +8162,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RASPBERRY_PI_4B_4GB:Pin_Replacement"
+		(property "Footprint" "RASPBERRY_PI_4B_4GB:RPI Pins"
 			(at 225.044 144.018 0)
 			(effects
 				(font
@@ -8935,7 +9068,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "Heater Module"
+		(property "Value" "Heater"
 			(at 167.132 143.256 90)
 			(effects
 				(font
@@ -9939,8 +10072,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c31edd04-9754-4169-9ba6-ba03829cf730")
-		(property "Reference" "Solenoid_Valve1"
-			(at 46.228 94.996 90)
+		(property "Reference" "Valve1"
+			(at 47.498 92.964 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9993,7 +10126,74 @@
 		(instances
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "Solenoid_Valve1")
+					(reference "Valve1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 130.81 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c4191f68-b421-4b0f-846a-83d4788037d5")
+		(property "Reference" "J2"
+			(at 136.144 52.832 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "12V IN"
+			(at 134.112 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x01_P2.00mm_Vertical"
+			(at 130.81 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 130.81 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9c795251-8262-4157-840b-afbb0f6a4690")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -10468,6 +10668,71 @@
 			(project "Simple_Sprouts_PCB"
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
 					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 144.78 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "daccb6ee-1d43-4831-864e-2180d81c6b6d")
+		(property "Reference" "#PWR049"
+			(at 144.78 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 144.526 41.656 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 144.78 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e3bcddf-cd47-44d7-91f4-bbeb8b696310")
+		)
+		(instances
+			(project "Simple_Sprouts_PCB"
+				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
