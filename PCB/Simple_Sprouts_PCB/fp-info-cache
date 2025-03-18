@@ -1,4 +1,4 @@
-24651243692097617
+24652986035805065
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -87522,6 +87522,13 @@ MODULE_RASPBERRY_PI_4B_4GB
 48
 RASPBERRY_PI_4B_4GB
 Pin_Replacement
+Through hole straight pin header, 2x20, 2.54mm pitch, double rows
+Through hole pin header THT 2x20 2.54mm double row
+0
+44
+44
+RASPBERRY_PI_4B_4GB
+RPI Correct
 Through hole straight pin header, 2x20, 2.54mm pitch, double rows
 Through hole pin header THT 2x20 2.54mm double row
 0

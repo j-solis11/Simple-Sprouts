@@ -4973,7 +4973,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 38.1 129.54 0)
 			(effects
 				(font
@@ -5425,8 +5425,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11b79ba8-8922-4d79-9b87-0b43fb7b2424")
-		(property "Reference" "J12"
-			(at 212.344 110.236 90)
+		(property "Reference" "Water_Pump1"
+			(at 212.344 112.776 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5444,7 +5444,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 217.17 108.966 0)
 			(effects
 				(font
@@ -5480,7 +5480,7 @@
 		(instances
 			(project ""
 				(path "/a5df5b5c-9e14-4fe1-8dcb-bdc183e40462"
-					(reference "J12")
+					(reference "Water_Pump1")
 					(unit 1)
 				)
 			)
@@ -5916,7 +5916,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 91.44 90.17 0)
 			(effects
 				(font
@@ -5986,7 +5986,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 224.79 110.49 0)
 			(effects
 				(font
@@ -6286,7 +6286,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 97.79 90.17 0)
 			(effects
 				(font
@@ -6562,7 +6562,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1kΩ"
+		(property "Value" "5kΩ"
 			(at 185.928 148.8441 0)
 			(effects
 				(font
@@ -6580,7 +6580,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705859536048128"
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
 			(at 184.15 147.32 0)
 			(effects
 				(font
@@ -6589,7 +6589,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "250mW Thick Film Resistors 200V ±1% 1kΩ 1206 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
 			(at 184.15 147.32 0)
 			(effects
 				(font
@@ -6650,7 +6650,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm"
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 236.22 102.87 0)
 			(effects
 				(font
@@ -6659,7 +6659,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2307261445_TONYU-DY-333SDRD-SN-A3-EL-HF_C7470717.pdf"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
 			(at 236.22 102.87 0)
 			(effects
 				(font
@@ -6776,7 +6776,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1kΩ"
+		(property "Value" "5kΩ"
 			(at 237.744 112.2681 0)
 			(effects
 				(font
@@ -6794,7 +6794,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705859536048128"
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
 			(at 236.22 110.49 0)
 			(effects
 				(font
@@ -6803,7 +6803,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "250mW Thick Film Resistors 200V ±1% 1kΩ 1206 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
 			(at 236.22 110.49 0)
 			(effects
 				(font
@@ -6927,7 +6927,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 85.09 127 0)
 			(effects
 				(font
@@ -7474,7 +7474,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm"
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 40.64 83.82 0)
 			(effects
 				(font
@@ -7483,7 +7483,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2307261445_TONYU-DY-333SDRD-SN-A3-EL-HF_C7470717.pdf"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
 			(at 40.64 83.82 0)
 			(effects
 				(font
@@ -8478,7 +8478,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1kΩ"
+		(property "Value" "5kΩ"
 			(at 84.074 93.4721 0)
 			(effects
 				(font
@@ -8496,7 +8496,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705859536048128"
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
 			(at 82.55 92.71 0)
 			(effects
 				(font
@@ -8505,7 +8505,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "250mW Thick Film Resistors 200V ±1% 1kΩ 1206 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
 			(at 82.55 92.71 0)
 			(effects
 				(font
@@ -8566,7 +8566,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 55.88 90.17 0)
 			(effects
 				(font
@@ -9068,8 +9068,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "R1"
-			(at 167.386 140.97 90)
+		(property "Value" "Heater"
+			(at 167.132 143.256 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9077,7 +9077,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 168.402 139.7 90)
 			(effects
 				(font
@@ -9890,7 +9890,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMB"
 			(at 173.99 139.7 0)
 			(effects
 				(font
@@ -10090,7 +10090,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
 			(at 49.53 90.17 0)
 			(effects
 				(font
@@ -11038,7 +11038,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm"
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 184.15 139.7 0)
 			(effects
 				(font
@@ -11047,7 +11047,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2307261445_TONYU-DY-333SDRD-SN-A3-EL-HF_C7470717.pdf"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
 			(at 184.15 139.7 0)
 			(effects
 				(font
@@ -11526,7 +11526,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm"
+		(property "Footprint" "my-LED-4mm-3mm:LED_D4.0mm_P3.0mm"
 			(at 82.55 85.09 0)
 			(effects
 				(font
@@ -11535,7 +11535,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2307261445_TONYU-DY-333SDRD-SN-A3-EL-HF_C7470717.pdf"
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
 			(at 82.55 85.09 0)
 			(effects
 				(font
@@ -11586,7 +11586,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1kΩ"
+		(property "Value" "5kΩ"
 			(at 33.782 91.8846 0)
 			(effects
 				(font
@@ -11604,7 +11604,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705859536048128"
+		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_RALEC-RTT055001FTP_C332873.pdf"
 			(at 40.64 91.44 0)
 			(effects
 				(font
@@ -11613,7 +11613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "250mW Thick Film Resistors 200V ±1% 1kΩ 1206 Chip Resistor - Surface Mount ROHS"
+		(property "Description" "125mW Thick Film Resistors 150V ±100ppm/℃ ±1% 5kΩ 0805 Chip Resistor - Surface Mount ROHS"
 			(at 40.64 91.44 0)
 			(effects
 				(font
