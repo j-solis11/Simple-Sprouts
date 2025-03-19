@@ -196,6 +196,7 @@ def bottom_light():
 '''
 
 def timer():
+    global count_bottom_light, count_top_light
     time.sleep(5)
     count_bottom_light = count_bottom_light + 5
     count_top_light = count_top_light + 5
