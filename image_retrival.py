@@ -22,8 +22,8 @@ FIREBASE_URL_Plant_name="https://simple-sprouts-database-default-rtdb.firebaseio
 # FIREBASE_URL_More_info_curpage= "https://simple-sprouts-database-default-rtdb.firebaseio.com/pages/more_info/current_page.json"
 # FIREBASE_URL_More_info_plant_info_curpage="https://simple-sprouts-database-default-rtdb.firebaseio.com/pages/more_info/plant_info/current_page.json"
 # Path to save the retrieved image
-OUTPUT_ORIGINAL_PATH = "retrieved_original.png"
-OUTPUT_CLRMAPPED_PATH = "retrieved_color_mapped.png"
+OUTPUT_ORIGINAL_PATH = "original.png"
+OUTPUT_CLRMAPPED_PATH = "color_mapped_image.png"
 
 def retrieve_image_from_firebase():
     # Fetch the base64 image data from Firebase
@@ -58,7 +58,7 @@ def upload_to_firebase(data: dict,image) -> None:
         response.close()
 
 # Run the function
-retrieve_image_from_firebase()
+# retrieve_image_from_firebase()
 
 while True:
     getModel = requests.get(FIREBASE_URL_chat_flag)
@@ -72,8 +72,8 @@ while True:
         run_Plntvalid = getPlntvalid.json()
         run_Pltname = getPltname.json()
         print(run_Pltname)
-        retrieve_image_from_firebase()
-        image = Image.open("OUTPUT_ORIGINAL_PATH")
+        # retrieve_image_from_firebase()
+        image = Image.open(OUTPUT_ORIGINAL_PATH)
         encoded_image = model.encode_image(image)
 
         if run_PlantQuery['query_flag']:

@@ -7,7 +7,8 @@ import time
 import numpy as np
 from fastiecm import fastiecm
 from picamzero import Camera
-
+from picamera2 import Picamera2
+from PIL import Image
 
 FIREBASE_URL_image = "https://simple-sprouts-database-default-rtdb.firebaseio.com/pages/more_info/plant_info/image.json"
 FIREBASE_URL_Response = "https://simple-sprouts-database-default-rtdb.firebaseio.com/pages/more_info/plant_info/health_status_desc.json"
@@ -63,29 +64,59 @@ def contrast_stretch(im):
     return out
 
 while True:
-    # Open the webcam
-    cam = Camera()
-    cam.rotation = 180
-    cam.still_size = (1920, 1080) # Uncomment if using a Pi Noir camera
-    #cam.still_size = (2592, 1952) # Comment this line if using a Pi Noir camera
 
-    stream = cam.capture_array()
-    original = stream
+    cam0 = Picamera2(0)
+    cam1 = Picamera2(1)
+    config0 = cam0.create_still_configuration(main={"size": (1920, 1080)})
+    config1 = cam1.create_still_configuration(main={"size": (1920, 1080)})
+    cam0.configure(config0)
+    cam1.configure(config1)
 
-    contrasted = contrast_stretch(original)
+    # Apply rotation
+    cam0.set_controls({"Rotation": 180})
+    cam1.set_controls({"Rotation": 180})
+    time.sleep(2)
+    image0 = cam0.capture_array()
+    image1 = cam1.capture_array()
+
+    # # Open the webcam
+    # cam = Camera()
+    # cam.rotation = 180
+    # cam.still_size = (1920, 1080) # Uncomment if using a Pi Noir camera
+    # #cam.still_size = (2592, 1952) # Comment this line if using a Pi Noir camera
+
+    # stream = cam.capture_array()
+    # original = stream
+
+    contrasted = contrast_stretch(image0)
     ndvi = calc_ndvi(contrasted)
     ndvi_contrasted = contrast_stretch(ndvi)
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
-    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
-    cv2.imwrite('color_mapped_image.png', color_mapped_image)
-    cv2.imwrite('original.png', original)
+    color_mapped_image_0 = cv2.applyColorMap(color_mapped_prep, fastiecm)
+    # cv2.imwrite('color_mapped_image.png', color_mapped_image_1)
+    # cv2.imwrite('original.png', original)
+
+    Image.fromarray(color_mapped_image_0).save("color_mapped_image_0.png")
+    Image.fromarray(image0).save("original_0.png")
+
+    contrasted = contrast_stretch(image1)
+    ndvi = calc_ndvi(contrasted)
+    ndvi_contrasted = contrast_stretch(ndvi)
+    color_mapped_prep = ndvi_contrasted.astype(np.uint8)
+    color_mapped_image_1 = cv2.applyColorMap(color_mapped_prep, fastiecm)
+    Image.fromarray(color_mapped_image_1).save("color_mapped_image_1.png")
+    Image.fromarray(image1).save("original_1.png")
 
     data ={
-        "Image_in_base64_original":image_to_base64("original.png"),
-        "Image_in_base64_color_mapped":image_to_base64("color_mapped_image.png")
+        "Image_in_base64_original_0":image_to_base64("original_0.png"),
+        "Image_in_base64_color_mapped_0":image_to_base64("color_mapped_image_0.png"),
+        "Image_in_base64_original_1":image_to_base64("original_1.png"),
+        "Image_in_base64_color_mapped_1":image_to_base64("color_mapped_image_1.png")
     }
 
     upload_to_firebase(data,True)
+    cam0.stop()
+    cam1.stop()
     time.sleep(2*60)
 
 
