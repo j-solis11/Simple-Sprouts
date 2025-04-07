@@ -71,7 +71,8 @@ while True:
     config1 = cam1.create_still_configuration(main={"size": (1920, 1080)})
     cam0.configure(config0)
     cam1.configure(config1)
-
+    cam0.start()
+    cam1.start()
     # Apply rotation
     cam0.set_controls({"Rotation": 180})
     cam1.set_controls({"Rotation": 180})
