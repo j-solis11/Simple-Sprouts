@@ -25,6 +25,9 @@ FIREBASE_URL_Plant_name="https://simple-sprouts-database-default-rtdb.firebaseio
 FIREBASE_URL_query_LLM="https://simple-sprouts-database-default-rtdb.firebaseio.com/llm.json"
 FIREBASE_URL_query_LLM_flag="https://simple-sprouts-database-default-rtdb.firebaseio.com/llm/query_flag.json"
 FIREBASE_URL_query_LLM_response="https://simple-sprouts-database-default-rtdb.firebaseio.com/llm/response.json"
+FIREBASE_URL_health_report="https://simple-sprouts-database-default-rtdb.firebaseio.com/health_report.json"
+FIREBASE_URL_Plant_stage_top="https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_stages/Top.json"
+FIREBASE_URL_Plant_stage_bottom="https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_stages/Bottom.json"
 
 
 
@@ -67,6 +70,12 @@ def upload_to_firebase(data: dict,image) -> None:
             response = requests.put(FIREBASE_URL_query_LLM, json=data)
         if image==7:
             response = requests.put(FIREBASE_URL_query_LLM_response, json=data)
+        if image==8:
+            response = requests.put(FIREBASE_URL_health_report, json=data)
+        if image==9:
+            response = requests.put(FIREBASE_URL_Plant_stage_top, json=data)
+        if image==10:
+            response = requests.put(FIREBASE_URL_Plant_stage_bottom, json=data)
         print(f"Firebase response: {response.text}")
         response.close()
 
@@ -80,20 +89,22 @@ while True:
     getPltname =requests.get(FIREBASE_URL_Plant_name)
     getQueryLLM =requests.get(FIREBASE_URL_query_LLM)
 
+
     if getModel.status_code==200:
-        run_Model = getModel.json()
-        run_PlantQuery = getPlantQuery.json()
-        run_Plntvalid = getPlntvalid.json()
+        # run_Model = getModel.json()
+        # run_PlantQuery = getPlantQuery.json()
+        # run_Plntvalid = getPlntvalid.json()
         run_Pltname = getPltname.json()
         run_QueryLLM=getQueryLLM.json()
 
+
         print(run_Pltname)
         # retrieve_image_from_firebase()
-        image = Image.open(OUTPUT0_CLRMAPPED_PATH)
+        image = Image.open(OUTPUT0_ORIGINAL_PATH)
         encoded_image = model.encode_image(image)
 
         if run_QueryLLM['query_flag']:
-            #0-1 is asking if the plant can be planted indoors, 2-3 asks if the plant is healthy, 4-5 asks how many hours of growlight does the plant need
+            #0-1 is asking if the plant can be planted indoors, 2-3 asks if the plant is healthy, 4-5 asks how many hours of growlight does the plant need, 6-7 asks about the stages of each plant, 8-9 ask about harvest time 
 
             if run_QueryLLM['cmd_id']==0: #bottom layer
                 answer_plant_indoors = model.query(encoded_image, f"Ignore the image, Can {run_Pltname['Bottom']} be planted indoor enviroment with growlights?")["answer"]
@@ -119,6 +130,16 @@ while True:
                 print("Answer:", answer)
                 data={"response": answer,"query_flag": False, "cmd_id":1}
                 upload_to_firebase(data,6)
+
+                image = Image.open(OUTPUT0_ORIGINAL_PATH)
+                encoded_image = model.encode_image(image)
+                answer_blight = model.query(encoded_image, "Is there any visible blight on this plant?")["answer"]
+                answer_healthy_image = model.query(encoded_image, "Is this plant healthy?")["answer"]
+                answer_discolor = model.query(encoded_image, "Is there any visible leafs discolouring on the plant?")["answer"]
+                answer_legging = model.query(encoded_image, "Is the plant visibly legging?")["answer"]
+                answer_pests = model.query(encoded_image, "Are there any pests in box?")["answer"]
+                data={'blight': answer_blight,'healthy_image': answer_healthy_image,'leaf_discolor': answer_discolor,'legging': answer_legging,'pest': answer_pests}
+                upload_to_firebase(data,8)
                 # data={"query_flag": "False"}
                 # upload_to_firebase(data,6)
 
@@ -130,12 +151,23 @@ while True:
                 print("Answer:", answer)
                 data={"response": answer,"query_flag": False, "cmd_id":1}
                 upload_to_firebase(data,6)
+
+                image = Image.open(OUTPUT1_ORIGINAL_PATH)
+                encoded_image = model.encode_image(image)
+                answer_blight = model.query(encoded_image, "Is there any visible blight on this plant?")["answer"]
+                answer_healthy_image = model.query(encoded_image, "Is this plant healthy?")["answer"]
+                answer_discolor = model.query(encoded_image, "Is there any visible leafs discolouring on the plant?")["answer"]
+                answer_legging = model.query(encoded_image, "Is the plant visibly legging?")["answer"]
+                answer_pests = model.query(encoded_image, "Are there any pests in box?")["answer"]
+                data={'blight': answer_blight,'healthy_image': answer_healthy_image,'leaf_discolor': answer_discolor,'legging': answer_legging,'pest': answer_pests}
+                upload_to_firebase(data,8)
+
                 # data={"query_flag": "False"}
                 # upload_to_firebase(data,6)
                     
             if run_QueryLLM['cmd_id']==4:   #this is going to be for lower level
                 print("Asking model what it thinks")
-                image = Image.open(OUTPUT0_CLRMAPPED_PATH)
+                image = Image.open(OUTPUT0_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
                 answer = model.query(encoded_image, f"I have {run_Pltname['Bottom']} in an enclosure, how many hours of growlight will it need, give an average.")["answer"]
                 print("Answer:", answer)
@@ -146,7 +178,7 @@ while True:
 
             if run_QueryLLM['cmd_id']==5:   #this is going to be for upper level
                 print("Asking model what it thinks")
-                image = Image.open(OUTPUT1_CLRMAPPED_PATH)
+                image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
                 answer = model.query(encoded_image, f"I have {run_Pltname['Top']} is in an enclosure, how many hours of growlight will it need, give only a number.")["answer"]
                 print("Answer:", answer)
@@ -154,6 +186,65 @@ while True:
                 upload_to_firebase(data,6)
                 # data={"query_flag": "False"}
                 # upload_to_firebase(data,6)  
+
+            if run_QueryLLM['cmd_id']==6:   #this is going to be for lower level
+                print("Asking model what it thinks")
+                image = Image.open(OUTPUT0_ORIGINAL_PATH)
+                encoded_image = model.encode_image(image)
+                answer = model.query(encoded_image, f"I have {run_Pltname['Bottom']} in an enclosure, how many hours of growlight will it need, give an average.")["answer"]
+
+                answer_flowering = model.query(encoded_image, f"How long would the flowering stage last for a {run_Pltname['Bottom']} plant, give it in a number.")["answer"]
+                answer_germination = model.query(encoded_image, f"How long would the germination stage last for a {run_Pltname['Bottom']} plant, give it in a number.")["answer"]
+                answer_seedling = model.query(encoded_image, f"How long would the seedling stage last for a {run_Pltname['Bottom']} plant, give it in a number.")["answer"]
+                answer_senescence = model.query(encoded_image, f"How long would the senescence stage last for a {run_Pltname['Bottom']} plant, give it in a number.")["answer"]
+                answer_vegetative = model.query(encoded_image, f"How long would the vegetative stage last for a {run_Pltname['Bottom']} plant, give it in a number.")["answer"]
+
+                print("Answer:", answer)
+                data={"response": answer,"query_flag": False, "cmd_id":1}
+                upload_to_firebase(data,6)
+                data={'flowering':answer_flowering, 'germination':answer_germination,'seedling':answer_seedling, 'senescence':answer_senescence, 'vegetative':answer_vegetative}
+                upload_to_firebase(data,10)
+                # data={"query_flag": "False"}
+                # upload_to_firebase(data,6)
+
+            if run_QueryLLM['cmd_id']==7:   #this is going to be for upper level
+                print("Asking model what it thinks")
+                image = Image.open(OUTPUT1_ORIGINAL_PATH)
+                encoded_image = model.encode_image(image)
+                answer = model.query(encoded_image, f"I have {run_Pltname['Top']} is in an enclosure, how many hours of growlight will it need, give only a number.")["answer"]
+
+                answer_flowering = model.query(encoded_image, f"How long would the flowering stage last for a {run_Pltname['Top']} plant, give it in a number.")["answer"]
+                answer_germination = model.query(encoded_image, f"How long would the germination stage last for a {run_Pltname['Top']} plant, give it in a number.")["answer"]
+                answer_seedling = model.query(encoded_image, f"How long would the seedling stage last for a {run_Pltname['Top']} plant, give it in a number.")["answer"]
+                answer_senescence = model.query(encoded_image, f"How long would the senescence stage last for a {run_Pltname['Top']} plant, give it in a number.")["answer"]
+                answer_vegetative = model.query(encoded_image, f"How long would the vegetative stage last for a {run_Pltname['Top']} plant, give it in a number.")["answer"]
+
+                print("Answer:", answer)
+                data={"response": answer,"query_flag": False, "cmd_id":1}
+                upload_to_firebase(data,6)
+                data={'flowering':answer_flowering, 'germination':answer_germination,'seedling':answer_seedling, 'senescence':answer_senescence, 'vegetative':answer_vegetative}
+                upload_to_firebase(data,9)
+
+                # data={"query_flag": "False"}
+                # upload_to_firebase(data,6) 
+
+            if run_QueryLLM['cmd_id']==8: #bottom layer
+                image = Image.open(OUTPUT0_ORIGINAL_PATH)
+                answer_plant_indoors = model.query(encoded_image, f"It is a {run_Pltname['Bottom']} plant in the image, how many days until I can havest from that plant? ")["answer"]
+                print("Answer:", answer_plant_indoors)
+                data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
+                upload_to_firebase(data,6)
+                # data={"query_flag": False}
+                # upload_to_firebase(data,6)
+
+            if run_QueryLLM['cmd_id']==9: #top layer
+                image = Image.open(OUTPUT1_ORIGINAL_PATH)
+                answer_plant_indoors = model.query(encoded_image, f"It is a {run_Pltname['Top']} plant in the image, how many days until I can havest from that plant? ")["answer"]
+                print("Answer:", answer_plant_indoors)
+                data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
+                upload_to_firebase(data,6)
+                # data={"query_flag": False}
+                # upload_to_firebase(data,6)
         else:
             time.sleep(5)
             continue
