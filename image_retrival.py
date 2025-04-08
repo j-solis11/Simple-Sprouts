@@ -34,7 +34,7 @@ FIREBASE_URL_User_query="https://simple-sprouts-database-default-rtdb.firebaseio
 # Path to save the retrieved image
 OUTPUT0_ORIGINAL_PATH = "original_0.png"
 OUTPUT0_CLRMAPPED_PATH = "color_mapped_image_0.png"
-OUTPUT1_ORIGINAL_PATH = "ooriginal_1.png"
+OUTPUT1_ORIGINAL_PATH = "original_1.png"
 OUTPUT1_CLRMAPPED_PATH = "color_mapped_image_1.png"
 
 def retrieve_image_from_firebase():

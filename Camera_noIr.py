@@ -64,20 +64,27 @@ def contrast_stretch(im):
 
     return out
 
+cam0 = Picamera2(0)
+cam1 = Picamera2(1)
+config0 = cam0.create_still_configuration(main={"size": (1920, 1080)})
+config1 = cam1.create_still_configuration(main={"size": (1920, 1080)})
+cam0.configure(config0)
+cam1.configure(config1)
+cam0.start()
+cam1.start()
+# Apply rotation
+#cam0.set_controls({"Rotation": 180})
+#cam1.set_controls({"Rotation": 180})
+time.sleep(2)
+
 while True:
 
-    cam0 = Picamera2(0)
-    cam1 = Picamera2(1)
-    config0 = cam0.create_still_configuration(main={"size": (1920, 1080)})
-    config1 = cam1.create_still_configuration(main={"size": (1920, 1080)})
-    cam0.configure(config0)
-    cam1.configure(config1)
-    cam0.start()
-    cam1.start()
-    # Apply rotation
-    #cam0.set_controls({"Rotation": 180})
-    #cam1.set_controls({"Rotation": 180})
-    time.sleep(2)
+
+    key = cv2.waitKey(0)
+    if key == ord('q'):
+        print("Quitting and closing cameras.")
+        break
+    
     image0 = cam0.capture_array()
     image1 = cam1.capture_array()
     image0 = cv2.rotate(image0, cv2.ROTATE_180)
@@ -125,7 +132,9 @@ while True:
     }
 
     upload_to_firebase(data,True)
-    cam0.stop()
-    cam1.stop()
+
     print("done")
     time.sleep(2*60)
+
+cam0.stop()
+cam1.stop()
