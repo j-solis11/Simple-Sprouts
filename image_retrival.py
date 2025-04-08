@@ -84,21 +84,20 @@ def upload_to_firebase(data: dict,image) -> None:
 
 while True:
     getModel = requests.get(FIREBASE_URL_chat_flag)
-    getPlantQuery =requests.get(FIREBASE_URL_Plant_query)
-    getPlntvalid =requests.get(FIREBASE_URL_Plant_valid)
-    getPltname =requests.get(FIREBASE_URL_Plant_name)
+    # getPlantQuery =requests.get(FIREBASE_URL_Plant_query)
+    # getPlntvalid =requests.get(FIREBASE_URL_Plant_valid)
+    # getPltname =requests.get(FIREBASE_URL_Plant_name)
+    # run_Pltname = getPltname.json()
     getQueryLLM =requests.get(FIREBASE_URL_query_LLM)
-    getUserQuery =requests.get(FIREBASE_URL_User_query)
+    # getUserQuery =requests.get(FIREBASE_URL_User_query)
+    # run_UserQuery=getUserQuery.json()
 
 
     if getModel.status_code==200:
         # run_Model = getModel.json()
         # run_PlantQuery = getPlantQuery.json()
         # run_Plntvalid = getPlntvalid.json()
-        run_Pltname = getPltname.json()
         run_QueryLLM=getQueryLLM.json()
-        run_UserQuery=getUserQuery.json()
-
 
         print(run_Pltname)
         # retrieve_image_from_firebase()
@@ -111,6 +110,8 @@ while True:
             # 8-9 ask about harvest time, 10-11 allow user to directly prompt the model.
 
             if run_QueryLLM['cmd_id']==0: #bottom layer
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 answer_plant_indoors = model.query(encoded_image, f"Ignore the image, Can {run_Pltname['Bottom']} be planted indoor enviroment with growlights?")["answer"]
                 print("Answer:", answer_plant_indoors)
                 data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
@@ -119,6 +120,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==1: #bottom layer
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 answer_plant_indoors = model.query(encoded_image, f"Ignore the image, Can {run_Pltname['Top']} be planted indoor enviroment with growlights?")["answer"]
                 print("Answer:", answer_plant_indoors)
                 data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
@@ -170,6 +173,8 @@ while True:
                 # upload_to_firebase(data,6)
                     
             if run_QueryLLM['cmd_id']==4:   #this is going to be for lower level
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 print("Asking model what it thinks")
                 image = Image.open(OUTPUT0_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
@@ -181,6 +186,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==5:   #this is going to be for upper level
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 print("Asking model what it thinks")
                 image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
@@ -192,6 +199,8 @@ while True:
                 # upload_to_firebase(data,6)  
 
             if run_QueryLLM['cmd_id']==6:   #this is going to be for lower level
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 print("Asking model what it thinks")
                 image = Image.open(OUTPUT0_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
@@ -212,6 +221,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==7:   #this is going to be for upper level
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 print("Asking model what it thinks")
                 image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 encoded_image = model.encode_image(image)
@@ -233,6 +244,8 @@ while True:
                 # upload_to_firebase(data,6) 
 
             if run_QueryLLM['cmd_id']==8: #bottom layer
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 image = Image.open(OUTPUT0_ORIGINAL_PATH)
                 answer_plant_indoors = model.query(encoded_image, f"It is a {run_Pltname['Bottom']} plant in the image, how many days until I can havest from that plant? ")["answer"]
                 print("Answer:", answer_plant_indoors)
@@ -242,6 +255,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==9: #top layer
+                getPltname =requests.get(FIREBASE_URL_Plant_name)
+                run_Pltname = getPltname.json()
                 image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 answer_plant_indoors = model.query(encoded_image, f"It is a {run_Pltname['Top']} plant in the image, how many days until I can havest from that plant? ")["answer"]
                 print("Answer:", answer_plant_indoors)
@@ -251,6 +266,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==10: #bottom layer
+                getUserQuery =requests.get(FIREBASE_URL_User_query)
+                run_UserQuery=getUserQuery.json()
                 image = Image.open(OUTPUT0_ORIGINAL_PATH)
                 answer_plant_indoors = model.query(encoded_image, f"{run_UserQuery['Question']}")["answer"]
                 print("Answer:", answer_plant_indoors)
@@ -260,6 +277,8 @@ while True:
                 # upload_to_firebase(data,6)
 
             if run_QueryLLM['cmd_id']==11: #top layer
+                getUserQuery =requests.get(FIREBASE_URL_User_query)
+                run_UserQuery=getUserQuery.json()
                 image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 answer_plant_indoors = model.query(encoded_image, f"{run_UserQuery['Question']}")["answer"]
                 print("Answer:", answer_plant_indoors)

@@ -79,12 +79,6 @@ time.sleep(2)
 
 while True:
 
-
-    key = cv2.waitKey(0)
-    if key == ord('q'):
-        print("Quitting and closing cameras.")
-        break
-
     image0 = cam0.capture_array()
     image1 = cam1.capture_array()
     image0 = cv2.rotate(image0, cv2.ROTATE_180)
