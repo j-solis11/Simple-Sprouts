@@ -107,7 +107,7 @@ while True:
         if run_QueryLLM['query_flag']:
             #0-1 is asking if the plant can be planted indoors, 2-3 asks if the plant is healthy,
             #4-5 asks how many hours of growlight does the plant need, 6-7 asks about the stages of each plant,
-            # 8-9 ask about harvest time, 10-11 allow user to directly prompt the model.
+            #8-9 ask about harvest time, 10-11 allow user to directly prompt the model.
 
             if run_QueryLLM['cmd_id']==0: #bottom layer
                 getPltname =requests.get(FIREBASE_URL_Plant_name)
@@ -182,6 +182,9 @@ while True:
                 print("Answer:", answer)
                 data={"response": answer,"query_flag": False, "cmd_id":1}
                 upload_to_firebase(data,6)
+
+                data={'Bottom_plant_on':answer}
+                response = requests.put("https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_light_time/Bottom_plant_on.json", json=data)
                 # data={"query_flag": "False"}
                 # upload_to_firebase(data,6)
 
@@ -195,6 +198,8 @@ while True:
                 print("Answer:", answer)
                 data={"response": answer,"query_flag": False, "cmd_id":1}
                 upload_to_firebase(data,6)
+                data={'Top_plant_on':answer}
+                response = requests.put("https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_light_time/Top_plant_on.json", json=data)
                 # data={"query_flag": "False"}
                 # upload_to_firebase(data,6)  
 
