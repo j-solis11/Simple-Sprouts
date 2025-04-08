@@ -84,7 +84,7 @@ while True:
     if key == ord('q'):
         print("Quitting and closing cameras.")
         break
-    
+
     image0 = cam0.capture_array()
     image1 = cam1.capture_array()
     image0 = cv2.rotate(image0, cv2.ROTATE_180)
@@ -109,7 +109,7 @@ while True:
     color_mapped_image_0 = cv2.applyColorMap(color_mapped_prep, fastiecm)
     # cv2.imwrite('color_mapped_image.png', color_mapped_image_1)
     # cv2.imwrite('original.png', original)
-    display(color_mapped_image_0,"nvdi")
+    #display(color_mapped_image_0,"nvdi")
     Image.fromarray(cv2.cvtColor(color_mapped_image_0, cv2.COLOR_BGR2RGB)).save("color_mapped_image_0.png")
     Image.fromarray(cv2.cvtColor(image0, cv2.COLOR_BGR2RGB)).save("original_0.png")
 
@@ -119,7 +119,7 @@ while True:
     ndvi_contrasted = contrast_stretch(ndvi)
     color_mapped_prep = ndvi_contrasted.astype(np.uint8)
     color_mapped_image_1 = cv2.applyColorMap(color_mapped_prep, fastiecm)
-    display(color_mapped_image_1,"nvdi1")
+    #display(color_mapped_image_1,"nvdi1")
     Image.fromarray(cv2.cvtColor(color_mapped_image_1, cv2.COLOR_BGR2RGB)).save("color_mapped_image_1.png")
     Image.fromarray(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB)).save("original_1.png")
 
