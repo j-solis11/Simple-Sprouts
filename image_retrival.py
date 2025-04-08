@@ -28,7 +28,7 @@ FIREBASE_URL_query_LLM_response="https://simple-sprouts-database-default-rtdb.fi
 FIREBASE_URL_health_report="https://simple-sprouts-database-default-rtdb.firebaseio.com/health_report.json"
 FIREBASE_URL_Plant_stage_top="https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_stages/Top.json"
 FIREBASE_URL_Plant_stage_bottom="https://simple-sprouts-database-default-rtdb.firebaseio.com/Plant_stages/Bottom.json"
-
+FIREBASE_URL_User_query="https://simple-sprouts-database-default-rtdb.firebaseio.com/User_query.json"
 
 
 # Path to save the retrieved image
@@ -88,6 +88,7 @@ while True:
     getPlntvalid =requests.get(FIREBASE_URL_Plant_valid)
     getPltname =requests.get(FIREBASE_URL_Plant_name)
     getQueryLLM =requests.get(FIREBASE_URL_query_LLM)
+    getUserQuery =requests.get(FIREBASE_URL_User_query)
 
 
     if getModel.status_code==200:
@@ -96,6 +97,7 @@ while True:
         # run_Plntvalid = getPlntvalid.json()
         run_Pltname = getPltname.json()
         run_QueryLLM=getQueryLLM.json()
+        run_UserQuery=getUserQuery.json()
 
 
         print(run_Pltname)
@@ -104,7 +106,9 @@ while True:
         encoded_image = model.encode_image(image)
 
         if run_QueryLLM['query_flag']:
-            #0-1 is asking if the plant can be planted indoors, 2-3 asks if the plant is healthy, 4-5 asks how many hours of growlight does the plant need, 6-7 asks about the stages of each plant, 8-9 ask about harvest time 
+            #0-1 is asking if the plant can be planted indoors, 2-3 asks if the plant is healthy,
+            #4-5 asks how many hours of growlight does the plant need, 6-7 asks about the stages of each plant,
+            # 8-9 ask about harvest time, 10-11 allow user to directly prompt the model.
 
             if run_QueryLLM['cmd_id']==0: #bottom layer
                 answer_plant_indoors = model.query(encoded_image, f"Ignore the image, Can {run_Pltname['Bottom']} be planted indoor enviroment with growlights?")["answer"]
@@ -240,6 +244,24 @@ while True:
             if run_QueryLLM['cmd_id']==9: #top layer
                 image = Image.open(OUTPUT1_ORIGINAL_PATH)
                 answer_plant_indoors = model.query(encoded_image, f"It is a {run_Pltname['Top']} plant in the image, how many days until I can havest from that plant? ")["answer"]
+                print("Answer:", answer_plant_indoors)
+                data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
+                upload_to_firebase(data,6)
+                # data={"query_flag": False}
+                # upload_to_firebase(data,6)
+
+            if run_QueryLLM['cmd_id']==10: #bottom layer
+                image = Image.open(OUTPUT0_ORIGINAL_PATH)
+                answer_plant_indoors = model.query(encoded_image, f"{run_UserQuery['Question']}")["answer"]
+                print("Answer:", answer_plant_indoors)
+                data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
+                upload_to_firebase(data,6)
+                # data={"query_flag": False}
+                # upload_to_firebase(data,6)
+
+            if run_QueryLLM['cmd_id']==11: #top layer
+                image = Image.open(OUTPUT1_ORIGINAL_PATH)
+                answer_plant_indoors = model.query(encoded_image, f"{run_UserQuery['Question']}")["answer"]
                 print("Answer:", answer_plant_indoors)
                 data={"response":answer_plant_indoors, "query_flag": False, "cmd_id":0}
                 upload_to_firebase(data,6)
