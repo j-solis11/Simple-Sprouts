@@ -6,7 +6,7 @@ import {getDatabase} from 'firebase/database'; //
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCsb4v4EJH66swhwoqqybA2gRVidGybb_8",
+  apiKey: "API_KEY_HERE",
   authDomain: "simple-sprouts-database.firebaseapp.com",
   databaseURL: "https://simple-sprouts-database-default-rtdb.firebaseio.com",
   projectId: "simple-sprouts-database",
