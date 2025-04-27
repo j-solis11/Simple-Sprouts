@@ -23,17 +23,17 @@ The Simple Sprouts software stack consists of several interconnected components 
 - **Components Controlled**: Water pump, solenoid valves, grow lights, heater
 - **Data Flow**: Firebase → Python → GPIO → MOSFET → Actuator
 
-#### Camera Module (`camera.py`)
+#### Camera Module (`Camera_noIR.py`)
 - **Purpose**: Captures plant images and generates NDVI analysis
-- **Dependencies**: PiCamera, OpenCV, numpy
+- **Dependencies**: PiCamera, OpenCV, numpy, Firebase Admin SDK
 - **Image Processing**: Standard and NDVI (Normalized Difference Vegetation Index)
 - **Data Flow**: NoIR Camera → Python → Base64 Encoding → Firebase → Web App
 
-#### AI Module (`model.py`)
+#### AI Module (`image_retrival.py`)
 - **Purpose**: Analyzes plant health and responds to user queries
 - **Dependencies**: MoonDream Cloud API, Firebase Admin SDK
 - **Features**: Automated health assessment, custom query handling
-- **Data Flow**: Firebase → Python → MoonDream API → Firebase → Web App
+- **Data Flow**: Firebase → Python → MoonDream Cloud API → Firebase → Web App
 
 #### Web/Mobile App (React Native Expo)
 - **Purpose**: User interface for system control and monitoring

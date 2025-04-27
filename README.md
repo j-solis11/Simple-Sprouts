@@ -95,4 +95,4 @@ Simple Sprouts is an autonomous vertical farming system designed for compact urb
 ---
 
 For detailed hardware specifications, see [Hardware README](Hardware/README_HARDWARE.md)  
-For software setup and details, see [Software README](Software/README_SOFTWARE.md)
+For software setup and details, see [Software README](Software/readme.md)
