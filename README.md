@@ -1,140 +1,97 @@
-Simple Sprouts - Engineering Addendum
-Welcome to the Simple Sprouts project repository!
-This document serves as a quick-start guide and engineering addendum for any future teams continuing development of this project.
+# Simple Sprouts - Smart Vertical Farming System
 
-Project Overview
-Simple Sprouts is a smart vertical farming system designed to automate the care of edible plants through environmental sensing, adaptive irrigation, lighting control, and AI-based plant health monitoring.
+![Simple Sprouts Logo](https://github.com/j-solis11/Simple-Sprouts/raw/main/assets/logo.png)
 
-Key system features include:
+## Quick Start Guide
 
-Dual-tier grow environment
+Simple Sprouts is an autonomous vertical farming system designed for compact urban environments like university campuses and restaurants. The system integrates smart sensing, adaptive watering and lighting, and AI-based plant health monitoring to enable users to grow plants indoors with minimal intervention.
 
-Soil moisture, temperature, humidity, air quality, and water level sensing
+### Project Overview
 
-Adaptive watering and lighting control modes
+- **Build Status**: Completed and functional (April 2025)
+- **Core Components**: Raspberry Pi 5, Custom PCB, Dual-tier irrigation, Grow lights, Peltier temperature module, NoIR cameras
+- **Key Features**: Three operation modes (Manual, Scheduled, Adaptive), AI plant health monitoring, Web-based user interface
+- **Project Team**: Boston University ECE Senior Design Team 26 (Spring 2025)
 
-Mobile/web app dashboard (React Native Expo) for control and monitoring
+## 🚀 Getting Started
 
-AI-based health analysis via NoIR cameras and NDVI processing
+### Prerequisites
+- Raspberry Pi 5 with microSD card (16GB+ recommended)
+- 24V DC power supply (3A minimum)
+- WiFi connection for Firebase access
+- React Native Expo for mobile/web interface
+- Plant material and growing medium
 
-Real-time cloud synchronization with Firebase
+### Initial Setup
+1. Connect the 24V power supply to the system
+2. Fill the water tank to the marked level
+3. Connect to WiFi and ensure Firebase connectivity
+4. Open the web app following installation instructions in the Software README
+5. Initialize plant settings through the app interface
+6. Add growing medium and plant material to the containers
 
-Fully integrated custom PCB with MOSFET control
+## ⚠️ Known Issues & Gotchas
 
-The system uses a Raspberry Pi 5 as the main controller and is powered by a centralized 24V DC supply with regulated 12V and 5V branches.
+### Critical Information for Future Teams
 
-Quick-Start Guide
-Hardware Setup
-Place the enclosure on a stable, flat surface.
+1. **Power Distribution**
+   - The system uses a 24V DC supply stepped down to 12V and 5V. Always check voltage levels before connecting new components.
+   - The custom PCB has MOSFETs controlling high-current devices. Be cautious when modifying connections to prevent damage.
 
-Fill the water reservoir with clean water.
+2. **Irrigation System**
+   - Water tube connections at the solenoid valves are pressure-fit and may need occasional reseating.
+   - The water pump is rated for 12V but operates efficiently at 9-15V. Current PCB provides ~12V to the pump.
+   - **IMPORTANT**: Always maintain physical separation between water and electronic components.
 
-Connect the 24V DC power adapter to the main PCB input.
+3. **Software Dependencies**
+   - Firebase integration requires proper API keys. See Software README for setup details.
+   - The MoonDream Cloud API has a free tier that may limit daily queries for plant health analysis.
+   - React Native Expo dependency versions are critical - see package.json for specific versions.
 
-Ensure a stable Wi-Fi connection for cloud communication.
+4. **Sensor Calibration**
+   - Soil moisture sensors are factory calibrated but may need recalibration for different soil types.
+   - Typical moisture readings: 400-600 (very dry), 600-900 (ideal range), 900+ (overly wet)
+   - Temperature sensors have ±1°C tolerance - cross-reference with ambient sensors if precision is required.
 
-Power on the Raspberry Pi and ensure the scripts auto-run (or start manually).
+5. **Camera Setup**
+   - NoIR cameras must be positioned at specific angles for proper plant assessment. Use the 3D-printed mounts.
+   - The NDVI analysis uses specific thresholds for plant health determination - see model.py for details.
 
-Software Setup
-Install Node.js and pull the Simple-Sprouts GitHub repository.
+## 🔧 Current State & Future Development
 
-Navigate to the app/ folder and run:
+### Current Implementation
+- All three control modes are fully functional (Manual, Scheduled, Adaptive)
+- Web application provides full control and monitoring capabilities
+- AI plant health assessment with NDVI analysis is operational
+- Temperature control via Peltier module maintains growing environment
+- Firebase integration allows real-time data monitoring and remote control
 
-bash
-Copy
-Edit
-npm install expo
-npx expo start --tunnel
-Update the Firebase API key inside assets/config/firebaseConfig.js.
+### Potential Improvements
+- Replace Raspberry Pi 5 with less expensive microcontroller for cost reduction
+- Implement local AI model to reduce cloud dependency
+- Add humidity control for better environmental management
+- Integrate multiple plant types with specific care requirements
+- Expand to more than two growing layers using the same control infrastructure
 
-Use Expo Go app on a mobile device or web browser to access the dashboard.
+## 📁 Repository Structure
 
-Sensor and automation scripts should auto-start, but can be run manually if needed:
+- `/Hardware` - PCB design files, component specifications, and hardware documentation
+- `/Software` - Control scripts, web application code, and software implementation details
+- `/Assets` - Images, diagrams, and supplementary files
+- `/Documentation` - User manual, test plans, and additional project documentation
 
-bash
-Copy
-Edit
-python3 sensing.py
-python3 automation.py
-python3 camera.py
-python3 model_query.py
-Current System Status (April 2025)
+## 👥 Original Team Members
 
-Subsystem	Status	Notes
-PCB Assembly	✅	Fully functional
-Sensors (soil, temp, humidity, air)	✅	Calibrated and integrated
-Watering system	✅	Dual solenoid valves, diaphragm pump
-Grow lights	✅	12V LED strips, MOSFET-controlled
-Ultrasonic water level sensor	✅	Working with real-time updates
-Peltier heating	✅	Maintains ~75°F inside enclosure
-Raspberry Pi 5	✅	Handles computation and communication
-Mobile/Web App	✅	Tested with Expo, Firebase backend
-AI Image Analysis	✅	NDVI generation and MoonDream API integration
-Lessons Learned / Gotchas
-Wi-Fi Dependency: System operation heavily depends on Wi-Fi for Firebase communication. Use strong 2.4 GHz network for best reliability.
+- Jared Solis (jared11@bu.edu)
+- Sourav Shib (shib0826@bu.edu)
+- Arthur Hua (ahua102@bu.edu)
+- Dilhara DeSilva (dilharad@bu.edu)
+- Alex Muntean (munteana@bu.edu)
 
-Power Supply Selection: Only use properly regulated 24V, 3A+ adapters. Unregulated or underpowered supplies cause erratic sensor behavior and actuator failures.
+*Boston University Electrical & Computer Engineering*  
+*EC 464 Senior Design - Spring 2025*
 
-Sensor Conflicts: When using multiple I2C sensors, verify different addresses and use level-shifters if switching to alternate microcontrollers.
+---
 
-Water Protection: Always check water tubing and solenoid valve connections. Even minor leaks can risk the electronics despite the divider wall.
-
-Camera Stability: The NoIR cameras are sensitive to movement. Secure mounts firmly to maintain image quality for NDVI processing.
-
-Firebase Sync Timing: Be mindful of database read/write intervals to avoid overwhelming free-tier limits or causing synchronization lags.
-
-Heat Management: Ensure that the Peltier cooling fan remains unobstructed, especially in hot ambient conditions (>85°F).
-
-LLM Queries: MoonDream AI queries work best when images are properly exposed under grow lights. Avoid triggering health scans in darkness.
-
-Future Improvements (Suggested)
-Offload AI: Fully migrate plant health inference to the cloud to remove dependency on Raspberry Pi’s limited processing power.
-
-Frame Redesign: Simplify enclosure structure for lighter weight and reduced manufacturing cost.
-
-Dedicated Mobile App: Migrate away from Expo Go to a standalone built mobile app for faster interaction.
-
-Backup Local Control: Implement a local fallback mode in case of Wi-Fi/Firebase failure.
-
-Custom AI Model: Train and host a dedicated plant health model for better reliability and to reduce dependence on external APIs.
-
-Repository Organization
-bash
-Copy
-Edit
-/hardware/
-    - PCB files, schematics, BOM
-/software/
-    - Automation, sensing, camera, and model scripts
-/app/
-    - React Native Expo mobile/web app
-User Manual.pdf
-README.md (Engineering Addendum)
-README_HARDWARE.md
-README_SOFTWARE.md
-Team Members
-Jared Solis (Hardware, App Development)
-
-Sourav Shib (Automation Software, Firebase Integration)
-
-Arthur Hua (Camera System, Plant Health AI)
-
-Dilhara DeSilva (Electrical Integration, Hardware Safety)
-
-Alex Muntean (Enclosure Design, PCB Assembly)
-
-Final Notes
-Simple Sprouts is fully operational as of April 2025 and has been validated across all intended functions.
-This repository contains everything needed to replicate, maintain, and extend the system.
-
-If you are picking up this project, we strongly recommend reading through:
-
-The User Manual
-
-The README_HARDWARE.md and README_SOFTWARE.md
-
-Reviewing the Firebase database structure
-
-Physically inspecting all plumbing and wiring before operation.
-
-Good luck, and happy growing! 🌱
+For detailed hardware specifications, see [Hardware README](Hardware/README_HARDWARE.md)  
+For software setup and details, see [Software README](Software/README_SOFTWARE.md)
