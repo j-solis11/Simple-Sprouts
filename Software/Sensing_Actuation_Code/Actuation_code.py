@@ -5,39 +5,38 @@ from firebase_admin import credentials, db
 from gpiozero import DistanceSensor  # Import the DistanceSensor from gpiozero
 
 # --- GPIO Pin Definitions ---
-# (Commented out original definitions)
-
-LED_PIN_17 = 22  # bottom light
-LED_PIN_27 = 17  # top light
-LED_PIN_22 = 13 # bottom water valve
-LED_PIN_10 = 19  # top water valve
-LED_PIN_9  = 0   # shared water pump
-LED_PIN_11 = 10  # heater
+BOTTOM_LIGHT_PIN = 22  # bottom light
+TOP_LIGHT_PIN = 17     # top light
+BOTTOM_VALVE_PIN = 13  # bottom water valve
+TOP_VALVE_PIN = 19     # top water valve
+PUMP_PIN = 0           # shared water pump
+HEATER_PIN = 10        # heater
 
 '''
-LED_PIN_17 = 21  # bottom light
-LED_PIN_27 = 20  # top light
-LED_PIN_22 = 16  # bottom water valve
-LED_PIN_10 = 12  # top water valve
-LED_PIN_9  = 1   # shared water pump
-LED_PIN_11 = 25  # heater
+Alternative Pin Set (commented out)
+BOTTOM_LIGHT_PIN = 21
+TOP_LIGHT_PIN = 20
+BOTTOM_VALVE_PIN = 16
+TOP_VALVE_PIN = 12
+PUMP_PIN = 1
+HEATER_PIN = 25
 '''
 
 # --- Initialize GPIO Chip and Lines ---
 chip = gpiod.Chip('gpiochip0')
-led_line_17 = chip.get_line(LED_PIN_17)
-led_line_27 = chip.get_line(LED_PIN_27)
-led_line_22 = chip.get_line(LED_PIN_22)
-led_line_10 = chip.get_line(LED_PIN_10)
-led_line_9  = chip.get_line(LED_PIN_9)
-heater_line = chip.get_line(LED_PIN_11)
+bottom_light_line = chip.get_line(BOTTOM_LIGHT_PIN)
+top_light_line = chip.get_line(TOP_LIGHT_PIN)
+bottom_valve_line = chip.get_line(BOTTOM_VALVE_PIN)
+top_valve_line = chip.get_line(TOP_VALVE_PIN)
+pump_line = chip.get_line(PUMP_PIN)
+heater_line = chip.get_line(HEATER_PIN)
 
 # Request lines for output
-led_line_17.request(consumer="LED_17", type=gpiod.LINE_REQ_DIR_OUT)
-led_line_27.request(consumer="LED_27", type=gpiod.LINE_REQ_DIR_OUT)
-led_line_22.request(consumer="LED_22", type=gpiod.LINE_REQ_DIR_OUT)
-led_line_10.request(consumer="LED_10", type=gpiod.LINE_REQ_DIR_OUT)
-led_line_9.request(consumer="LED_9", type=gpiod.LINE_REQ_DIR_OUT)
+bottom_light_line.request(consumer="BOTTOM_LIGHT", type=gpiod.LINE_REQ_DIR_OUT)
+top_light_line.request(consumer="TOP_LIGHT", type=gpiod.LINE_REQ_DIR_OUT)
+bottom_valve_line.request(consumer="BOTTOM_VALVE", type=gpiod.LINE_REQ_DIR_OUT)
+top_valve_line.request(consumer="TOP_VALVE", type=gpiod.LINE_REQ_DIR_OUT)
+pump_line.request(consumer="PUMP", type=gpiod.LINE_REQ_DIR_OUT)
 heater_line.request(consumer="HEATER", type=gpiod.LINE_REQ_DIR_OUT)
 
 # --- Initialize Firebase ---
@@ -46,22 +45,16 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://simple-sprouts-database-default-rtdb.firebaseio.com/'
 })
 ref = db.reference("flags_test")
-# Create a separate reference for sensor readings
 sensor_readings_ref = db.reference("sensor_readings/latest")
 
 # --- Initialize Ultrasonic Sensor ---
-# Here the trigger is on GPIO 23 and echo is on GPIO 27.
-# Adjust the pins if your wiring differs.
 ultrasonic_sensor = DistanceSensor(echo=27, trigger=23, max_distance=4)
-# Set the next sample time to now
 next_ultrasonic_sample = time.monotonic()
 
 # --- Component State Dictionary ---
-# Dictionary holding state for each component.
-# For water, gpio is a tuple: (valve, pump). Valve control is independent.
 components = {
     "bottom_light": {
-        "gpio": led_line_17,
+        "gpio": bottom_light_line,
         "state": False,
         "on_duration": 0,
         "off_duration": 0,
@@ -71,7 +64,7 @@ components = {
         "edit_flag": "bottom_mode_light_edit"
     },
     "top_light": {
-        "gpio": led_line_27,
+        "gpio": top_light_line,
         "state": False,
         "on_duration": 0,
         "off_duration": 0,
@@ -81,7 +74,7 @@ components = {
         "edit_flag": "top_mode_light_edit"
     },
     "bottom_water": {
-        "gpio": (led_line_22, led_line_9),  # (valve, pump)
+        "gpio": (bottom_valve_line, pump_line),
         "state": False,
         "on_duration": 0,
         "off_duration": 0,
@@ -91,7 +84,7 @@ components = {
         "edit_flag": "bottom_mode_water_edit"
     },
     "top_water": {
-        "gpio": (led_line_10, led_line_9),  # (valve, pump)
+        "gpio": (top_valve_line, pump_line),
         "state": False,
         "on_duration": 0,
         "off_duration": 0,
@@ -102,11 +95,12 @@ components = {
     }
 }
 
-# Heater state variable (independent of other modes)
+# Heater state
 heater_state = False
 
+# --- Helper Functions ---
+
 def update_schedule(comp_name, data, current_time):
-    """Update schedule for 'scheduling' mode without resetting next_toggle if it’s in the future."""
     comp = components[comp_name]
     if comp_name in ["bottom_light", "top_light"]:
         total_on = data.get(f"{comp_name}_ref_on_hrs", 0) * 1 + data.get(f"{comp_name}_ref_on_mins", 0) * 1
@@ -127,10 +121,6 @@ def update_schedule(comp_name, data, current_time):
             comp["next_toggle"] = current_time + comp["off_duration"]
 
 def update_adaptive_schedule(comp_name, data, current_time):
-    """
-    Update schedule for light components in 'adaptive' mode.
-    Convert adaptive hours to seconds.
-    """
     comp = components[comp_name]
     if comp_name == "bottom_light":
         total_on = data.get("adp_bottom_light_on_hrs", 0) * 1
@@ -147,22 +137,12 @@ def update_adaptive_schedule(comp_name, data, current_time):
             comp["next_toggle"] = current_time + comp["off_duration"]
 
 def set_valve(comp, value):
-    """
-    Set the GPIO output for the valve only.
-    For water components, update the first element (valve) only.
-    """
     if isinstance(comp["gpio"], tuple):
         comp["gpio"][0].set_value(1 if value else 0)
     else:
         comp["gpio"].set_value(1 if value else 0)
 
 def adaptive_water_logic(comp_name, sensor_value, current_time):
-    """
-    For adaptive water mode:
-      - If sensor_value is below 450, trigger watering (set state True and water for 5 seconds).
-      - If already watering and sensor_value remains below 680, extend watering by 5 seconds.
-      - Only when sensor_value is >=680, stop watering.
-    """
     comp = components[comp_name]
     if "watering_until" not in comp:
         comp["watering_until"] = 0
@@ -177,26 +157,16 @@ def adaptive_water_logic(comp_name, sensor_value, current_time):
         comp["watering_until"] = 0
 
 def handle_manual_mode(data):
-    """
-    Handle manual mode for lights and water valves.
-    (Pump control and heater are handled separately.)
-    """
-    # Bottom level
     if data.get("bottom_initialized", False):
         if data.get("bottom_mode", "manual") == "manual":
-            led_line_17.set_value(1 if data.get("bottom_man_light", False) else 0)
-            led_line_22.set_value(1 if data.get("bottom_man_water", False) else 0)
-    # Top level
+            bottom_light_line.set_value(1 if data.get("bottom_man_light", False) else 0)
+            bottom_valve_line.set_value(1 if data.get("bottom_man_water", False) else 0)
     if data.get("top_initialized", False):
         if data.get("top_mode", "manual") == "manual":
-            led_line_27.set_value(1 if data.get("top_man_light", False) else 0)
-            led_line_10.set_value(1 if data.get("top_man_water", False) else 0)
+            top_light_line.set_value(1 if data.get("top_man_light", False) else 0)
+            top_valve_line.set_value(1 if data.get("top_man_water", False) else 0)
 
 def update_pump(data):
-    """
-    Update pump (led_line_9) state.
-    Pump is ON if either water component (scheduling, adaptive, or manual) indicates watering.
-    """
     bottom_mode = data.get("bottom_mode", "manual")
     if bottom_mode in ["scheduling", "adaptive"]:
         bottom_state = components["bottom_water"]["state"]
@@ -208,16 +178,9 @@ def update_pump(data):
     else:
         top_state = data.get("top_man_water", False)
     pump_state = bottom_state or top_state
-    led_line_9.set_value(1 if pump_state else 0)
+    pump_line.set_value(1 if pump_state else 0)
 
 def update_heater(data, sensors):
-    """
-    Update heater (controlled by heater_line, GPIO 11).
-    Read current temperature from sensors ("temp").
-    From Flags, read "target_temp".
-    If current temp is less than (target_temp - 5) and heater is off, turn heater on.
-    If heater is on and current temp is >= target_temp, turn heater off.
-    """
     global heater_state
     current_temp = sensors.get("temp", 20)
     target_temp = data.get("target_temp", 25)
@@ -227,24 +190,19 @@ def update_heater(data, sensors):
         heater_state = False
     heater_line.set_value(1 if heater_state else 0)
 
-# Initialize heater state
-heater_state = False
-
 # --- Main Event Loop ---
 while True:
     current_time = time.monotonic()
     
-    # --- Ultrasonic Sensor Sampling (Every 5 Seconds) ---
+    # Ultrasonic sampling
     if current_time >= next_ultrasonic_sample:
-        # Measure distance in centimeters
         distance_cm = ultrasonic_sensor.distance * 100
-        # Update the Firebase node with the ultrasonic sensor reading
         sensor_readings_ref.update({"ultrasonic": distance_cm})
         next_ultrasonic_sample = current_time + 5
 
-    data = ref.get()  # Fetch latest Flags values
+    data = ref.get()
 
-    # Process bottom light
+    # Bottom light processing
     comp = components["bottom_light"]
     mode = data.get(comp["mode_key"], "manual")
     if data.get(comp["init_key"], False):
@@ -255,10 +213,7 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 comp["gpio"].set_value(1 if comp["state"] else 0)
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
         elif mode == "adaptive":
             if data.get("adp_bottom_light_edit", False):
                 update_adaptive_schedule("bottom_light", data, current_time)
@@ -266,12 +221,9 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 comp["gpio"].set_value(1 if comp["state"] else 0)
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
 
-    # Process top light
+    # Top light processing
     comp = components["top_light"]
     mode = data.get(comp["mode_key"], "manual")
     if data.get(comp["init_key"], False):
@@ -282,10 +234,7 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 comp["gpio"].set_value(1 if comp["state"] else 0)
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
         elif mode == "adaptive":
             if data.get("adp_top_light_edit", False):
                 update_adaptive_schedule("top_light", data, current_time)
@@ -293,12 +242,9 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 comp["gpio"].set_value(1 if comp["state"] else 0)
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
 
-    # Process bottom water
+    # Bottom water processing
     comp = components["bottom_water"]
     mode = data.get(comp["mode_key"], "manual")
     if data.get(comp["init_key"], False):
@@ -309,17 +255,14 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 set_valve(comp, comp["state"])
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
         elif mode == "adaptive":
             sensors = db.reference("Sensors").get()
             soil_value = sensors.get("soil_2", 700)
             adaptive_water_logic("bottom_water", soil_value, current_time)
             set_valve(comp, comp["state"])
 
-    # Process top water
+    # Top water processing
     comp = components["top_water"]
     mode = data.get(comp["mode_key"], "manual")
     if data.get(comp["init_key"], False):
@@ -330,23 +273,20 @@ while True:
             if current_time >= comp["next_toggle"]:
                 comp["state"] = not comp["state"]
                 set_valve(comp, comp["state"])
-                if comp["state"]:
-                    comp["next_toggle"] = current_time + comp["on_duration"]
-                else:
-                    comp["next_toggle"] = current_time + comp["off_duration"]
+                comp["next_toggle"] = current_time + (comp["on_duration"] if comp["state"] else comp["off_duration"])
         elif mode == "adaptive":
             sensors = db.reference("Sensors").get()
             soil_value = sensors.get("soil_1", 700)
             adaptive_water_logic("top_water", soil_value, current_time)
             set_valve(comp, comp["state"])
 
-    # Process manual mode for lights and water valves
+    # Manual mode override
     handle_manual_mode(data)
 
-    # Update pump state based on combined water states
+    # Update pump
     update_pump(data)
 
-    # Heater control: Independent of other modes.
+    # Update heater
     sensors = db.reference("Sensors").get()
     update_heater(data, sensors)
 
