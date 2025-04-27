@@ -23,7 +23,7 @@ The Simple Sprouts software stack consists of several interconnected components 
 - **Components Controlled**: Water pump, solenoid valves, grow lights, heater
 - **Data Flow**: Firebase → Python → GPIO → MOSFET → Actuator
 
-#### Camera Module (`camera.py`)
+#### Camera Module (`Camera_noIR.py`)
 - **Purpose**: Captures plant images and generates NDVI analysis
 - **Dependencies**: PiCamera, OpenCV, numpy
 - **Image Processing**: Standard and NDVI (Normalized Difference Vegetation Index)
