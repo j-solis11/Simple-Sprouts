@@ -1,6 +1,7 @@
 # Simple Sprouts - Smart Vertical Farming System
 
-![Simple Sprouts Logo](<img width="407" alt="image" src="https://github.com/user-attachments/assets/93e18142-89ab-45df-8079-82ec185c440a" />)
+<img width="407" alt="image" src="https://github.com/user-attachments/assets/442f44fd-c66f-480e-8735-e83bc1084b3e" />
+
 
 ## Quick Start Guide
 
