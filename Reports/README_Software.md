@@ -38,12 +38,13 @@
 
 ### LLM-Based Adaptive Control (Raspberry Pi)
 
-**Location:** `/rpi_ai/`
+**Location:** `/Model_Code/`
 
 This module adapts system behavior based on real-time environmental data using lightweight machine learning models.
 
 **Main components:**
-<SCRIPTS>
+`/Model_Code/Camera_noIr.py`
+`/Model_Code/image_retrival.py`
 
 **Technologies used:**
 <SOURAV>
