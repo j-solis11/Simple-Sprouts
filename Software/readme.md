@@ -93,6 +93,11 @@ The camera and model code:
 - React Native Expo 0.22.15
 - Expo Go SDK 52
 
+
+
+## Flow Diagram
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+
 ## Software Dependencies and Versions
 
 | Component | Version | Notes |
@@ -106,7 +111,6 @@ The camera and model code:
 | Expo Go | 52.0.0 | React Native development platform |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
-## Flow Diagram
-<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+## Installation Guide
 
 
