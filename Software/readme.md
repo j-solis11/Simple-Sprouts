@@ -114,6 +114,6 @@ The camera and model code:
 ## Installation Guide
 
 1. Clone the repository 
-'''bash
+```bash
    git clone https://github.com/j-solis11/Simple-Sprouts.git
-'''
+```
