@@ -90,8 +90,9 @@ The camera and model code:
 - Firebase API
 - OpenCv
 
-- React Native Expo 0.22.15
-- Expo Go SDK 52
+## Flowchart of Modules
+
+---
 
 ## Software Dependencies and Versions
 
