@@ -8,11 +8,9 @@ The Simple Sprouts software stack consists of several interconnected components 
 
 ## Software Architecture and Modules
 
-### Core Software Modules
-
 ---
 
-#### Mobile App Interface (React Native / Expo)
+### Mobile App Interface (React Native / Expo)
 
 **Location:** `/React_App`
 
@@ -49,7 +47,7 @@ The mobile app provides a user interface for:
 
 ---
 
-#### Sensing Script (Python / Raspberry Pi)
+### Sensing Script (Python / Raspberry Pi)
 
 **Location:** `/Sensing_Actuation_Code`
 
@@ -69,7 +67,7 @@ The mobile app provides a user interface for:
 
 ---
 
-#### Model and camera code
+## Model and camera code
 
 **Location:** `/Model_Code`
 
@@ -94,11 +92,21 @@ The camera and model code:
 - Firebase API
 - OpenCv
 
-
-
-## Software Dependencies and Versions
 - React Native Expo 0.22.15
 - Expo Go SDK 52
+
+## Software Dependencies and Versions
+
+| Component | Version | Notes |
+|-----------|---------|-------|
+| Python | 3.11.2 | Core language for Raspberry Pi scripts |
+| Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
+| PiCamera2 | 0.3.25 | Camera interface library |
+| OpenCV | 4.8.0 | Image processing library |
+| Node.js | 18.16.0 | Required for React Native development |
+| React Native | 0.22.15 | Mobile/web application framework |
+| Expo Go | 52.0.0 | React Native development platform |
+| MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
 ## Flow Diagram
 <img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
