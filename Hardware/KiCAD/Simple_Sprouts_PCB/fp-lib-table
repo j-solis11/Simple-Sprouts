@@ -1,0 +1,7 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "my-LED-4mm-3mm")(type "KiCad")(uri "${KIPRJMOD}/my-LED-4mm-3mm.pretty")(options "")(descr ""))
+  (lib (name "RASPBERRY_PI_4B_4GB")(type "KiCad")(uri "${KIPRJMOD}/RASPBERRY_PI_4B_4GB")(options "")(descr ""))
+  (lib (name "Library")(type "KiCad")(uri "${KIPRJMOD}/No_Footprint.pretty/Library.pretty")(options "")(descr ""))
+  (lib (name "No_Footprint")(type "KiCad")(uri "${KIPRJMOD}/No_Footprint.pretty")(options "")(descr ""))
+)

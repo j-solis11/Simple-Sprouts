@@ -47,6 +47,55 @@ The mobile app provides a user interface for:
 
 ---
 
+---
+
+## Sensing Script (Python / Raspberry Pi)
+
+**Location:** `/Sensing_Actuation_Code`
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+
+
+---
+
+## Model and camera code
+
+**Location:** `/Model_Code`
+
+The camera and model code:
+- Takes routine images of the plants
+- Processes the images into NVDI images to aid in assessing plant health   
+- Sends images up to firebase to be displayed on the web app
+- Stores images locally to be passes to model
+- Model assess plant health and qualifications to be planted within the planter box
+- Model also gives recommendations and schedules on how to take care of plants
+
+**Main components:**
+- `Model_Code/Camera_noIR.py`: 
+   - Takes pictures of the plants and processes them then sends to firebase
+- `Model_Code/image_retrival.py`: 
+   - Waits for prompts from teh web app to query model
+
+
+**Technologies used:**
+- NoIR camera
+- MoonDream cloud API
+- Firebase API
+- OpenCv
+
+---
+
 #### Sensing Module (`sensing.py`)
 - **Purpose**: Reads data from all environmental and soil sensors
 - **Dependencies**: Adafruit libraries for I2C sensors, Firebase Admin SDK
@@ -91,6 +140,7 @@ The mobile app provides a user interface for:
 | React Native | 0.72.6 | Mobile/web application framework |
 | Expo | 49.0.0 | React Native development platform |
 | Firebase JS SDK | 10.1.0 | JavaScript library for Firebase integration |
+| Pyrebase4 | 4.8.0 | A python wrapper of the Firebase API |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
 ## Flow Diagram
