@@ -112,13 +112,9 @@ The camera and model code:
 - Firebase API
 - OpenCv
 
-## Flowchart of Modules
-
 ---
 
-
-
-## Flowchart of Diagram
+## Flowchart of Modules
 <img width="654" title="Software Diagram" src="../Assets/BlockDiagram.png" />
 
 Here you can see the main flow of data in our logic. Firebase holds all of the hooks into the other modules, which allow the system to work with setting flags and exchanging data. All of the communication is designed with the UI either calling and recieving from the LLM or setting and receiving the sensor/actuation control.
