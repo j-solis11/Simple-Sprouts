@@ -133,7 +133,7 @@ The camera and model code:
 | Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
 | Adafruit CircuitPython | 8.2.9 | Library for sensor communication |
 | PiCamera2 | 0.3.25 | Camera interface library |
-| OpenCV | 4.8.0 | Image processing library |
+| OpenCV | 4.10.0.84 | Image processing library |
 | Node.js | 18.16.0 | Required for React Native development |
 | React Native | 0.72.6 | Mobile/web application framework |
 | Expo | 49.0.0 | React Native development platform |
