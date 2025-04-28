@@ -153,6 +153,7 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 ```bash
    git clone https://github.com/j-solis11/Simple-Sprouts.git
 ```
+### Model
 2. Create venv for camera and model code
 ```bash
 python3 -m venv camera_and_model
@@ -171,4 +172,21 @@ sudo apt install -y python3-picamera2
 python Camera_noIr.py
 python image_retrival.py
 ```
+
+### React App
+2. Navigate to /Software/React_App/app/services/firebaseService.ts to put in Firebase API Key.
+
+3. Open Command Prompt and navigate to /Software/React_App. 
+
+4. Install Expo
+```bash
+npm install expo
+```
+
+5. Start app
+```bash
+npx expo start --tunnel
+```
+
+
 
