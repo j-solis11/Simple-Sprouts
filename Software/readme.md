@@ -14,7 +14,7 @@ The Simple Sprouts software stack consists of several interconnected components 
 
 ## Mobile App Interface (React Native / Expo)
 
-**Location:** `/Model_Code`
+**Location:** `/React_App`
 
 The mobile app provides a user interface for:
 - Viewing real-time sensor data
@@ -30,12 +30,20 @@ The mobile app provides a user interface for:
 - `app/services/firebaseServices.tsx`: 
    - Allows communication to Firebase to connect to modules on Raspberry Pi 5
 - `app/screens/BasicStatus.tsx`: 
-   - Opening screen for the UI in which 
-- `app/screens/BasicStatus.tsx`: 
-
+   - Opening screen for the UI 
+   - Allows user to see the status of each plant level or reinitialize a new plant
+- `app/screens/more_info/ModeInfo.tsx`: 
+   - Allows the user to see information pertinent to each mode, i.e. time till next schedule for Scheduling Mode
+   - Initializes mode switching
+- `app/screens/more_info/HealthInfo.tsx`: 
+   - Allows the user to view Plant Health Analysis, which shows LLM results to queries that highlight health
+   - Communicates with LLM to allow the user to query the model directly
+- `app/screens/more_info/PlantInfo.tsx`: 
+   - Displays current and historical sensor information
 
 **Technologies used:**
-- React Native Expo 
+- React Native Expo 0.22.15
+- Expo Go SDK 52
 
 ---
 
