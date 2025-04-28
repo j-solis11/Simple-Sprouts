@@ -83,9 +83,9 @@ The camera and model code:
 
 **Main components:**
 - `Model_Code/Camera_noIR.py`: 
-   - Takes pictures of the plants and processes them then sends to firebase
+   - Captures plant images and generates NDVI analysis to then send to Firebase
 - `Model_Code/image_retrival.py`: 
-   - Waits for prompts from teh web app to query model
+   - Analyzes plant health and responds to user queries
 
 
 **Technologies used:**
