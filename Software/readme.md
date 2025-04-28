@@ -10,6 +10,35 @@ The Simple Sprouts software stack consists of several interconnected components 
 
 ### Core Software Modules
 
+---
+
+## Mobile App Interface (React Native / Expo)
+
+**Location:** `/Model_Code`
+
+The mobile app provides a user interface for:
+- Viewing real-time sensor data
+- Switching   
+- Managing manual watering and lighting schedules
+- Switching between manual and adaptive modes
+- Viewing historical trends in environmental parameters
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+- React Native Expo 
+
+---
+
 #### Sensing Module (`sensing.py`)
 - **Purpose**: Reads data from all environmental and soil sensors
 - **Dependencies**: Adafruit libraries for I2C sensors, Firebase Admin SDK
