@@ -48,7 +48,7 @@ The Simple Sprouts software stack consists of several interconnected components 
 | Python | 3.11.2 | Core language for Raspberry Pi scripts |
 | Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
 | Adafruit CircuitPython | 8.2.9 | Library for sensor communication |
-| PiCamera | 1.13 | Camera interface library |
+| PiCamera2 | 0.3.25 | Camera interface library |
 | OpenCV | 4.8.0 | Image processing library |
 | Node.js | 18.16.0 | Required for React Native development |
 | React Native | 0.72.6 | Mobile/web application framework |
