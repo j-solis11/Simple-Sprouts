@@ -39,6 +39,28 @@ The mobile app provides a user interface for:
 
 ---
 
+---
+
+## Sensing Script (Python / Raspberry Pi)
+
+**Location:** `/Sensing_Actuation_Code`
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+
+
+---
+
 ## Model and camera code
 
 **Location:** `/Model_Code`
