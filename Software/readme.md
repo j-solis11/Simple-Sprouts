@@ -47,8 +47,6 @@ The mobile app provides a user interface for:
 
 ---
 
----
-
 ## Sensing Script (Python / Raspberry Pi)
 
 **Location:** `/Sensing_Actuation_Code`
