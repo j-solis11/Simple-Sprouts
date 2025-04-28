@@ -153,8 +153,22 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 ```bash
    git clone https://github.com/j-solis11/Simple-Sprouts.git
 ```
-2. Install all the dependencies
+2. Create venv for camera and model code
 ```bash
+python3 -m venv camera_and_model
+source camera_and_model/bin/activate
 ```
-3.
+3.Install dependencies for camera and model
+```bash
+pip install firebase-admin
+pip install opencv-python
+pip install pyrebase4
+pip install requests
+sudo apt install -y python3-picamera2
+```
+4. Activate camera and model code in 2 seperate terminals
+```bash
+python Camera_noIr.py
+python image_retrival.py
+```
 
