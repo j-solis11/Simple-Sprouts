@@ -118,3 +118,8 @@ The camera and model code:
 ```bash
    git clone https://github.com/j-solis11/Simple-Sprouts.git
 ```
+2. Install all the dependencies
+```bash
+```
+3.
+
