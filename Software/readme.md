@@ -147,7 +147,7 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 | gpiozero | 2.0.2 | Gpio Control |
 
 
-## Installation Guide
+## Installation and Start up Guide
 
 1. Clone the repository 
 ```bash
