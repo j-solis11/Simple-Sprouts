@@ -93,7 +93,7 @@ Notes:
 
 The camera and model code:
 - Takes routine images of the plants
-- Processes the images into NVDI images to aid in assessing plant health   
+- Processes the images into NDVI images to aid in assessing plant health   
 - Sends images up to firebase to be displayed on the web app
 - Stores images locally to be passes to model
 - Model assess plant health and qualifications to be planted within the planter box
