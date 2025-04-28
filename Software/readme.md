@@ -54,15 +54,15 @@ The mobile app provides a user interface for:
 
 #### Camera Module (`Camera_noIR.py`)
 - **Purpose**: Captures plant images and generates NDVI analysis
-- **Dependencies**: PiCamera, OpenCV, numpy, Firebase Admin SDK
+- **Dependencies**: PiCamera, OpenCV, numpy
 - **Image Processing**: Standard and NDVI (Normalized Difference Vegetation Index)
 - **Data Flow**: NoIR Camera → Python → Base64 Encoding → Firebase → Web App
 
-#### AI Module (`image_retrival.py`)
+#### AI Module (`model.py`)
 - **Purpose**: Analyzes plant health and responds to user queries
 - **Dependencies**: MoonDream Cloud API, Firebase Admin SDK
 - **Features**: Automated health assessment, custom query handling
-- **Data Flow**: Firebase → Python → MoonDream Cloud API → Firebase → Web App
+- **Data Flow**: Firebase → Python → MoonDream API → Firebase → Web App
 
 #### Web/Mobile App (React Native Expo)
 - **Purpose**: User interface for system control and monitoring
@@ -77,7 +77,7 @@ The mobile app provides a user interface for:
 | Python | 3.11.2 | Core language for Raspberry Pi scripts |
 | Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
 | Adafruit CircuitPython | 8.2.9 | Library for sensor communication |
-| PiCamera | 1.13 | Camera interface library |
+| PiCamera2 | 0.3.25 | Camera interface library |
 | OpenCV | 4.8.0 | Image processing library |
 | Node.js | 18.16.0 | Required for React Native development |
 | React Native | 0.72.6 | Mobile/web application framework |
@@ -86,3 +86,6 @@ The mobile app provides a user interface for:
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
 ## Flow Diagram
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+
+
