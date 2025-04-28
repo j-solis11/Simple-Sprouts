@@ -49,22 +49,46 @@ The mobile app provides a user interface for:
 
 **Location:** `/Sensing_Actuation_Code`
 
-**Main components:**
-- `app/navigation/AppNavigator.js`: 
-   - Allows navigation between different screens in the app
-   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
-- `app/services/firebaseServices.tsx`: 
-   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
-- `app/screens/BasicStatus.tsx`: 
-   - Opening screen for the UI in which 
-- `app/screens/BasicStatus.tsx`: 
+   The Sensing_code.py allows Simple Sprouts to continuously monitor soil moisture, air temperature, humidity, CO₂ levels, and water tank levels, uploading this data in real time to Firebase for live user monitoring and automation. The Actuation_code.py uses this sensor data along with flags set from the user app to control the watering system, grow lights, and heater, enabling fully autonomous plant care across Manual, Scheduled, and Adaptive modes. Together, they allow the system to respond to environmental changes, automate daily routines, and minimize manual intervention for indoor vertical farming. 
 
+**Main components:**
+- `Sensing_Actuation_Code/sensing_code.py`: 
+   - Continuously reads environmental data from AHT20 (temperature/humidity), PCT2075 (temperature), and SGP30 (CO₂/TVOC) sensors over I2C​
+   - Sample soil moisture and soil temperature from two Adafruit Seesaw soil sensors with different I2C addresses​ (0x36 and 0x39)
+   - Structures all sensor readings into a JSON dictionary with timestamps for organized database updates
+   - Uploads the latest sensor data every 2 seconds to the /sensor_readings/latest node in Firebase Realtime Database​
+
+- `Sensing_Actuation_Code/Actuation_code.py`: 
+   - Manages GPIO-controlled components (lights, valves, pump, heater) on the Raspberry Pi 5 using gpiod and gpiozero libraries
+   - Reads control flags and schedules from the Firebase flags_test node to determine component actions and schedules in their respective modes
+   - Toggles components on/off based on time-based scheduling or live soil moisture readings
+   - Samples an ultrasonic sensor every 5 seconds to measure water tank level and updates the reading to the sensor readings node in Firebase
+   - Controls heater based on real-time air temperature relative to a user-defined target temperature
 
 **Technologies used:**
+- Libraries Used
+  - firebase-admin
+  - adafruit-circuitpython-sgp30
+  - adafruit-circuitpython-ahtx0
+  - adafruit-circuitpython-pct2075
+  - adafruit-circuitpython-seesaw
+  - board
+  - busio
+  - json
+  - time
+  - gpiod
+  - gpiozero
+- Raspberry Pi 5
+- Firebase Realtime Database
+- Python3
 
+Notes: 
+- Sensing_code.py - Must be ran inside a Python virtual environment (venv) or conda env because Adafruit CircuitPython libraries are installed via pip. I2C must be enabled on the Raspberry Pi. I2C can be enabled using sudo raspi-config.
+- Actuation_code.py - Must be ran outside any Python environment because access to /dev/gpiochip0 and GPIO requires special device permissions that the venv typically doesn't have
+- You need to have libgpiod installed on the system (sudo apt install gpiod)
+- The Firebase credentials file must be correctly set in the absolute path
 
 ---
-
 ## Model and Camera modules (Python / Raspberry Pi)
 
 **Location:** `/Model_Code`
