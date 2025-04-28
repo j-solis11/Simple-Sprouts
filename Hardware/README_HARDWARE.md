@@ -93,6 +93,24 @@ All referenced datasheets are stored locally in /Hardware/References/ for offlin
 - Confirm 5V and 12V outputs before wiring critical loads.
 - Avoid running pump and Peltier at full load simultaneously for long periods unless supply margin is verified.
 
+## Power Requirements
+
+| **Component**                | **Voltage Requirement** | **Current Draw**     | **Power Source**         |
+|:------------------------------|:------------------------|:---------------------|:--------------------------|
+| Raspberry Pi 5                | 5V                      | 3A                   | 24-5V USB-C Converter     |
+| NoIR Camera Module (x2)        | 5V                      | 125 mA (each)         | 24-5V Converter           |
+| Water Cooled Water Pump       | 12V                     | 300 mA               | 24-12V Converter          |
+| Peltier Heating Module        | 12V                     | 4A                   | 24-12V Converter          |
+| Solenoid Valve (x2)           | 12V                     | 250 mA (each)         | 24-12V Converter          |
+| Grow Light LED Strips (x2)    | 5V                      | 3A (each)            | 24-5V Converter           |
+| Soil Moisture Sensors (x2)    | 5V                      | 10 mA (each)         | 24-5V Converter           |
+| Temperature Sensor            | 5V                      | 2.5 mA               | 24-5V Converter           |
+| Humidity Sensor               | 5V                      | 2.5 mA               | 24-5V Converter           |
+| Air Quality Sensor            | 5V                      | 2.5 mA               | 24-5V Converter           |
+| Ultrasonic Distance Sensor    | 5V                      | 15 mA                | 24-5V Converter           |
+
+*Table: Summary of Power Requirements*
+
 ## 5. System Photographs and Assembly Documentation
 
 Photographs have been captured and placed in /Hardware/Photos/ showing:
