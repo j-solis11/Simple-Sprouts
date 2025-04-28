@@ -12,7 +12,7 @@ indoors with minimal intervention.
 ### Project Overview
 
 - **Build Status**: Completed and functional (April 2025)
-- **Core Components**: Raspberry Pi 5, Custom PCB, Dual-tier irrigation, Grow lights, Peltier temperature module, NoIR cameras
+- **Core Components**: Raspberry Pi 5, Custom PCB, Dual-Tier irrigation, Grow lights, Peltier temperature module, NoIR cameras
 - **Key Features**: Three operation modes (Manual, Scheduled, Adaptive), AI plant health monitoring, Web-based user interface
 - **Project Team**: Boston University ECE Senior Design Team 26 (Spring 2025)
 
@@ -68,31 +68,30 @@ indoors with minimal intervention.
 
 ## Known Issues & Gotchas
 - Sensor Drift: Soil moisture sensors may drift over time and require recalibration.
-- Valve Inrush Current: Brief inrush currents may exceed rated steady-state levels.
-- Peltier Load: Ensure adequate ventilation to avoid overheating.
-- Grounding Issues: Poor grounding can cause intermittent sensor failures.
-- Tubing Leaks: Always test irrigation fittings under pressure after installation.
-- Temperature Sensors: Placement matters to get true ambient readings.
+- Minor Leakage Possible: Valves tend to leak after overuse. Not used enough usually to reach this stage.
+- 
 
 ## Recommendations for Future Improvements
 - Integrated load sensing for real-time diagnostics.
 - Upgrade water tank sensing to more reliable float sensors.
 - Add battery backup or solar integration for off-grid use.
-- Modular sensor connectors for easier field replacement.
+- Get better fitted valve fittings to combat leakage. 
+- 
 
 ## Current State and Future Development
 
 ### Current Implementation
 - Fully functional Manual, Scheduled, and Adaptive modes.
 - Full web-based control and monitoring.
-- AI-powered NDVI-based plant health monitoring.
+- NDVI-based plant health monitoring.
 - Real-time sensor logging via Firebase.
 
 ### Potential Future Development
 - Cost-reduction through lower-cost microcontrollers.
 - Local AI model deployment to reduce cloud dependency.
-- Enhanced environmental control (humidity management).
+- Enhanced environmental control, i.e. humidity and CO2 control
 - Expansion to multiple layered growth systems.
+- Integrating multiple users on the same household
 
 ### Critical Information for Future Teams
 
