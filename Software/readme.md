@@ -56,4 +56,7 @@ The Simple Sprouts software stack consists of several interconnected components 
 | Firebase JS SDK | 10.1.0 | JavaScript library for Firebase integration |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
-## Flow Diagramreadme
+## Flow Diagram
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+
+
