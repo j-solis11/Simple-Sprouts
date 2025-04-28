@@ -5,7 +5,9 @@
 
 ## Quick Start Guide
 
-Simple Sprouts is an autonomous vertical farming system designed for compact urban environments like university campuses and restaurants. The system integrates smart sensing, adaptive watering and lighting, and AI-based plant health monitoring to enable users to grow plants indoors with minimal intervention.
+Simple Sprouts is an autonomous vertical farming system designed for compact urban environments like university campuses and restaurants.
+The system integrates smart sensing, adaptive watering and lighting, and AI-based plant health monitoring to enable users to grow plants
+indoors with minimal intervention.
 
 ### Project Overview
 
@@ -14,7 +16,7 @@ Simple Sprouts is an autonomous vertical farming system designed for compact urb
 - **Key Features**: Three operation modes (Manual, Scheduled, Adaptive), AI plant health monitoring, Web-based user interface
 - **Project Team**: Boston University ECE Senior Design Team 26 (Spring 2025)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Raspberry Pi 5 with microSD card (16GB+ recommended)
@@ -31,7 +33,65 @@ Simple Sprouts is an autonomous vertical farming system designed for compact urb
 5. Initialize plant settings through the app interface
 6. Add growing medium and plant material to the containers
 
-## ⚠️ Known Issues & Gotchas
+### Current Hardware State
+
+- PCB: Fully functional, successfully powering all components through MOSFET switching.
+- Power: Stable across all voltage rails (24V input, 12V and 5V regulated buses).
+- Irrigation: Pump and solenoid valves reliably operate under manual, scheduled, and adaptive modes.
+- Sensing: Soil moisture, temperature/humidity, air quality, and water tank level sensors provide live data.
+- Heating: Peltier module + fan assembly actively regulates internal enclosure temperature.
+- Enclosure: Sturdy, functional, and water-safe with protective barriers installed.
+- Dashboard/Control: Hardware successfully communicates sensor and actuator states via Firebase and web app.
+
+### Critical Lessons Learned
+
+## PCB Design and Assembly
+- Footprint Accuracy: Double-check footprints for all parts, especially connectors and larger diodes.
+- Part Availability: Use components from suppliers that support automated assembly.
+- Clear Labeling: Label all terminal blocks and GPIO pinouts.
+- Flyback Protection: Always include flyback diodes across inductive loads, even as a just in case.
+
+## Power System
+- Oversize Power Supplies: Choose power supplies with 25–50% more headroom.
+- Separate High/Low Power Paths: Keep high-current and sensitive signal paths isolated.
+
+## Mechanical Assembly
+- Splash Protection: Physical separation between water and electronics is critical.
+- Wire Management: Use cable sleeves and zip ties to prevent mechanical stress.
+
+## Testing and Validation
+- System-Level Testing: Validate subsystems individually before full integration.
+- Sensor Calibration: Calibrate sensors in the actual environment.
+
+## Documentation: Maintain detailed wiring diagrams from the beginning.
+
+## Known Issues & Gotchas
+- Sensor Drift: Soil moisture sensors may drift over time and require recalibration.
+- Valve Inrush Current: Brief inrush currents may exceed rated steady-state levels.
+- Peltier Load: Ensure adequate ventilation to avoid overheating.
+- Grounding Issues: Poor grounding can cause intermittent sensor failures.
+- Tubing Leaks: Always test irrigation fittings under pressure after installation.
+- Temperature Sensors: Placement matters to get true ambient readings.
+
+### Recommendations for Future Improvements
+- Integrated load sensing for real-time diagnostics.
+- Upgrade water tank sensing to more reliable float sensors.
+- Add battery backup or solar integration for off-grid use.
+- Modular sensor connectors for easier field replacement.
+
+### Current State and Future Development
+
+## Current Implementation
+- Fully functional Manual, Scheduled, and Adaptive modes.
+- Full web-based control and monitoring.
+- AI-powered NDVI-based plant health monitoring.
+- Real-time sensor logging via Firebase.
+
+## Potential Future Development
+- Cost-reduction through lower-cost microcontrollers.
+- Local AI model deployment to reduce cloud dependency.
+- Enhanced environmental control (humidity management).
+- Expansion to multiple layered growth systems.
 
 ### Critical Information for Future Teams
 
@@ -58,36 +118,27 @@ Simple Sprouts is an autonomous vertical farming system designed for compact urb
    - NoIR cameras must be positioned at specific angles for proper plant assessment. Use the 3D-printed mounts.
    - The NDVI analysis uses specific thresholds for plant health determination - see model.py for details.
 
-## 🔧 Current State & Future Development
-
-### Current Implementation
-- All three control modes are fully functional (Manual, Scheduled, Adaptive)
-- Web application provides full control and monitoring capabilities
-- AI plant health assessment with NDVI analysis is operational
-- Temperature control via Peltier module maintains growing environment
-- Firebase integration allows real-time data monitoring and remote control
-
-### Potential Improvements
-- Replace Raspberry Pi 5 with less expensive microcontroller for cost reduction
-- Implement local AI model to reduce cloud dependency
-- Add humidity control for better environmental management
-- Integrate multiple plant types with specific care requirements
-- Expand to more than two growing layers using the same control infrastructure
-
-## 📁 Repository Structure
+### Repository Structure
 
 - `/Hardware` - PCB design files, component specifications, and hardware documentation
 - `/Software` - Control scripts, web application code, and software implementation details
 - `/Assets` - Images, diagrams, and supplementary files
 - `/Documentation` - User manual, test plans, and additional project documentation
 
-## 👥 Original Team Members
+### Original Team Members
 
 - Jared Solis (jared11@bu.edu)
 - Sourav Shib (shib0826@bu.edu)
 - Arthur Hua (ahua102@bu.edu)
 - Dilhara DeSilva (dilharad@bu.edu)
 - Alex Muntean (munteana@bu.edu)
+
+### Conclusion
+
+Simple Sprouts is a fully functioning prototype that brings together embedded systems, smart sensing,
+adaptive control, and sustainable agriculture. Moving forward, careful attention to hardware reliability,
+documentation quality, and iterative improvements will allow future teams to scale, enhance, and adapt the
+platform to even greater applications.
 
 *Boston University Electrical & Computer Engineering*  
 *EC 464 Senior Design - Spring 2025*
