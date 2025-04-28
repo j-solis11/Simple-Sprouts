@@ -83,6 +83,7 @@ The mobile app provides a user interface for:
 | React Native | 0.72.6 | Mobile/web application framework |
 | Expo | 49.0.0 | React Native development platform |
 | Firebase JS SDK | 10.1.0 | JavaScript library for Firebase integration |
+| Pyrebase4 | 4.8.0 | A python wrapper of the Firebase API |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
 ## Flow Diagram
