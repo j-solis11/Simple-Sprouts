@@ -10,7 +10,7 @@ This document serves as the complete hardware report, detailing schematics, PCB/
 ## 1. Schematics, PCB, and CAD Diagrams
 
 ### Schematic Files:
-- KiCad 8.0 project files (.sch) are located in /Hardware/Schematics/
+- KiCad 8.0 project files (.sch) are located in /Hardware/KiCAD/Simple_Sprouts_PCB
 - PDF exports of full schematic diagrams are provided for easy reference.
 
 ### PCB Layout Files:
@@ -20,11 +20,11 @@ This document serves as the complete hardware report, detailing schematics, PCB/
   - 2mm traces for high-current paths
   - 0.25mm traces for logic-level signals
   - Separate 12V and Ground planes
-- 3D visualizations of PCB assembly available in /Hardware/Photos/
+- 3D visualizations of PCB assembly available in /Assets
 
 ### CAD Drawings:
 - Mechanical design built primarily from plywood and 1/8" acrylic panels.
-- Simple 2D CAD sketches (PDF) and final enclosure photographs provided in /Hardware/Photos/
+- Simple 2D CAD sketches (PDF) and final enclosure photographs provided in /Assets
 
 ## 2. Vendor Information and Bill of Materials (BOM)
 
@@ -52,19 +52,18 @@ This document serves as the complete hardware report, detailing schematics, PCB/
 - M3 Screws and Nylon Standoffs
 
 ### Complete BOM:
-- Located in /Hardware/BOM/SimpleSprouts_BOM.xlsx
+- Located in /Hardware/Datasheets/SimpleSprouts_BOM.xlsx
 - Includes quantity, part number, description, supplier link.
 
 ## 3. References to Datasheets and Design Resources
+All are available in /Hardware/Datasheets
 - MOSFET Datasheet: CSD18532Q5B
 - Flyback Diode Datasheet: SS510 Schottky Diode Datasheet
 - Phoenix Terminal Block Datasheet: 1751248 Datasheet
 - Soil Moisture Sensor: Capacitive Sensor General Guide
 - DHT22 Datasheet: DHT22 Humidity and Temperature Sensor
-- Peltier Module Datasheet: TEC1-12706 (available in /Hardware/References/)
-- MQ-135 Air Quality Sensor Datasheet: (available in /Hardware/References/)
-
-All referenced datasheets are stored locally in /Hardware/References/ for offline use.
+- Peltier Module Datasheet: TEC1-12706 (available in /Hardware/Datasheets/HardwareSensors/heater.pdf)
+- MQ-135 Air Quality Sensor Datasheet: (available in /Hardware/Datasheets/HardwareSensors/air quality sensor.pdf)
 
 ## 4. Power Requirements
 
@@ -113,7 +112,7 @@ All referenced datasheets are stored locally in /Hardware/References/ for offlin
 
 ## 5. System Photographs and Assembly Documentation
 
-Photographs have been captured and placed in /Hardware/Photos/ showing:
+Photographs have been captured and placed in /Assets showing:
 - PCB Top View (fully populated)
 - PCB Side View (showing component height and header stacking)
 - Full System Inside View (component wall and irrigation)
@@ -128,9 +127,8 @@ Photographs have been captured and placed in /Hardware/Photos/ showing:
 - Keep DC-DC converters in ventilated spaces inside the frame.
 
 ## 6. Additional Resources
-- KiCad Project Backup (/Hardware/Schematics/FullProjectBackup.zip)
+- KiCad Project Backup (/Hardware/KiCAD/Simple_Sprouts_PCB/Simple_Sprouts_PCB-backups)
 - Web links to component datasheets.
-- Assembly and Testing Guide (SimpleSprouts_SetupGuide.pdf).
 
 ## Conclusion
 
