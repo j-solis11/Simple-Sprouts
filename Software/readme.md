@@ -45,55 +45,26 @@ The mobile app provides a user interface for:
 
 ---
 
-## Sensing & Actuation Scripts (Python / Raspberry Pi)
+### Sensing Script (Python / Raspberry Pi)
 
 **Location:** `/Sensing_Actuation_Code`
 
-   The Sensing_code.py allows Simple Sprouts to continuously monitor critical growing conditions like soil moisture, air temperature, humidity, CO₂ levels, and water tank levels, uploading this data in real time to Firebase for live user monitoring and automation. The Actuation_code.py uses this sensor data along with user settings to intelligently control the watering system, grow lights, and heater, enabling fully autonomous plant care across Manual, Scheduled, and Adaptive modes. Together, they allow the system to dynamically respond to environmental changes, automate daily routines, and minimize manual intervention for indoor vertical farming​. This seamless sensing and automation setup supports the core goal of Simple Sprouts: providing a smart, reliable, and low-maintenance growing solution for urban environments
-
-Functions of the script: 
-- Establish I2C connection with all 5 sensors  AHT20 (Humidity), PCT2075 (Temp), SGP30 (Air Quality), two Seesaw Soil Sensors
-- Sample sensors every 5 seconds and convert readings to useable metrics using sensor library
-- Uploaded live sensor readings to /sensor_readings/latest node in Firebase Realtime Database
-- Ensured real-time monitoring of temperature, humidity, CO2, TVOC, and soil moisture
-- Enable the environmental data to be used by the actuation script and the user app.
-
-
 **Main components:**
-- `Sensing_Actuation_Code/sensing_code.py`: 
-   - Continuously reads environmental data from AHT20 (temperature/humidity), PCT2075 (temperature), and SGP30 (CO₂/TVOC) sensors over I2C​
-   - Samples soil moisture and soil temperature from two Adafruit Seesaw soil sensors with different I2C addresses​
-   - Structures all sensor readings into a JSON dictionary with timestamps for organized database updates
-   - Uploads the latest sensor data every 2 seconds to the /sensor_readings/latest node in Firebase Realtime Database​
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
 
-- `Sensing_Actuation_Code/Actuation_code.py`: 
-   - Manages GPIO-controlled components (lights, valves, pump, heater) on the Raspberry Pi 5 using gpiod and gpiozero libraries
-   - Reads control flags and schedules from the Firebase flags_test node to determine component actions based on Manual, Scheduled, or Adaptive modes​
-   - Toggles components on/off based on time-based scheduling or live soil moisture readings for adaptive watering​
-   - Monitors an ultrasonic sensor every 5 seconds to measure water tank level and updates the reading to Firebase
-   - Independently controls heater activation based on real-time air temperature relative to a user-defined target temperature
 
 **Technologies used:**
-- Libraries Used
-  - firebase-admin
-  - adafruit-circuitpython-sgp30
-  - adafruit-circuitpython-ahtx0
-  - adafruit-circuitpython-pct2075
-  - adafruit-circuitpython-seesaw
-  - board
-  - busio
-  - json
-  - time
-  - gpiod
-  - gpiozero
 
-Notes: 
-- Sensing_code.py - Must be ran inside a Python virtual environment (venv) or conda env because Adafruit CircuitPython libraries are installed via pip. I2C must be enabled on the Raspberry Pi. I2C can be enabled using sudo raspiconfig.
-- Actuation_code.py - Must be ran outside any Python environment because access to /dev/gpiochip0 and GPIO requires special device permissions that the venv typically doesn't have
-- You need to have libgpiod installed on the system (sudo apt install gpiod)
-- Firebase credentials file must be correctly set in the absolute path
 
 ---
+
 ## Model and Camera modules (Python / Raspberry Pi)
 
 **Location:** `/Model_Code`
@@ -126,7 +97,9 @@ The camera and model code:
 
 
 ## Flow Diagram
-<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+<img width="654" title="Software Diagram" src="../Assets/BlockDiagram.png" />
+
+Here you can see the main flow of data in our logic. Firebase holds all of the hooks into the other modules, which allow the system to work with setting flags and exchanging data. All of the communication is designed with the UI either calling and recieving from the LLM or setting and receiving the sensor/actuation control.
 
 ## Software Dependencies and Versions
 
