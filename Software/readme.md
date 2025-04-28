@@ -153,6 +153,7 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 ```bash
    git clone https://github.com/j-solis11/Simple-Sprouts.git
 ```
+### Model
 2. Create venv for camera and model code
 ```bash
 python3 -m venv camera_and_model
@@ -171,4 +172,49 @@ sudo apt install -y python3-picamera2
 python Camera_noIr.py
 python image_retrival.py
 ```
+
+### React App
+2. Navigate to /Software/React_App/app/services/firebaseService.ts to put in Firebase API Key.
+
+3. Open Command Prompt and navigate to /Software/React_App. 
+
+4. Install Expo
+```bash
+npm install expo
+```
+
+5. Start app
+```bash
+npx expo start --tunnel
+```
+### Sensing and Actuation Code
+2. Create the environment for the sensing script
+```bash
+python3 -m venv sensing_env
+source sensing_env/bin/activate
+```
+3. Install dependencies for the sensing system
+```bash
+pip install firebase-admin adafruit-circuitpython-sgp30 adafruit-circuitpython-ahtx0 adafruit-circuitpython-pct2075 adafruit-circuitpython-seesaw adafruit-blinka
+```
+4. Enable I2C
+```bash
+sudo raspi-config
+sudo reboot
+```
+5. Install dependencies for the actuation script
+```bash
+sudo apt install python3-pip python3-gpiozero libgpiod-dev python3-libgpiod
+sudo pip3 install firebase-admin
+```
+6. Activate the environment for the sensing script
+```bash
+source sensing_env/bin/activate
+python Sensing_code.py
+```
+7. Run the actuation script (In another terminal)
+```bash
+python3 Actuation_code.py
+``
+
 
