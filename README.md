@@ -43,27 +43,27 @@ indoors with minimal intervention.
 - Enclosure: Sturdy, functional, and water-safe with protective barriers installed.
 - Dashboard/Control: Hardware successfully communicates sensor and actuator states via Firebase and web app.
 
-### Critical Lessons Learned
+## Critical Lessons Learned
 
-## PCB Design and Assembly
+### PCB Design and Assembly
 - Footprint Accuracy: Double-check footprints for all parts, especially connectors and larger diodes.
 - Part Availability: Use components from suppliers that support automated assembly.
 - Clear Labeling: Label all terminal blocks and GPIO pinouts.
 - Flyback Protection: Always include flyback diodes across inductive loads, even as a just in case.
 
-## Power System
+### Power System
 - Oversize Power Supplies: Choose power supplies with 25–50% more headroom.
 - Separate High/Low Power Paths: Keep high-current and sensitive signal paths isolated.
 
-## Mechanical Assembly
+### Mechanical Assembly
 - Splash Protection: Physical separation between water and electronics is critical.
 - Wire Management: Use cable sleeves and zip ties to prevent mechanical stress.
 
-## Testing and Validation
+### Testing and Validation
 - System-Level Testing: Validate subsystems individually before full integration.
 - Sensor Calibration: Calibrate sensors in the actual environment.
 
-## Documentation
+### Documentation
 - Maintain detailed wiring diagrams from the beginning.
 
 ## Known Issues & Gotchas
@@ -74,21 +74,21 @@ indoors with minimal intervention.
 - Tubing Leaks: Always test irrigation fittings under pressure after installation.
 - Temperature Sensors: Placement matters to get true ambient readings.
 
-### Recommendations for Future Improvements
+## Recommendations for Future Improvements
 - Integrated load sensing for real-time diagnostics.
 - Upgrade water tank sensing to more reliable float sensors.
 - Add battery backup or solar integration for off-grid use.
 - Modular sensor connectors for easier field replacement.
 
-### Current State and Future Development
+## Current State and Future Development
 
-## Current Implementation
+### Current Implementation
 - Fully functional Manual, Scheduled, and Adaptive modes.
 - Full web-based control and monitoring.
 - AI-powered NDVI-based plant health monitoring.
 - Real-time sensor logging via Firebase.
 
-## Potential Future Development
+### Potential Future Development
 - Cost-reduction through lower-cost microcontrollers.
 - Local AI model deployment to reduce cloud dependency.
 - Enhanced environmental control (humidity management).
@@ -119,14 +119,14 @@ indoors with minimal intervention.
    - NoIR cameras must be positioned at specific angles for proper plant assessment. Use the 3D-printed mounts.
    - The NDVI analysis uses specific thresholds for plant health determination - see model.py for details.
 
-### Repository Structure
+## Repository Structure
 
 - `/Hardware` - PCB design files, component specifications, and hardware documentation
 - `/Software` - Control scripts, web application code, and software implementation details
 - `/Assets` - Images, diagrams, and supplementary files
 - `/Documentation` - User manual, test plans, and additional project documentation
 
-### Original Team Members
+## Original Team Members
 
 - Jared Solis (jared11@bu.edu)
 - Sourav Shib (shib0826@bu.edu)
@@ -134,7 +134,7 @@ indoors with minimal intervention.
 - Dilhara DeSilva (dilharad@bu.edu)
 - Alex Muntean (munteana@bu.edu)
 
-### Conclusion
+## Conclusion
 
 Simple Sprouts is a fully functioning prototype that brings together embedded systems, smart sensing,
 adaptive control, and sustainable agriculture. Moving forward, careful attention to hardware reliability,
