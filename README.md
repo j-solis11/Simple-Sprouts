@@ -63,7 +63,8 @@ indoors with minimal intervention.
 - System-Level Testing: Validate subsystems individually before full integration.
 - Sensor Calibration: Calibrate sensors in the actual environment.
 
-## Documentation: Maintain detailed wiring diagrams from the beginning.
+## Documentation
+- Maintain detailed wiring diagrams from the beginning.
 
 ## Known Issues & Gotchas
 - Sensor Drift: Soil moisture sensors may drift over time and require recalibration.
