@@ -7,7 +7,7 @@
 
 Simple Sprouts is an autonomous vertical farming system designed for compact urban environments like university campuses and restaurants.
 The system integrates smart sensing, adaptive watering and lighting, and AI-based plant health monitoring to enable users to grow plants
-indoors with minimal intervention.
+Indoors with minimal intervention.
 
 ### Project Overview
 
@@ -19,7 +19,7 @@ indoors with minimal intervention.
 ## Getting Started
 
 ### Prerequisites
-- Raspberry Pi 5 with microSD card (16GB+ recommended)
+- Raspberry Pi 5 with microSD card (16 GB+ recommended)
 - 24V DC power supply (3A minimum)
 - WiFi connection for Firebase access
 - React Native Expo for mobile/web interface
@@ -29,7 +29,7 @@ indoors with minimal intervention.
 1. Connect the 24V power supply to the system
 2. Fill the water tank to the marked level
 3. Connect to WiFi and ensure Firebase connectivity
-4. Open the web app following installation instructions in the Software README
+4. Open the web app following the installation instructions in the Software README
 5. Initialize plant settings through the app interface
 6. Add growing medium and plant material to the containers
 
@@ -49,7 +49,7 @@ indoors with minimal intervention.
 - Footprint Accuracy: Double-check footprints for all parts, especially connectors and larger diodes.
 - Part Availability: Use components from suppliers that support automated assembly.
 - Clear Labeling: Label all terminal blocks and GPIO pinouts.
-- Flyback Protection: Always include flyback diodes across inductive loads, even as a just in case.
+- Flyback Protection: Always include flyback diodes across inductive loads, even as a just-in-case.
 
 ### Power System
 - Oversize Power Supplies: Choose power supplies with 25–50% more headroom.
@@ -69,14 +69,12 @@ indoors with minimal intervention.
 ## Known Issues & Gotchas
 - Sensor Drift: Soil moisture sensors may drift over time and require recalibration.
 - Minor Leakage Possible: Valves tend to leak after overuse. Not used enough usually to reach this stage.
-- 
 
 ## Recommendations for Future Improvements
 - Integrated load sensing for real-time diagnostics.
 - Upgrade water tank sensing to more reliable float sensors.
 - Add battery backup or solar integration for off-grid use.
-- Get better fitted valve fittings to combat leakage. 
-- 
+- Get better-fitted valve fittings to combat leakage. 
 
 ## Current State and Future Development
 
@@ -89,9 +87,9 @@ indoors with minimal intervention.
 ### Potential Future Development
 - Cost-reduction through lower-cost microcontrollers.
 - Local AI model deployment to reduce cloud dependency.
-- Enhanced environmental control, i.e. humidity and CO2 control
-- Expansion to multiple layered growth systems.
-- Integrating multiple users on the same household
+- Enhanced environmental control, i.e., humidity and CO2 control
+- Expansion to multiple-layered growth systems.
+- Integrating multiple users in the same household
 
 ### Critical Information for Future Teams
 
@@ -101,11 +99,11 @@ indoors with minimal intervention.
 
 2. **Irrigation System**
    - Water tube connections at the solenoid valves are pressure-fit and may need occasional reseating.
-   - The water pump is rated for 12V but operates efficiently at 9-15V. Current PCB provides ~12V to the pump.
+   - The water pump is rated for 12V but operates efficiently at 9- 15V. The current PCB provides ~12V to the pump.
    - **IMPORTANT**: Always maintain physical separation between water and electronic components.
 
 3. **Software Dependencies**
-   - Firebase integration requires proper API keys. See Software README for setup details.
+   - Firebase integration requires proper API keys. See the Software README for setup details.
    - The MoonDream Cloud API has a free tier that may limit daily queries for plant health analysis.
    - React Native Expo dependency versions are critical - see package.json for specific versions.
 
