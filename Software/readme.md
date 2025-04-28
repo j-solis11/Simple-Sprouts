@@ -147,7 +147,7 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 | gpiozero | 2.0.2 | Gpio Control |
 
 
-## Installation Guide
+## Installation and Start up Guide
 
 1. Clone the repository 
 ```bash
@@ -158,7 +158,7 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 python3 -m venv camera_and_model
 source camera_and_model/bin/activate
 ```
-3.Install dependencies for camera and model
+3. Install dependencies for camera and model
 ```bash
 pip install firebase-admin
 pip install opencv-python

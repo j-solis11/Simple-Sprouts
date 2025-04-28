@@ -20,11 +20,11 @@ This document serves as the complete hardware report, detailing schematics, PCB/
   - 2mm traces for high-current paths
   - 0.25mm traces for logic-level signals
   - Separate 12V and Ground planes
-- 3D visualizations of PCB assembly available in /Assets
+- 3D visualizations of PCB assembly available in /Hardware/Photos
 
 ### CAD Drawings:
 - Mechanical design built primarily from plywood and 1/8" acrylic panels.
-- Simple 2D CAD sketches (PDF) and final enclosure photographs provided in /Assets
+- Simple 2D CAD sketches (PDF) and final enclosure photographs provided in /Hardware/Photos
 
 ## 2. Vendor Information and Bill of Materials (BOM)
 
@@ -112,7 +112,7 @@ All are available in /Hardware/Datasheets
 
 ## 5. System Photographs and Assembly Documentation
 
-Photographs have been captured and placed in /Assets showing:
+Photographs have been captured and placed in /Hardware/Photos showing:
 - PCB Top View (fully populated)
 - PCB Side View (showing component height and header stacking)
 - Full System Inside View (component wall and irrigation)
