@@ -45,8 +45,6 @@ The mobile app provides a user interface for:
 
 ---
 
----
-
 ### Sensing Script (Python / Raspberry Pi)
 
 **Location:** `/Sensing_Actuation_Code`
@@ -67,7 +65,7 @@ The mobile app provides a user interface for:
 
 ---
 
-## Model and camera code
+## Model and Camera modules (Python / Raspberry Pi)
 
 **Location:** `/Model_Code`
 
@@ -81,9 +79,9 @@ The camera and model code:
 
 **Main components:**
 - `Model_Code/Camera_noIR.py`: 
-   - Takes pictures of the plants and processes them then sends to firebase
+   - Captures plant images and generates NDVI analysis to then send to Firebase
 - `Model_Code/image_retrival.py`: 
-   - Waits for prompts from teh web app to query model
+   - Analyzes plant health and responds to user queries
 
 
 **Technologies used:**
@@ -102,7 +100,7 @@ The camera and model code:
 | Python | 3.11.2 | Core language for Raspberry Pi scripts |
 | Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
 | PiCamera2 | 0.3.25 | Camera interface library |
-| OpenCV | 4.8.0 | Image processing library |
+| OpenCV | 4.10.0.84 | Image processing library |
 | Node.js | 18.16.0 | Required for React Native development |
 | React Native | 0.22.15 | Mobile/web application framework |
 | Expo Go | 52.0.0 | React Native development platform |
