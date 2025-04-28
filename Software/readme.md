@@ -137,6 +137,15 @@ Here you can see the main flow of data in our logic. Firebase holds all of the h
 | React Native | 0.22.15 | Mobile/web application framework |
 | Expo Go | 52.0.0 | React Native development platform |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
+| firebase-admin | 2.7.0 | 1 |
+| adafruit-circuitpython-sgp30 | N/A | 1 |
+| adafruit-circuitpython-ahtx0 | 1.0.25 | 1 |
+| adafruit-circuitpython-pct2075 | N/A | 1 |
+| adafruit-circuitpython-seesaw | 1.16.5 | 1 |
+| board | 1.0 | 1 |
+| gpiod | 2.3.0 | 1 |
+| gpiozero | 2.0.2 | 1 |
+
 
 ## Installation Guide
 
