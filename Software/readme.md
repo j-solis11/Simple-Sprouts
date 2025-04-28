@@ -10,6 +10,84 @@ The Simple Sprouts software stack consists of several interconnected components 
 
 ### Core Software Modules
 
+---
+
+## Mobile App Interface (React Native / Expo)
+
+**Location:** `/Model_Code`
+
+The mobile app provides a user interface for:
+- Viewing real-time sensor data
+- Switching   
+- Managing manual watering and lighting schedules
+- Switching between manual and adaptive modes
+- Viewing historical trends in environmental parameters
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+- React Native Expo 
+
+---
+
+---
+
+## Sensing Script (Python / Raspberry Pi)
+
+**Location:** `/Sensing_Actuation_Code`
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+
+
+---
+
+## Model and camera code
+
+**Location:** `/Model_Code`
+
+The mobile app provides a user interface for:
+- Viewing real-time sensor data
+- Switching   
+- Managing manual watering and lighting schedules
+- Switching between manual and adaptive modes
+- Viewing historical trends in environmental parameters
+
+**Main components:**
+- `app/navigation/AppNavigator.js`: 
+   - Allows navigation between different screens in the app
+   - Configures Tab screen for transitions between Mode Info, Health Info, and Plant Info screens
+- `app/services/firebaseServices.tsx`: 
+   - Allows communication to Firebase to connect to modules on Raspberry Pi 5
+- `app/screens/BasicStatus.tsx`: 
+   - Opening screen for the UI in which 
+- `app/screens/BasicStatus.tsx`: 
+
+
+**Technologies used:**
+- React Native Expo 
+
+---
+
 #### Sensing Module (`sensing.py`)
 - **Purpose**: Reads data from all environmental and soil sensors
 - **Dependencies**: Adafruit libraries for I2C sensors, Firebase Admin SDK
@@ -25,15 +103,15 @@ The Simple Sprouts software stack consists of several interconnected components 
 
 #### Camera Module (`Camera_noIR.py`)
 - **Purpose**: Captures plant images and generates NDVI analysis
-- **Dependencies**: PiCamera, OpenCV, numpy, Firebase Admin SDK
+- **Dependencies**: PiCamera, OpenCV, numpy
 - **Image Processing**: Standard and NDVI (Normalized Difference Vegetation Index)
 - **Data Flow**: NoIR Camera → Python → Base64 Encoding → Firebase → Web App
 
-#### AI Module (`image_retrival.py`)
+#### AI Module (`model.py`)
 - **Purpose**: Analyzes plant health and responds to user queries
 - **Dependencies**: MoonDream Cloud API, Firebase Admin SDK
 - **Features**: Automated health assessment, custom query handling
-- **Data Flow**: Firebase → Python → MoonDream Cloud API → Firebase → Web App
+- **Data Flow**: Firebase → Python → MoonDream API → Firebase → Web App
 
 #### Web/Mobile App (React Native Expo)
 - **Purpose**: User interface for system control and monitoring
@@ -48,12 +126,16 @@ The Simple Sprouts software stack consists of several interconnected components 
 | Python | 3.11.2 | Core language for Raspberry Pi scripts |
 | Firebase Admin SDK | 6.2.0 | Python library for Firebase integration |
 | Adafruit CircuitPython | 8.2.9 | Library for sensor communication |
-| PiCamera | 1.13 | Camera interface library |
+| PiCamera2 | 0.3.25 | Camera interface library |
 | OpenCV | 4.8.0 | Image processing library |
 | Node.js | 18.16.0 | Required for React Native development |
 | React Native | 0.72.6 | Mobile/web application framework |
 | Expo | 49.0.0 | React Native development platform |
 | Firebase JS SDK | 10.1.0 | JavaScript library for Firebase integration |
+| Pyrebase4 | 4.8.0 | A python wrapper of the Firebase API |
 | MoonDream Cloud API | 1.0.0 | AI model API for plant analysis |
 
 ## Flow Diagram
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/58f69fa5-42ff-46d7-ba53-65d0736ff3a9" />
+
+
