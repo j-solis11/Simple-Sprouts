@@ -215,6 +215,6 @@ python Sensing_code.py
 7. Run the actuation script (In another terminal)
 ```bash
 python3 Actuation_code.py
-``
+```
 
 
