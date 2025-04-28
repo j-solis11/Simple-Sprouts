@@ -69,7 +69,7 @@ The mobile app provides a user interface for:
 
 ---
 
-## Model and camera code
+## Model and Camera modules (Python / Raspberry Pi)
 
 **Location:** `/Model_Code`
 
