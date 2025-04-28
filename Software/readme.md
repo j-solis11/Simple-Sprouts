@@ -1,7 +1,5 @@
 # Simple Sprouts - Software Documentation
 
-![Software Architecture](https://github.com/j-solis11/Simple-Sprouts/raw/main/assets/software_architecture.png)
-
 ## Software Overview
 
 The Simple Sprouts software stack consists of several interconnected components that enable autonomous plant monitoring, automated environment control, and a user-friendly web interface. The system is primarily built around a Raspberry Pi 5 running Python scripts that interface with sensors and actuators, with data exchanged via Firebase to a React Native Expo web/mobile application.
@@ -187,6 +185,34 @@ npm install expo
 ```bash
 npx expo start --tunnel
 ```
-
+### Sensing and Actuation Code
+2. Create the environment for the sensing script
+```bash
+python3 -m venv sensing_env
+source sensing_env/bin/activate
+```
+3. Install dependencies for the sensing system
+```bash
+pip install firebase-admin adafruit-circuitpython-sgp30 adafruit-circuitpython-ahtx0 adafruit-circuitpython-pct2075 adafruit-circuitpython-seesaw adafruit-blinka
+```
+4. Enable I2C
+```bash
+sudo raspi-config
+sudo reboot
+```
+5. Install dependencies for the actuation script
+```bash
+sudo apt install python3-pip python3-gpiozero libgpiod-dev python3-libgpiod
+sudo pip3 install firebase-admin
+```
+6. Activate the environment for the sensing script
+```bash
+source sensing_env/bin/activate
+python Sensing_code.py
+```
+7. Run the actuation script (In another terminal)
+```bash
+python3 Actuation_code.py
+```
 
 
